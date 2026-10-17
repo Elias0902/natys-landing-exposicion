@@ -162,7 +162,8 @@ export const documents = [
     title: 'Presentación PowerPoint',
     owner: 'Santiago Loyo',
     type: 'pdf',
-    file: '',
+    file: 'docs/diapositivas-equipo8.pptx',
+    thumb: 'img/thumb-diapositivas.png',
     category: 'Material',
   },
 ];
