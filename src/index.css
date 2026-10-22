@@ -230,3 +230,19 @@ img { max-width: 100%; display: block; }
   .bars li { grid-template-columns: 64px 1fr 84px; }
   .modal__head { flex-direction: column; align-items: flex-start; }
 }
+
+/* Página de pruebas */
+.page { min-height: calc(100vh - 64px - 70px); }
+.back { display: inline-block; margin-bottom: 18px; color: var(--muted); font-size: .9rem; }
+.back:hover { color: #fca5a5; }
+.tcount { color: var(--text); font-weight: 600; margin-left: 6px; }
+.doc.is-main { border-color: rgba(200,30,30,.6); }
+.doc__pills { display: flex; gap: 6px; flex-wrap: wrap; }
+.pill--main { background: var(--red); color: #fff; }
+
+
+.merge { margin-top: 28px; padding: 20px 22px; display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; border-color: rgba(200,30,30,.5); }
+.merge b { display: block; font-size: 1.05rem; }
+.merge small { color: var(--muted); }
+.merge > div { flex: 1 1 320px; }
+.merge .btn:disabled { opacity: .6; cursor: progress; }

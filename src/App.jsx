@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import Dashboard from './components/Dashboard';
+import TestsPage from './components/TestsSection';
 import { asset, documents, event, guide } from './data/content';
 import { scenarios } from './data/metrics';
 
@@ -19,7 +20,9 @@ function Navbar({ onSelectDashboard }) {
     onSelectDashboard(id);
     setOpen(false);
     setMobile(false);
-    document.getElementById('dashboard')?.scrollIntoView({ behavior: 'smooth' });
+    // Desde la página de pruebas, volver primero a la landing
+    if (window.location.hash.startsWith('#/pruebas')) window.location.hash = '#dashboard';
+    else document.getElementById('dashboard')?.scrollIntoView({ behavior: 'smooth' });
   };
 
   return (
@@ -54,6 +57,7 @@ function Navbar({ onSelectDashboard }) {
             )}
           </div>
           <a href="#guia" onClick={() => setMobile(false)}>Guía</a>
+          <a href="#/pruebas" onClick={() => setMobile(false)}>Pruebas</a>
           <a href="#documentos" onClick={() => setMobile(false)}>Documentos</a>
           <a className="btn btn--sm" href={event.formUrl} target="_blank" rel="noreferrer">
             Evaluación
@@ -210,17 +214,43 @@ function SectionTitle({ kicker, title, text }) {
   );
 }
 
+// Ruta simple por hash: #/pruebas es una página aparte; lo demás es la landing
+const isTestsRoute = () => window.location.hash.startsWith('#/pruebas');
+
 export default function App() {
   const [dashboard, setDashboard] = useState(scenarios[0].id);
   const [doc, setDoc] = useState(null);
+  const [tests, setTests] = useState(isTestsRoute);
+
+  useEffect(() => {
+    const onHash = () => {
+      const next = isTestsRoute();
+      setTests(next);
+      // Al volver a la landing, baja a la sección del enlace (#guia, #documentos...)
+      const id = window.location.hash.slice(1);
+      requestAnimationFrame(() => {
+        const el = !next && id && document.getElementById(id);
+        if (el) el.scrollIntoView();
+        else window.scrollTo(0, 0);
+      });
+    };
+    window.addEventListener('hashchange', onHash);
+    return () => window.removeEventListener('hashchange', onHash);
+  }, []);
   return (
     <>
       <Navbar onSelectDashboard={setDashboard} />
       <main>
-        <Hero />
-        <Dashboard selected={dashboard} onSelect={setDashboard} />
-        <GuideSection />
-        <DocumentsSection onOpen={setDoc} />
+        {tests ? (
+          <TestsPage onOpen={setDoc} />
+        ) : (
+          <>
+            <Hero />
+            <Dashboard selected={dashboard} onSelect={setDashboard} />
+            <GuideSection />
+            <DocumentsSection onOpen={setDoc} />
+          </>
+        )}
       </main>
       <footer className="footer">
         <div className="container">
