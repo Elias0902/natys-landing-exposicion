@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import Dashboard from './components/Dashboard';
 import TestsPage from './components/TestsSection';
+import DocViewer from './components/DocViewer';
 import { asset, documents, event, guide } from './data/content';
 import { scenarios } from './data/metrics';
 
@@ -169,41 +170,6 @@ function DocumentsSection({ onOpen }) {
   );
 }
 
-function Viewer({ doc, onClose }) {
-  useEffect(() => {
-    const esc = (e) => e.key === 'Escape' && onClose();
-    document.addEventListener('keydown', esc);
-    document.body.style.overflow = 'hidden';
-    return () => {
-      document.removeEventListener('keydown', esc);
-      document.body.style.overflow = '';
-    };
-  }, [onClose]);
-
-  const download = asset(doc.download || doc.file);
-  return (
-    <div className="modal" onClick={onClose}>
-      <div className="modal__box" onClick={(e) => e.stopPropagation()}>
-        <div className="modal__head">
-          <b>{doc.title}</b>
-          <div>
-            <a className="btn btn--sm btn--ghost" href={asset(doc.file)} target="_blank" rel="noreferrer">Abrir</a>
-            <a className="btn btn--sm" href={download} download>Descargar</a>
-            <button className="close" onClick={onClose} aria-label="Cerrar">✕</button>
-          </div>
-        </div>
-        <div className="modal__body">
-          {doc.type === 'pdf' ? (
-            <iframe src={asset(doc.file)} title={doc.title} />
-          ) : (
-            <img src={asset(doc.file)} alt={doc.title} />
-          )}
-        </div>
-      </div>
-    </div>
-  );
-}
-
 function SectionTitle({ kicker, title, text }) {
   return (
     <div className="stitle">
@@ -257,7 +223,7 @@ export default function App() {
           {event.team} · {event.section} · {event.project} · {event.date}
         </div>
       </footer>
-      {doc && <Viewer doc={doc} onClose={() => setDoc(null)} />}
+      {doc && <DocViewer doc={doc} onClose={() => setDoc(null)} />}
     </>
   );
 }
