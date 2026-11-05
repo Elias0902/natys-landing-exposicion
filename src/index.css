@@ -261,6 +261,7 @@ img { max-width: 100%; display: block; }
 .merge { margin-top: 28px; padding: 20px 22px; display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; border-color: rgba(200,30,30,.5); }
 .merge b { display: block; font-size: 1.05rem; }
 .merge small { color: var(--muted); }
+.merge .merge__error { color: #f87171; }
 .merge > div { flex: 1 1 320px; }
 .merge .btn:disabled { opacity: .6; cursor: progress; }
 

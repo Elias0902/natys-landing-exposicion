@@ -46,6 +46,7 @@ export const modulos = [
     docx: 'docs/pruebas/informe-rol.docx',
     thumb: 'img/pruebas/thumb-informe-rol.png',
   }),
+  m('respaldos', 'Respaldos', 'moises'),
 
   // Edmairys
   m('clientes', 'Clientes', 'edmairys'),
@@ -68,6 +69,10 @@ export const modulos = [
     docx: 'docs/pruebas/informe-producciones.docx',
     thumb: 'img/pruebas/thumb-informe-producciones.png',
   }),
+  m('tasa', 'Tasa Cambiaria', 'santiago'),
+  m('unidades', 'Unidades de Medida', 'santiago'),
+  m('usuarios', 'Usuarios', 'santiago'),
+  m('bitacora', 'Bitácora', 'santiago'),
 
   // Ismael
   m('promociones', 'Promociones', 'ismael'),
@@ -75,6 +80,9 @@ export const modulos = [
   m('cobrar', 'Cuentas por Cobrar', 'ismael'),
   m('pagar', 'Cuentas por Pagar', 'ismael'),
   m('materias', 'Materias Primas', 'ismael'),
+  m('tipos-clientes', 'Tipos de Clientes', 'ismael'),
+  m('camiones', 'Camiones', 'ismael'),
+  m('notificaciones', 'Notificaciones', 'ismael'),
 
   // Elías
   m('entregas', 'Entregas', 'elias', {
@@ -87,4 +95,6 @@ export const modulos = [
     docx: 'docs/pruebas/informe-chatbot.docx',
     thumb: 'img/pruebas/thumb-informe-chatbot.png',
   }),
+  m('manual', 'Manual de Usuario', 'elias'),
+  m('permisos', 'Roles y Permisos', 'elias'),
 ];

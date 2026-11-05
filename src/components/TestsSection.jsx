@@ -5,42 +5,105 @@ import { integrantes, modulos } from '../data/pruebas';
 const persona = Object.fromEntries(integrantes.map((p) => [p.id, p]));
 const esPrincipal = (m) => persona[m.responsable].principal === m.id;
 
-// pdf-lib se carga desde CDN solo al pulsar el botón (no hace falta npm install)
-const PDF_LIB = 'https://cdn.jsdelivr.net/npm/pdf-lib@1.17.1/dist/pdf-lib.esm.min.js';
+// Si en este tiempo no llega ni un byte, la conexión se da por caída
+const SIN_DATOS_MS = 30000;
+const MB = (n) => (n / 1048576).toFixed(1);
+const pausa = () => new Promise((r) => setTimeout(r)); // deja que React pinte el progreso
+
+// Descarga todos los PDF a la vez. Cancela si la red se queda quieta SIN_DATOS_MS.
+async function descargar(rutas, onProgreso) {
+  const ctrl = new AbortController();
+  let recibidos = 0;
+  let total = 0;
+  let conTamano = 0;
+  let vigilante;
+  const latido = () => {
+    clearTimeout(vigilante);
+    vigilante = setTimeout(() => ctrl.abort(), SIN_DATOS_MS);
+  };
+  const avisar = () => {
+    latido();
+    onProgreso(recibidos, conTamano === rutas.length ? total : 0);
+  };
+
+  latido();
+  try {
+    return await Promise.all(rutas.map(async (ruta) => {
+      const r = await fetch(asset(ruta), { signal: ctrl.signal });
+      if (!r.ok) throw new Error(`No se encontró ${ruta}`);
+      const tam = Number(r.headers.get('content-length'));
+      if (tam) { total += tam; conTamano += 1; }
+      avisar();
+      const lector = r.body.getReader();
+      const partes = [];
+      for (;;) {
+        const { done, value } = await lector.read();
+        if (done) break;
+        partes.push(value);
+        recibidos += value.length;
+        avisar();
+      }
+      return new Blob(partes).arrayBuffer();
+    }));
+  } catch (e) {
+    ctrl.abort();
+    throw e;
+  } finally {
+    clearTimeout(vigilante);
+  }
+}
+
+const mensajeError = (e) => {
+  if (e.name === 'AbortError') return 'La conexión está muy lenta o se cortó. Intenta de nuevo.';
+  if (e.name === 'TypeError') return 'Sin conexión. Revisa el wifi e intenta de nuevo.';
+  return e.message;
+};
 
 // Une todos los PDF disponibles, en el orden de la lista, y descarga el resultado
 function MergeButton() {
   const conPdf = modulos.filter((m) => m.pdf);
+  const [ocupado, setOcupado] = useState(false);
   const [estado, setEstado] = useState('');
-  const ocupado = estado && !estado.startsWith('Error');
+  const [error, setError] = useState(false);
 
   const juntar = async () => {
+    setOcupado(true);
+    setError(false);
+    setEstado('Conectando…');
+    // pdf-lib va incluido en la web; se pide en paralelo con los informes
+    const libreria = import('pdf-lib');
+    libreria.catch(() => {});
     try {
-      setEstado('Cargando…');
-      const { PDFDocument } = await import(/* @vite-ignore */ PDF_LIB);
+      const archivos = await descargar(conPdf.map((m) => m.pdf), (llevo, total) => {
+        setEstado(total
+          ? `Descargando informes… ${MB(Math.min(llevo, total))} de ${MB(total)} MB`
+          : `Descargando informes… ${MB(llevo)} MB`);
+      });
+      const { PDFDocument } = await libreria;
       const salida = await PDFDocument.create();
       salida.setTitle('Informes de pruebas · Natys · Equipo 8');
-      for (const [i, m] of conPdf.entries()) {
-        setEstado(`Uniendo ${i + 1} de ${conPdf.length}: ${m.nombre}`);
-        const bytes = await fetch(asset(m.pdf)).then((r) => {
-          if (!r.ok) throw new Error(`No se encontró ${m.pdf}`);
-          return r.arrayBuffer();
-        });
+      for (const [i, bytes] of archivos.entries()) {
+        setEstado(`Uniendo ${i + 1} de ${conPdf.length}: ${conPdf[i].nombre}`);
+        await pausa();
         const doc = await PDFDocument.load(bytes, { ignoreEncryption: true });
         const paginas = await salida.copyPages(doc, doc.getPageIndices());
         paginas.forEach((pg) => salida.addPage(pg));
       }
       setEstado('Generando archivo…');
+      await pausa();
       const blob = new Blob([await salida.save()], { type: 'application/pdf' });
       const url = URL.createObjectURL(blob);
       const a = Object.assign(document.createElement('a'), { href: url, download: 'informes-pruebas-natys.pdf' });
       document.body.appendChild(a);
       a.click();
       a.remove();
-      setTimeout(() => URL.revokeObjectURL(url), 10000);
-      setEstado('');
+      setTimeout(() => URL.revokeObjectURL(url), 60000);
+      setEstado(`Listo: informes-pruebas-natys.pdf (${MB(blob.size)} MB) está en tus descargas.`);
     } catch (e) {
-      setEstado(`Error: ${e.message}`);
+      setError(true);
+      setEstado(`Error: ${mensajeError(e)}`);
+    } finally {
+      setOcupado(false);
     }
   };
 
@@ -48,12 +111,12 @@ function MergeButton() {
     <div className="merge card">
       <div>
         <b>Todos los informes en un solo PDF</b>
-        <small>
+        <small className={error ? 'merge__error' : undefined}>
           {estado || `Une los ${conPdf.length} informes disponibles: ${conPdf.map((m) => m.nombre).join(', ')}.`}
         </small>
       </div>
       <button className="btn" onClick={juntar} disabled={ocupado || !conPdf.length}>
-        {ocupado ? 'Uniendo…' : 'Juntar y descargar'}
+        {ocupado ? 'Uniendo…' : error ? 'Reintentar' : 'Juntar y descargar'}
       </button>
     </div>
   );
