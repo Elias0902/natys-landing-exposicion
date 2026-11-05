@@ -7,7 +7,6 @@
 
 export const integrantes = [
   { id: 'moises', nombre: 'Moisés Pereira', principal: 'pedidos' },
-  { id: 'edmairys', nombre: 'Edgmairys Apostol', principal: 'clientes' },
   { id: 'santiago', nombre: 'Santiago Loyo', principal: 'productos' },
   { id: 'ismael', nombre: 'Ismael Torres', principal: 'promociones' },
   { id: 'elias', nombre: 'Elías Armas', principal: 'entregas' },
@@ -47,11 +46,6 @@ export const modulos = [
     thumb: 'img/pruebas/thumb-informe-rol.png',
   }),
   m('respaldos', 'Respaldos', 'moises'),
-
-  // Edmairys
-  m('clientes', 'Clientes', 'edmairys'),
-  m('proveedores', 'Proveedores', 'edmairys'),
-  m('categorias', 'Categorías', 'edmairys'),
 
   // Santiago
   m('productos', 'Productos', 'santiago', {
