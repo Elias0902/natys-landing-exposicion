@@ -83,6 +83,13 @@ export const guide = [
 // Documents. `file` empty = pending (drop the PDF in public/docs and set the path).
 export const documents = [
   {
+    id: 'guia-expo',
+    title: 'Guía de la exposición',
+    owner: 'Elías Armas',
+    type: 'pdf',
+    file: 'docs/guia-parte1-elias.pdf',
+    category: 'Material',
+  },
   {
     id: 'triptico',
     title: 'Tríptico',
