@@ -15,8 +15,8 @@ export const event = {
 export const guide = [
   {
     order: 1,
-    name: 'Edgmairys Apostol',
-    role: 'QA Analyst / Logistics Specialist',
+    name: 'Elías Armas',
+    role: 'Lead QA Automation Engineer',
     topic: 'Introducción y Fundamentos de la Automatización',
     points: [
       'Dinámica rompehielo para abrir la exposición.',
@@ -82,6 +82,14 @@ export const guide = [
 
 // Documents. `file` empty = pending (drop the PDF in public/docs and set the path).
 export const documents = [
+  {
+    id: 'guia-parte1',
+    title: 'Guía de exposición · Parte 1',
+    owner: 'Elías Armas',
+    type: 'pdf',
+    file: 'docs/guia-parte1-elias.pdf',
+    category: 'Material',
+  },
   {
     id: 'triptico',
     title: 'Tríptico',
