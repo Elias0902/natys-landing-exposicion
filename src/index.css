@@ -186,6 +186,10 @@ img { max-width: 100%; display: block; }
 .points { padding: 0; list-style: none; margin: 20px 0 0; display: grid; gap: 12px; }
 .points li { padding-left: 28px; position: relative; }
 .points li::before { content: '✓'; position: absolute; left: 0; top: 0; color: var(--red-2); font-weight: 700; }
+.examples { margin-top: 24px; padding: 18px 20px; border-radius: 12px; background: rgba(228,59,59,.08); border: 1px solid rgba(228,59,59,.3); }
+.examples h4 { margin: 0 0 10px; font-size: .95rem; color: var(--red-2); }
+.examples ul { margin: 0; padding-left: 20px; display: grid; gap: 8px; font-size: .93rem; }
+@media (max-width: 560px) { .guide__detail { padding: 20px; } .examples { padding: 14px 16px; } }
 
 
 /* Documents */

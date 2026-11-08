@@ -1,5 +1,5 @@
 // Dashboard metrics for each scenario. Replace these values with the real
-// results exported from JMeter / PHPUnit / the pipeline run.
+// results exported from the load test / PHPUnit / the pipeline run.
 
 // Deterministic pseudo-random generator so the charts look the same on every load
 function seeded(seed) {

@@ -129,6 +129,14 @@ function GuideSection() {
               <ul className="points">
                 {g.points.map((p) => <li key={p}>{p}</li>)}
               </ul>
+              {g.examples?.length > 0 && (
+                <div className="examples">
+                  <h4>Ejemplos en el sistema Naty's</h4>
+                  <ul>
+                    {g.examples.map((e) => <li key={e}>{e}</li>)}
+                  </ul>
+                </div>
+              )}
             </article>
           ))}
         </div>

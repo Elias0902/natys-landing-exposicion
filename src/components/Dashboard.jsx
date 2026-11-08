@@ -181,7 +181,7 @@ export default function Dashboard({ selected, onSelect }) {
         <div className="dash-top card">
           <div>
             <h2>Dashboard</h2>
-            <p className="muted">Prueba de carga JMeter + pipeline CI/CD · Galletas Natys</p>
+            <p className="muted">Prueba de carga + pipeline CI/CD · Sistema Naty's</p>
           </div>
           <div className="tabs tabs--tight">
             {scenarios.map((x) => (
@@ -203,8 +203,8 @@ export default function Dashboard({ selected, onSelect }) {
         <Pipeline steps={s.pipeline} />
 
         <div className="kpis">
-          <Kpi label="Usuarios virtuales" value={fmt(k.virtualUsers)} note="Thread Group" />
-          <Kpi label="Peticiones" value={fmt(k.requests)} note="Samplers HTTP" />
+          <Kpi label="Usuarios virtuales" value={fmt(k.virtualUsers)} note="Simulados a la vez" />
+          <Kpi label="Peticiones" value={fmt(k.requests)} note="Peticiones HTTP" />
           <Kpi label="Tasa de error" value={k.errorRate} unit="%" note={k.errorRate > thresholds.errorRate ? '✕ Supera el 1%' : '✓ Bajo el 1%'} tone={k.errorRate > thresholds.errorRate ? 'fail' : 'ok'} />
           <Kpi label="Respuesta media" value={fmt(k.avgMs)} unit="ms" note={k.avgMs > thresholds.avgMs ? '✕ Supera 1 s' : '✓ Bajo 1 s'} tone={k.avgMs > thresholds.avgMs ? 'fail' : 'ok'} />
           <Kpi label="Throughput" value={k.throughput} unit="req/s" note="Peticiones por segundo" />
@@ -230,8 +230,8 @@ export default function Dashboard({ selected, onSelect }) {
 
         <div className="card panel">
           <div className="panel__head">
-            <h3>Resultados por flujo (JMeter)</h3>
-            <small>Assertion: código 200 y error menor al {thresholds.errorRate}%</small>
+            <h3>Resultados por flujo</h3>
+            <small>Aserción: código 200 y error menor al {thresholds.errorRate}%</small>
           </div>
           <FlowTable flows={s.flows} />
         </div>
