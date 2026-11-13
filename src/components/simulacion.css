@@ -1,0 +1,236 @@
+/* Simulación de prueba: overlay, animación de carga y vista dividida código / terminal */
+
+.sim-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  padding: 16px;
+  background: rgba(10, 10, 15, 0.72);
+  animation: sim-fade 0.25s ease;
+}
+
+.sim-box {
+  width: min(1100px, 100%);
+  max-height: calc(100vh - 32px);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 14px;
+  background: var(--card, #fff);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.4);
+}
+
+.sim-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border-bottom: 1px solid rgba(127, 127, 127, 0.25);
+}
+
+.sim-close {
+  background: none;
+  border: 0;
+  color: inherit;
+  font-size: 22px;
+  line-height: 1;
+  padding: 4px 8px;
+  cursor: pointer;
+}
+
+.sim-muted {
+  color: #7f849c;
+}
+
+/* Fase de carga */
+.sim-load {
+  padding: 56px 24px;
+  text-align: center;
+}
+
+.sim-spin {
+  width: 44px;
+  height: 44px;
+  margin: 0 auto 18px;
+  border: 4px solid rgba(127, 127, 127, 0.25);
+  border-top-color: #e43b3b;
+  border-radius: 50%;
+  animation: sim-spin 0.9s linear infinite;
+}
+
+.sim-bar {
+  height: 10px;
+  max-width: 420px;
+  margin: 16px auto 0;
+  overflow: hidden;
+  border-radius: 99px;
+  background: rgba(127, 127, 127, 0.2);
+}
+
+.sim-bar i {
+  display: block;
+  height: 100%;
+  border-radius: 99px;
+  background: linear-gradient(90deg, #e43b3b, #ff8a65);
+  transition: width 0.08s linear;
+}
+
+.sim-bar--top {
+  max-width: none;
+  margin: 0;
+  border-radius: 0;
+  height: 4px;
+}
+
+.sim-bar--top i {
+  border-radius: 0;
+}
+
+/* Vista dividida */
+.sim-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 380px;
+}
+
+.sim-pane {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.sim-pane-title {
+  padding: 8px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: #cdd6f4;
+  background: #181825;
+  border-bottom: 1px solid #313244;
+}
+
+.sim-code,
+.sim-term {
+  flex: 1;
+  max-height: 60vh;
+  overflow: auto;
+  padding: 12px 0;
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.sim-code {
+  background: #1e1e2e;
+  color: #cdd6f4;
+}
+
+.sim-ln {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  padding: 0 14px 0 0;
+  white-space: pre;
+  transition: background 0.2s ease;
+}
+
+.sim-ln span {
+  padding-right: 12px;
+  text-align: right;
+  color: #6c7086;
+  user-select: none;
+}
+
+.sim-ln.is-run {
+  background: rgba(166, 227, 161, 0.07);
+}
+
+.sim-ln.is-now {
+  background: rgba(249, 226, 175, 0.2);
+}
+
+.sim-term {
+  background: #0c0c0c;
+  color: #d4d4d4;
+  padding: 12px 14px;
+}
+
+.sim-term p {
+  margin: 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.sim-ok {
+  color: #a6e3a1;
+}
+
+.sim-fail {
+  color: #f38ba8;
+}
+
+.sim-txt {
+  color: #d4d4d4;
+}
+
+.sim-gap {
+  margin-top: 10px !important;
+}
+
+.sim-kv {
+  display: flex;
+  justify-content: space-between;
+  max-width: 340px;
+}
+
+.sim-kv b {
+  font-weight: 600;
+  color: #f9e2af;
+}
+
+.sim-cursor::after {
+  content: "▋";
+  color: #d4d4d4;
+  animation: sim-blink 1s steps(1) infinite;
+}
+
+.sim-result {
+  padding: 12px 16px;
+  font-weight: 600;
+  border-top: 1px solid rgba(127, 127, 127, 0.25);
+}
+
+.sim-result.is-ok {
+  background: #e8f8ee;
+  color: #1e7a43;
+}
+
+.sim-result.is-fail {
+  background: #fdecec;
+  color: #b42323;
+}
+
+@keyframes sim-fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes sim-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes sim-blink {
+  50% { opacity: 0; }
+}
+
+@media (max-width: 720px) {
+  .sim-split {
+    grid-template-columns: 1fr;
+  }
+
+  .sim-code,
+  .sim-term {
+    max-height: 220px;
+  }
+}

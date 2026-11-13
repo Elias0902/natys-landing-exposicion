@@ -123,7 +123,7 @@ function MergeButton() {
 }
 
 // Página aparte (#/pruebas): un contenedor por módulo con su informe de pruebas
-export default function TestsPage({ onOpen }) {
+function TestsPage({ onOpen }) {
   const [quien, setQuien] = useState('todos');
   const lista = quien === 'todos'
     ? modulos
@@ -187,4 +187,57 @@ export default function TestsPage({ onOpen }) {
       </div>
     </section>
   );
+}
+
+// Contenido privado: pide la clave antes de mostrar la página de pruebas
+const CLAVE = 'nomelase';
+const CLAVE_GUARDADA = 'natys-pruebas-ok';
+const yaDesbloqueado = () => {
+  try { return sessionStorage.getItem(CLAVE_GUARDADA) === '1'; } catch { return false; }
+};
+
+function Candado({ onOk }) {
+  const [valor, setValor] = useState('');
+  const [error, setError] = useState(false);
+
+  const entrar = (e) => {
+    e.preventDefault();
+    if (valor !== CLAVE) { setError(true); return; }
+    try { sessionStorage.setItem(CLAVE_GUARDADA, '1'); } catch { /* sin almacenamiento: pide la clave otra vez */ }
+    onOk();
+  };
+
+  return (
+    <section id="pruebas" className="section page">
+      <div className="container">
+        <a className="back" href="#inicio">← Volver al inicio</a>
+        <div className="stitle">
+          <span>Contenido privado</span>
+          <h2>Pruebas · Natys</h2>
+          <p>Esta sección está protegida. Escribe la clave para ver los informes.</p>
+        </div>
+        <form className="card merge" onSubmit={entrar}>
+          <div>
+            <b>Clave de acceso</b>
+            <small className={error ? 'merge__error' : undefined}>
+              {error ? 'Clave incorrecta. Intenta de nuevo.' : 'Ingresa la clave para continuar.'}
+            </small>
+          </div>
+          <input
+            type="password"
+            value={valor}
+            onChange={(e) => { setValor(e.target.value); setError(false); }}
+            aria-label="Clave de acceso"
+            autoFocus
+          />
+          <button className="btn" type="submit">Entrar</button>
+        </form>
+      </div>
+    </section>
+  );
+}
+
+export default function TestsGate({ onOpen }) {
+  const [ok, setOk] = useState(yaDesbloqueado);
+  return ok ? <TestsPage onOpen={onOpen} /> : <Candado onOk={() => setOk(true)} />;
 }

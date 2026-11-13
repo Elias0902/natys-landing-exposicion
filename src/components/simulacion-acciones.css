@@ -1,0 +1,24 @@
+/* Botones finales de la simulación y vista de gráficas dentro del modal */
+
+.sim-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px;
+  border-top: 1px solid rgba(127, 127, 127, 0.25);
+}
+
+.sim-back {
+  margin-right: auto;
+}
+
+.sim-scroll {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  gap: 16px;
+  padding: 16px;
+  overflow: auto;
+}

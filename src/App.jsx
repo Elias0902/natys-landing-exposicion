@@ -1,30 +1,17 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Dashboard from './components/Dashboard';
 import TestsPage from './components/TestsSection';
 import DocViewer from './components/DocViewer';
+import SimulacionPrueba from './components/SimulacionPrueba';
+import { LoginModal, yaDesbloqueado } from './components/AccesoPrivado';
 import { asset, documents, event, guide } from './data/content';
 import { scenarios } from './data/metrics';
 
-function Navbar({ onSelectDashboard }) {
-  const [open, setOpen] = useState(false);
+// Documentos que solo se ven con login (el resto queda público)
+const PRIVADOS = new Set(['formulario', 'asignaciones', 'guia', 'punto1', 'informe']);
+
+function Navbar({ onSimular, onLogin }) {
   const [mobile, setMobile] = useState(false);
-  const ref = useRef(null);
-
-  // Close the dropdown when clicking outside of it
-  useEffect(() => {
-    const close = (e) => ref.current && !ref.current.contains(e.target) && setOpen(false);
-    document.addEventListener('click', close);
-    return () => document.removeEventListener('click', close);
-  }, []);
-
-  const pick = (id) => {
-    onSelectDashboard(id);
-    setOpen(false);
-    setMobile(false);
-    // Desde la página de pruebas, volver primero a la landing
-    if (window.location.hash.startsWith('#/pruebas')) window.location.hash = '#dashboard';
-    else document.getElementById('dashboard')?.scrollIntoView({ behavior: 'smooth' });
-  };
 
   return (
     <header className="nav">
@@ -40,26 +27,26 @@ function Navbar({ onSelectDashboard }) {
         </button>
         <nav className={`nav__links ${mobile ? 'is-open' : ''}`}>
           <a href="#inicio" onClick={() => setMobile(false)}>Inicio</a>
-          <div className="dropdown" ref={ref}>
-            <button className="dropdown__toggle" onClick={() => setOpen(!open)} aria-expanded={open}>
-              Dashboard <span className={`caret ${open ? 'up' : ''}`}>▾</span>
-            </button>
-            {open && (
-              <ul className="dropdown__menu">
-                {scenarios.map((d) => (
-                  <li key={d.id}>
-                    <button onClick={() => pick(d.id)}>
-                      <i className={`dot dot--${d.status}`} />
-                      Dashboard · {d.label.toLowerCase()}
-                    </button>
-                  </li>
-                ))}
-              </ul>
-            )}
-          </div>
-          <a href="#guia" onClick={() => setMobile(false)}>Guía</a>
           <a href="#/pruebas" onClick={() => setMobile(false)}>Pruebas</a>
           <a href="#documentos" onClick={() => setMobile(false)}>Documentos</a>
+          <button
+            className="btn btn--sm btn--ghost"
+            onClick={() => {
+              setMobile(false);
+              onSimular();
+            }}
+          >
+            ▶ Simular prueba
+          </button>
+          <button
+            className="btn btn--sm btn--ghost"
+            onClick={() => {
+              setMobile(false);
+              onLogin();
+            }}
+          >
+            Login
+          </button>
           <a className="btn btn--sm" href={event.formUrl} target="_blank" rel="noreferrer">
             Evaluación
           </a>
@@ -70,6 +57,7 @@ function Navbar({ onSelectDashboard }) {
 }
 
 function Hero() {
+  const publicos = documents.filter((d) => !PRIVADOS.has(d.id)).length;
   return (
     <section id="inicio" className="hero">
       <div className="container hero__grid">
@@ -81,7 +69,6 @@ function Hero() {
             rápido, más confiable y sin errores humanos.
           </p>
           <div className="hero__actions">
-            <a className="btn" href="#guia">Ver guía</a>
             <a className="btn btn--ghost" href="#documentos">Documentos</a>
           </div>
           <p className="muted">Exposición · {event.date}</p>
@@ -93,7 +80,7 @@ function Hero() {
       </div>
       <div className="container stats">
         <div className="stat"><b>5</b><span>Integrantes</span></div>
-        <div className="stat"><b>{documents.length}</b><span>Documentos</span></div>
+        <div className="stat"><b>{publicos}</b><span>Documentos</span></div>
         <div className="stat"><b>20</b><span>Preguntas</span></div>
         <div className="stat"><b>{scenarios.length}</b><span>Dashboards</span></div>
       </div>
@@ -146,10 +133,12 @@ function GuideSection() {
   );
 }
 
-function DocumentsSection({ onOpen }) {
-  const categories = ['Todos', ...new Set(documents.map((d) => d.category))];
+// Documentos: los públicos siempre; los privados aparecen al hacer login
+function DocumentsSection({ onOpen, ok }) {
+  const visibles = documents.filter((d) => ok || !PRIVADOS.has(d.id));
+  const categories = ['Todos', ...new Set(visibles.map((d) => d.category))];
   const [filter, setFilter] = useState('Todos');
-  const list = documents.filter((d) => filter === 'Todos' || d.category === filter);
+  const list = visibles.filter((d) => filter === 'Todos' || d.category === filter);
   return (
     <section id="documentos" className="section">
       <div className="container">
@@ -178,6 +167,18 @@ function DocumentsSection({ onOpen }) {
   );
 }
 
+// Página del dashboard (#/dashboard): se abre desde "Ver dashboard" en la simulación
+function DashboardPage({ selected, onSelect }) {
+  return (
+    <>
+      <div className="container">
+        <a className="back" href="#inicio">← Volver al inicio</a>
+      </div>
+      <Dashboard selected={selected} onSelect={onSelect} />
+    </>
+  );
+}
+
 function SectionTitle({ kicker, title, text }) {
   return (
     <div className="stitle">
@@ -188,22 +189,32 @@ function SectionTitle({ kicker, title, text }) {
   );
 }
 
-// Ruta simple por hash: #/pruebas es una página aparte; lo demás es la landing
-const isTestsRoute = () => window.location.hash.startsWith('#/pruebas');
+// Rutas simples por hash: #/pruebas y #/dashboard son páginas aparte; lo demás es la landing
+const rutaActual = () => {
+  const h = window.location.hash;
+  if (h.startsWith('#/pruebas')) return 'pruebas';
+  if (h.startsWith('#/dashboard')) return 'dashboard';
+  return 'inicio';
+};
 
 export default function App() {
   const [dashboard, setDashboard] = useState(scenarios[0].id);
   const [doc, setDoc] = useState(null);
-  const [tests, setTests] = useState(isTestsRoute);
+  const [ruta, setRuta] = useState(rutaActual);
+  const [simulando, setSimulando] = useState(false);
+  const [privado, setPrivado] = useState(yaDesbloqueado);
+  const [login, setLogin] = useState(false);
 
   useEffect(() => {
     const onHash = () => {
-      const next = isTestsRoute();
-      setTests(next);
+      const next = rutaActual();
+      setRuta(next);
+      // Relee la sesión por si se entró desde la página de Pruebas
+      setPrivado(yaDesbloqueado());
       // Al volver a la landing, baja a la sección del enlace (#guia, #documentos...)
       const id = window.location.hash.slice(1);
       requestAnimationFrame(() => {
-        const el = !next && id && document.getElementById(id);
+        const el = next === 'inicio' && id && document.getElementById(id);
         if (el) el.scrollIntoView();
         else window.scrollTo(0, 0);
       });
@@ -211,18 +222,18 @@ export default function App() {
     window.addEventListener('hashchange', onHash);
     return () => window.removeEventListener('hashchange', onHash);
   }, []);
+
   return (
     <>
-      <Navbar onSelectDashboard={setDashboard} />
+      <Navbar onSimular={() => setSimulando(true)} onLogin={() => setLogin(true)} />
       <main>
-        {tests ? (
-          <TestsPage onOpen={setDoc} />
-        ) : (
+        {ruta === 'pruebas' && <TestsPage onOpen={setDoc} />}
+        {ruta === 'dashboard' && <DashboardPage selected={dashboard} onSelect={setDashboard} />}
+        {ruta === 'inicio' && (
           <>
             <Hero />
-            <Dashboard selected={dashboard} onSelect={setDashboard} />
-            <GuideSection />
-            <DocumentsSection onOpen={setDoc} />
+            {privado && <GuideSection />}
+            <DocumentsSection onOpen={setDoc} ok={privado} />
           </>
         )}
       </main>
@@ -232,6 +243,26 @@ export default function App() {
         </div>
       </footer>
       {doc && <DocViewer doc={doc} onClose={() => setDoc(null)} />}
+      {login && (
+        <LoginModal
+          onOk={() => {
+            setPrivado(true);
+            setLogin(false);
+          }}
+          onClose={() => setLogin(false)}
+        />
+      )}
+      {simulando && (
+        <SimulacionPrueba
+          scenario={scenarios.find((x) => x.id === dashboard) ?? scenarios[0]}
+          onClose={() => setSimulando(false)}
+          onVerDashboard={(id) => {
+            setDashboard(id);
+            setSimulando(false);
+            window.location.hash = '#/dashboard';
+          }}
+        />
+      )}
     </>
   );
 }

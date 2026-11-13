@@ -39,7 +39,7 @@ function Pipeline({ steps }) {
 }
 
 // Area chart of response time with a hover crosshair and tooltip
-function ResponseChart({ data }) {
+export function ResponseChart({ data }) {
   const [hover, setHover] = useState(null);
   const W = 720;
   const H = 260;
@@ -104,7 +104,7 @@ function ResponseChart({ data }) {
 }
 
 // Horizontal bars of average response time per flow
-function FlowBars({ flows }) {
+export function FlowBars({ flows }) {
   const [hover, setHover] = useState(null);
   const max = Math.max(...flows.map((f) => f.avgMs), thresholds.avgMs);
   return (
@@ -134,7 +134,7 @@ function FlowBars({ flows }) {
   );
 }
 
-function FlowTable({ flows }) {
+export function FlowTable({ flows }) {
   return (
     <div className="table-wrap">
       <table className="table">

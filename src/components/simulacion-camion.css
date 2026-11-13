@@ -1,0 +1,37 @@
+/* Camioncito que avanza sobre la barra de carga de la simulación */
+
+.sim-bar-wrap {
+  position: relative;
+  max-width: 420px;
+  margin: 0 auto;
+  padding-top: 30px;
+}
+
+.sim-bar-wrap .sim-bar {
+  max-width: none;
+  margin: 0;
+}
+
+.sim-camion {
+  position: absolute;
+  top: 0;
+  transform: translateX(-50%);
+  transition: left 0.08s linear;
+  pointer-events: none;
+}
+
+/* Rebote suave mientras avanza */
+.sim-camion-svg {
+  display: block;
+  animation: sim-rebote 0.4s ease-in-out infinite alternate;
+}
+
+.sim-rueda {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: sim-spin 0.5s linear infinite;
+}
+
+@keyframes sim-rebote {
+  to { transform: translateY(-2px); }
+}
