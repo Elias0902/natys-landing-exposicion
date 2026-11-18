@@ -16,6 +16,7 @@ export const event = {
 export const guide = [
   {
     order: 1,
+    integrante: 'elias',
     name: 'Elías Armas',
     role: 'Módulos: Entregas y Chatbot',
     topic: 'Fundamentos de la Automatización de Pruebas',
@@ -36,6 +37,7 @@ export const guide = [
   },
   {
     order: 2,
+    integrante: 'edmairys',
     name: 'Edgmairys Apóstol',
     role: 'Módulos: Clientes, Proveedores y Categorías',
     topic: 'Arquitectura y Diseño de Scripts de Prueba',
@@ -55,6 +57,7 @@ export const guide = [
   },
   {
     order: 3,
+    integrante: 'moises',
     name: 'Moisés Pereira',
     role: 'Módulos: Pedidos, Carrito y Ecommerce',
     topic: 'Definición y Tipos de Pipeline',
@@ -72,6 +75,7 @@ export const guide = [
   },
   {
     order: 4,
+    integrante: 'ismael',
     name: 'Ismael Torres',
     role: 'Módulos: Promociones, Pagos y Cuentas',
     topic: 'Herramientas de Ecosistema',
@@ -91,6 +95,7 @@ export const guide = [
   },
   {
     order: 5,
+    integrante: 'santiago',
     name: 'Santiago Loyo',
     role: 'Módulos: Productos, Compras y Producciones',
     topic: 'Estrategias Avanzadas e Integración Continua (CI/CD)',

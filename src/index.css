@@ -183,6 +183,7 @@ img { max-width: 100%; display: block; }
 .step.is-active .step__num { background: var(--red); }
 .guide__detail { padding: 28px; }
 .guide__detail h3 { font-size: 1.5rem; margin: 14px 0 4px; }
+.guide__tests { margin-top: 20px; }
 .points { padding: 0; list-style: none; margin: 20px 0 0; display: grid; gap: 12px; }
 .points li { padding-left: 28px; position: relative; }
 .points li::before { content: '✓'; position: absolute; left: 0; top: 0; color: var(--red-2); font-weight: 700; }

@@ -3,7 +3,7 @@ import { asset } from '../data/content';
 import { integrantes, modulos } from '../data/pruebas';
 
 const persona = Object.fromEntries(integrantes.map((p) => [p.id, p]));
-const esPrincipal = (m) => persona[m.responsable].principal === m.id;
+const esPrincipal = (m) => persona[m.responsable]?.principal === m.id;
 
 // Si en este tiempo no llega ni un byte, la conexión se da por caída
 const SIN_DATOS_MS = 30000;
@@ -123,8 +123,10 @@ function MergeButton() {
 }
 
 // Página aparte (#/pruebas): un contenedor por módulo con su informe de pruebas
-function TestsPage({ onOpen }) {
-  const [quien, setQuien] = useState('todos');
+function TestsPage({ onOpen, filtroInicial }) {
+  const [quien, setQuien] = useState(() => (
+    integrantes.some(({ id }) => id === filtroInicial) ? filtroInicial : 'todos'
+  ));
   const lista = quien === 'todos'
     ? modulos
     : modulos.filter((m) => m.responsable === quien).sort((a, b) => esPrincipal(b) - esPrincipal(a));
@@ -144,7 +146,7 @@ function TestsPage({ onOpen }) {
           <span>Pruebas · Natys</span>
           <h2>Informes de pruebas por módulo</h2>
           <p>
-            Cada módulo guarda su informe de pruebas. Haz clic para verlo aquí mismo.{' '}
+            Abre los informes disponibles o filtra por integrante.{' '}
             <b className="tcount">{listos} de {modulos.length} listos</b>
           </p>
         </div>
@@ -162,7 +164,7 @@ function TestsPage({ onOpen }) {
           {lista.map((m) => {
             const listo = Boolean(m.pdf || m.docx);
             return (
-              <button key={m.id} className={`doc card ${listo ? '' : 'is-pending'} ${esPrincipal(m) ? 'is-main' : ''}`} onClick={() => listo && abrir(m)}>
+              <button key={m.id} className={`doc card ${listo ? '' : 'is-pending'} ${esPrincipal(m) ? 'is-main' : ''}`} disabled={!listo} onClick={() => abrir(m)}>
                 <div className="doc__thumb">
                   {m.thumb ? (
                     <img src={asset(m.thumb)} alt={`Informe ${m.nombre}`} loading="lazy" />
@@ -172,7 +174,7 @@ function TestsPage({ onOpen }) {
                 </div>
                 <div className="doc__body">
                   <b>{m.nombre}</b>
-                  <small>{persona[m.responsable].nombre}</small>
+                  <small>{persona[m.responsable]?.nombre ?? 'Sin asignar'}</small>
                   <span className="doc__pills">
                     {esPrincipal(m) && <span className="pill pill--main">★ Principal</span>}
                     <span className={`pill ${listo ? 'pill--ok' : ''}`}>{listo ? 'Informe' : 'Pendiente'}</span>
@@ -237,7 +239,7 @@ function Candado({ onOk }) {
   );
 }
 
-export default function TestsGate({ onOpen }) {
+export default function TestsGate({ onOpen, filtroInicial }) {
   const [ok, setOk] = useState(yaDesbloqueado);
-  return ok ? <TestsPage onOpen={onOpen} /> : <Candado onOk={() => setOk(true)} />;
+  return ok ? <TestsPage onOpen={onOpen} filtroInicial={filtroInicial} /> : <Candado onOk={() => setOk(true)} />;
 }
