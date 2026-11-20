@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { asset } from '../data/content';
-import { integrantes, modulos } from '../data/pruebas';
+import { integrantes, modulos, pruebasIsmael } from '../data/pruebas';
 
 const persona = Object.fromEntries(integrantes.map((p) => [p.id, p]));
 const esPrincipal = (m) => persona[m.responsable].principal === m.id;
@@ -182,6 +182,26 @@ function TestsPage({ onOpen }) {
             );
           })}
         </div>
+
+        {quien === 'todos' || quien === 'ismael' ? (
+          <section className="test-breakdown" aria-labelledby="desglose-ismael">
+            <div className="stitle stitle--compact">
+              <span>Desglose del informe</span>
+              <h3 id="desglose-ismael">Promociones · Ismael Torres</h3>
+              <p>El informe general queda separado por tipo de prueba para poder consultarlo o juntarlo después.</p>
+            </div>
+            <div className="test-breakdown__grid">
+              {pruebasIsmael.map((prueba) => (
+                <article key={prueba.id} className="test-card card">
+                  <span className="test-card__tool">{prueba.herramienta}</span>
+                  <h4>{prueba.nombre}</h4>
+                  <p>{prueba.detalle}</p>
+                  <small>{prueba.evidencia}</small>
+                </article>
+              ))}
+            </div>
+          </section>
+        ) : null}
 
         <MergeButton />
       </div>

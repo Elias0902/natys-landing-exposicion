@@ -69,7 +69,9 @@ export const modulos = [
   m('bitacora', 'Bitácora', 'santiago'),
 
   // Ismael
-  m('promociones', 'Promociones', 'ismael'),
+  m('promociones', 'Promociones', 'ismael', {
+    docx: 'docs/pruebas/informe-promociones.docx',
+  }),
   m('pagos', 'Pagos', 'ismael'),
   m('cobrar', 'Cuentas por Cobrar', 'ismael'),
   m('pagar', 'Cuentas por Pagar', 'ismael'),
@@ -91,4 +93,42 @@ export const modulos = [
   }),
   m('manual', 'Manual de Usuario', 'elias'),
   m('permisos', 'Roles y Permisos', 'elias'),
+];
+
+export const pruebasIsmael = [
+  {
+    id: 'unitarias-humo',
+    nombre: 'Pruebas unitarias y de humo',
+    herramienta: 'PHPUnit',
+    detalle: 'Validación aislada de la lógica de promociones con mocks y comprobación de la salud general del módulo.',
+    evidencia: '6 pruebas unitarias principales y 6 verificaciones de humo aprobadas.',
+  },
+  {
+    id: 'integracion-aceptacion',
+    nombre: 'Pruebas de integración y aceptación',
+    herramienta: 'PHPUnit · Codeception',
+    detalle: 'Interacción con MySQL real en promociones y detalle_promocion, incluyendo los criterios de negocio.',
+    evidencia: '3 pruebas de integración con 15 aserciones y 1 historia de aceptación aprobada.',
+  },
+  {
+    id: 'backend-seguridad',
+    nombre: 'Pruebas de backend y seguridad',
+    herramienta: 'Postman',
+    detalle: 'Auditoría de endpoints, control de acceso sin sesión y protección frente a inyección SQL.',
+    evidencia: 'API-01, SEC-01 y SEC-02 verificadas.',
+  },
+  {
+    id: 'interfaz-usuario',
+    nombre: 'Pruebas de interfaz de usuario',
+    herramienta: 'Selenium IDE',
+    detalle: 'Simulación del flujo de interacción del usuario en el navegador web.',
+    evidencia: '1 flujo de Promociones ejecutado sin errores.',
+  },
+  {
+    id: 'rendimiento-carga',
+    nombre: 'Pruebas de rendimiento y carga',
+    herramienta: 'Apache JMeter 5.6.3',
+    detalle: 'Evaluación de tiempos de respuesta y estabilidad bajo concurrencia.',
+    evidencia: '100 peticiones ejecutadas con 0.00% de error.',
+  },
 ];

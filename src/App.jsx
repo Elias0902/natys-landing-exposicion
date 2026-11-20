@@ -28,6 +28,7 @@ function Navbar({ onSimular, onLogin }) {
         <nav className={`nav__links ${mobile ? 'is-open' : ''}`}>
           <a href="#inicio" onClick={() => setMobile(false)}>Inicio</a>
           <a href="#/pruebas" onClick={() => setMobile(false)}>Pruebas</a>
+          <a href="#email" onClick={() => setMobile(false)}>Email</a>
           <a href="#documentos" onClick={() => setMobile(false)}>Documentos</a>
           <button
             className="btn btn--sm btn--ghost"
@@ -167,6 +168,30 @@ function DocumentsSection({ onOpen, ok }) {
   );
 }
 
+function EmailSection() {
+  return (
+    <section id="email" className="section section--alt email-section">
+      <div className="container">
+        <SectionTitle
+          kicker="Evidencia recibida"
+          title="Email · pruebas de Ismael"
+          text="Las dos capturas enviadas por Email, organizadas verticalmente para revisarlas con facilidad."
+        />
+        <div className="email-gallery">
+          <figure className="email-shot card">
+            <img src={asset('img/email-promociones-unitaria.jpg')} alt="Prueba unitaria de Promociones en PHPUnit" />
+            <figcaption><b>Prueba unitaria</b><span>PromocionTest.php · acción inválida</span></figcaption>
+          </figure>
+          <figure className="email-shot card">
+            <img src={asset('img/email-promociones-pipeline.jpg')} alt="Pipeline de pruebas de Promociones" />
+            <figcaption><b>Pipeline de pruebas</b><span>PipelineTest.php · conexión y cálculo de pedido</span></figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 // Página del dashboard (#/dashboard): se abre desde "Ver dashboard" en la simulación
 function DashboardPage({ selected, onSelect }) {
   return (
@@ -233,6 +258,7 @@ export default function App() {
           <>
             <Hero />
             {privado && <GuideSection />}
+            <EmailSection />
             <DocumentsSection onOpen={setDoc} ok={privado} />
           </>
         )}
