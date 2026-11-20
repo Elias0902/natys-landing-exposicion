@@ -175,18 +175,16 @@ function EmailSection() {
   return (
     <section id="email" className="section section--alt email-section">
       <div className="container">
-        <SectionTitle
-          kicker="Evidencia recibida"
-          title="Email · pruebas de Ismael"
-          text="Las dos capturas enviadas por Email, organizadas verticalmente para revisarlas con facilidad."
-        />
+        <div className="stitle">
+          <h2>Email</h2>
+        </div>
         <div className="email-gallery">
           <figure className="email-shot card">
             <img src={asset('img/email-promociones-unitaria.jpg')} alt="Prueba unitaria de Promociones en PHPUnit" />
             <figcaption><b>Prueba unitaria</b><span>PromocionTest.php · acción inválida</span></figcaption>
           </figure>
           <figure className="email-shot card">
-            <img src={asset('img/email-promociones-pipeline.jpg')} alt="Pipeline de pruebas de Promociones" />
+            <img src={asset('img/email-promociones-pipeline.jpg')} alt="Código de PipelineTest.php para verificar la conexión y el cálculo de un pedido" />
             <figcaption><b>Pipeline de pruebas</b><span>PipelineTest.php · conexión y cálculo de pedido</span></figcaption>
           </figure>
         </div>
