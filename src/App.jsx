@@ -28,7 +28,7 @@ function Navbar({ onSimular, onLogin }) {
         <nav className={`nav__links ${mobile ? 'is-open' : ''}`}>
           <a href="#inicio" onClick={() => setMobile(false)}>Inicio</a>
           <a href="#/pruebas" onClick={() => setMobile(false)}>Pruebas</a>
-          <a href="#email" onClick={() => setMobile(false)}>Email</a>
+          <a href="#/ismael" onClick={() => setMobile(false)}>Ismael</a>
           <a href="#documentos" onClick={() => setMobile(false)}>Documentos</a>
           <button
             className="btn btn--sm btn--ghost"
@@ -171,19 +171,20 @@ function DocumentsSection({ onOpen, ok }) {
   );
 }
 
-function EmailSection() {
+function IsmaelPage() {
   return (
-    <section id="email" className="section section--alt email-section">
+    <section className="section page" aria-labelledby="ismael-titulo">
       <div className="container">
+        <a className="back" href="#inicio">← Volver al inicio</a>
         <div className="stitle">
-          <h2>Email</h2>
+          <h2 id="ismael-titulo">Ismael</h2>
         </div>
-        <div className="email-gallery">
-          <figure className="email-shot card">
+        <div className="code-gallery">
+          <figure className="code-shot card">
             <img src={asset('img/email-promociones-unitaria.jpg')} alt="Prueba unitaria de Promociones en PHPUnit" />
             <figcaption><b>Prueba unitaria</b><span>PromocionTest.php · acción inválida</span></figcaption>
           </figure>
-          <figure className="email-shot card">
+          <figure className="code-shot card">
             <img src={asset('img/email-promociones-pipeline.jpg')} alt="Código de PipelineTest.php para verificar la conexión y el cálculo de un pedido" />
             <figcaption><b>Pipeline de pruebas</b><span>PipelineTest.php · conexión y cálculo de pedido</span></figcaption>
           </figure>
@@ -215,10 +216,11 @@ function SectionTitle({ kicker, title, text }) {
   );
 }
 
-// Rutas simples por hash: #/pruebas y #/dashboard son páginas aparte; lo demás es la landing
+// Las rutas que empiezan con #/ abren páginas aparte de la landing.
 const rutaActual = (h) => {
   if (h.startsWith('#/pruebas')) return 'pruebas';
   if (h.startsWith('#/dashboard')) return 'dashboard';
+  if (h === '#/ismael') return 'ismael';
   return 'inicio';
 };
 
@@ -256,11 +258,11 @@ export default function App() {
       <main>
         {ruta === 'pruebas' && <TestsPage key={hash} onOpen={setDoc} filtroInicial={hash.split('/')[2]} />}
         {ruta === 'dashboard' && <DashboardPage selected={dashboard} onSelect={setDashboard} />}
+        {ruta === 'ismael' && <IsmaelPage />}
         {ruta === 'inicio' && (
           <>
             <Hero />
             {privado && <GuideSection />}
-            <EmailSection />
             <DocumentsSection onOpen={setDoc} ok={privado} />
           </>
         )}

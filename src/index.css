@@ -192,12 +192,12 @@ img { max-width: 100%; display: block; }
 .examples ul { margin: 0; padding-left: 20px; display: grid; gap: 8px; font-size: .93rem; }
 @media (max-width: 560px) { .guide__detail { padding: 20px; } .examples { padding: 14px 16px; } }
 
-/* Evidencia enviada por Email */
-.email-gallery { display: grid; gap: 24px; max-width: 980px; }
-.email-shot { margin: 0; overflow: hidden; background: #0f1520; }
-.email-shot img { width: 100%; height: auto; max-height: 680px; object-fit: contain; object-position: top; background: #0f1520; }
-.email-shot figcaption { display: grid; gap: 2px; padding: 14px 18px; border-top: 1px solid var(--line); }
-.email-shot figcaption span { color: var(--muted); font-size: .9rem; }
+/* Capturas de código */
+.code-gallery { display: grid; gap: 24px; max-width: 980px; }
+.code-shot { margin: 0; overflow: hidden; background: #0f1520; }
+.code-shot img { width: 100%; height: auto; max-height: 680px; object-fit: contain; object-position: top; background: #0f1520; }
+.code-shot figcaption { display: grid; gap: 2px; padding: 14px 18px; border-top: 1px solid var(--line); }
+.code-shot figcaption span { color: var(--muted); font-size: .9rem; }
 
 
 /* Documents */
