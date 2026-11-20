@@ -7,6 +7,7 @@
 
 export const integrantes = [
   { id: 'moises', nombre: 'Moisés Pereira', principal: 'pedidos' },
+  { id: 'edmairys', nombre: 'Edgmairys Apóstol', principal: 'clientes' },
   { id: 'santiago', nombre: 'Santiago Loyo', principal: 'productos' },
   { id: 'ismael', nombre: 'Ismael Torres', principal: 'promociones' },
   { id: 'elias', nombre: 'Elías Armas', principal: 'entregas' },
@@ -46,6 +47,11 @@ export const modulos = [
     thumb: 'img/pruebas/thumb-informe-rol.png',
   }),
   m('respaldos', 'Respaldos', 'moises'),
+
+  // Edgmairys
+  m('clientes', 'Clientes', 'edmairys'),
+  m('proveedores', 'Proveedores', 'edmairys'),
+  m('categorias', 'Categorías', 'edmairys'),
 
   // Santiago
   m('productos', 'Productos', 'santiago', {
@@ -93,6 +99,12 @@ export const modulos = [
   }),
   m('manual', 'Manual de Usuario', 'elias'),
   m('permisos', 'Roles y Permisos', 'elias'),
+
+  // Sin responsable confirmado
+  m('reportes_generales', 'Reportes Generales', null),
+  m('reportes_estadisticos', 'Reportes Estadísticos', null),
+  m('inteligencia', 'Inteligencia de Negocio', null),
+  m('ayuda', 'Centro de Ayuda', null),
 ];
 
 export const pruebasIsmael = [

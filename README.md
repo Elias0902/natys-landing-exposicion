@@ -17,8 +17,14 @@ npm run dev
 
 ## Editar contenido
 
-Todo está en `src/data/content.js`:
+El contenido de la portada se edita en `src/data/content.js`:
 
 - **Dashboards**: pon la URL del hosting en `url` (y opcional `video` en `public/`).
 - **Documentos**: copia el PDF a `public/docs/` y escribe la ruta en `file`. Los que tienen `file: ''` aparecen como *Pendiente* (guía, informe, mapa conceptual, presentación).
 - **Guía**: puntos que expone cada integrante.
+
+## Agregar un informe de pruebas
+
+1. Copia el PDF a `public/docs/pruebas/`. Si tienes el archivo Word, guárdalo en la misma carpeta. La miniatura opcional va en `public/img/pruebas/`.
+2. En `src/data/pruebas.js`, busca la tarjeta del módulo existente y añade sus rutas en `pdf`, `docx` y `thumb`, sin el prefijo `public/`. Las tarjetas de Edgmairys tienen los identificadores `clientes`, `proveedores` y `categorias`.
+3. Abre `#/pruebas` y selecciona el filtro de la persona para comprobar el informe. La tarjeta muestra **Pendiente** mientras `pdf` y `docx` estén vacíos.

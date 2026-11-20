@@ -125,6 +125,9 @@ function GuideSection() {
                   </ul>
                 </div>
               )}
+              <a className="btn btn--sm btn--ghost guide__tests" href={`#/pruebas/${g.integrante}`}>
+                Ver pruebas de {g.name.split(' ')[0]}
+              </a>
             </article>
           ))}
         </div>
@@ -215,8 +218,7 @@ function SectionTitle({ kicker, title, text }) {
 }
 
 // Rutas simples por hash: #/pruebas y #/dashboard son páginas aparte; lo demás es la landing
-const rutaActual = () => {
-  const h = window.location.hash;
+const rutaActual = (h) => {
   if (h.startsWith('#/pruebas')) return 'pruebas';
   if (h.startsWith('#/dashboard')) return 'dashboard';
   return 'inicio';
@@ -225,19 +227,21 @@ const rutaActual = () => {
 export default function App() {
   const [dashboard, setDashboard] = useState(scenarios[0].id);
   const [doc, setDoc] = useState(null);
-  const [ruta, setRuta] = useState(rutaActual);
+  const [hash, setHash] = useState(() => window.location.hash);
+  const ruta = rutaActual(hash);
   const [simulando, setSimulando] = useState(false);
   const [privado, setPrivado] = useState(yaDesbloqueado);
   const [login, setLogin] = useState(false);
 
   useEffect(() => {
     const onHash = () => {
-      const next = rutaActual();
-      setRuta(next);
+      const nextHash = window.location.hash;
+      const next = rutaActual(nextHash);
+      setHash(nextHash);
       // Relee la sesión por si se entró desde la página de Pruebas
       setPrivado(yaDesbloqueado());
       // Al volver a la landing, baja a la sección del enlace (#guia, #documentos...)
-      const id = window.location.hash.slice(1);
+      const id = nextHash.slice(1);
       requestAnimationFrame(() => {
         const el = next === 'inicio' && id && document.getElementById(id);
         if (el) el.scrollIntoView();
@@ -252,7 +256,7 @@ export default function App() {
     <>
       <Navbar onSimular={() => setSimulando(true)} onLogin={() => setLogin(true)} />
       <main>
-        {ruta === 'pruebas' && <TestsPage onOpen={setDoc} />}
+        {ruta === 'pruebas' && <TestsPage key={hash} onOpen={setDoc} filtroInicial={hash.split('/')[2]} />}
         {ruta === 'dashboard' && <DashboardPage selected={dashboard} onSelect={setDashboard} />}
         {ruta === 'inicio' && (
           <>
