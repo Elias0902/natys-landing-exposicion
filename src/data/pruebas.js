@@ -75,7 +75,11 @@ export const modulos = [
   m('bitacora', 'Bitácora', 'santiago'),
 
   // Ismael
-  m('promociones', 'Promociones', 'ismael'),
+  m('promociones', 'Promociones', 'ismael', {
+    pdf: 'docs/pruebas/informe-promociones.pdf',
+    docx: 'docs/pruebas/informe-promociones.docx',
+    thumb: 'img/pruebas/thumb-informe-promociones.png',
+  }),
   m('pagos', 'Pagos', 'ismael'),
   m('cobrar', 'Cuentas por Cobrar', 'ismael'),
   m('pagar', 'Cuentas por Pagar', 'ismael'),
