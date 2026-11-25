@@ -232,6 +232,9 @@ img { max-width: 100%; display: block; }
 .pv__zoom button { padding: 6px 10px; font-size: .85rem; min-width: 34px; }
 .pv__zoom button:hover:not(:disabled) { background: var(--card); }
 .pv__zoom button:disabled { opacity: .35; }
+.docx-view { min-height: 100%; margin: 0 auto; }
+.docx-view .docx-wrapper { background: transparent; padding: 16px 8px; }
+.docx-view .docx-wrapper > section.docx { margin-left: auto; margin-right: auto; box-shadow: 0 2px 12px rgba(0,0,0,.35); }
 
 .footer { border-top: 1px solid var(--line); padding: 24px 0; color: var(--muted); font-size: .85rem; text-align: center; }
 

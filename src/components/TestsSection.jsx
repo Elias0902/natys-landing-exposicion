@@ -135,7 +135,7 @@ function TestsPage({ onOpen, filtroInicial }) {
   const abrir = (m) => {
     const titulo = `Informe de pruebas · ${m.nombre}`;
     if (m.pdf) onOpen({ title: titulo, type: 'pdf', file: m.pdf, download: m.docx || m.pdf });
-    else if (m.docx) window.open(asset(m.docx), '_blank');
+    else if (m.docx) onOpen({ title: titulo, type: 'docx', file: m.docx, download: m.docx });
   };
 
   return (
@@ -163,13 +163,14 @@ function TestsPage({ onOpen, filtroInicial }) {
         <div className="docs">
           {lista.map((m) => {
             const listo = Boolean(m.pdf || m.docx);
+            const disponible = listo || Boolean(m.plantilla);
             return (
-              <button key={m.id} className={`doc card ${listo ? '' : 'is-pending'} ${esPrincipal(m) ? 'is-main' : ''}`} disabled={!listo} onClick={() => abrir(m)}>
+              <button key={m.id} className={`doc card ${disponible ? '' : 'is-pending'} ${esPrincipal(m) ? 'is-main' : ''}`} disabled={!disponible} onClick={() => abrir(m)}>
                 <div className="doc__thumb">
                   {m.thumb ? (
                     <img src={asset(m.thumb)} alt={`Informe ${m.nombre}`} loading="lazy" />
                   ) : (
-                    <span className="doc__icon">{listo ? (m.pdf ? 'PDF' : 'DOCX') : 'TEST'}</span>
+                    <span className="doc__icon">{listo ? (m.pdf ? 'PDF' : 'DOCX') : m.plantilla ? 'DOCX' : 'TEST'}</span>
                   )}
                 </div>
                 <div className="doc__body">
@@ -177,7 +178,7 @@ function TestsPage({ onOpen, filtroInicial }) {
                   <small>{persona[m.responsable]?.nombre ?? 'Sin asignar'}</small>
                   <span className="doc__pills">
                     {esPrincipal(m) && <span className="pill pill--main">★ Principal</span>}
-                    <span className={`pill ${listo ? 'pill--ok' : ''}`}>{listo ? 'Informe' : 'Pendiente'}</span>
+                    <span className={`pill ${listo ? 'pill--ok' : ''}`}>{listo ? 'Informe' : m.plantilla ? 'Plantilla pendiente' : 'Pendiente'}</span>
                   </span>
                 </div>
               </button>

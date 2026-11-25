@@ -7,13 +7,13 @@
 
 export const integrantes = [
   { id: 'moises', nombre: 'Moisés Pereira', principal: 'pedidos' },
-  { id: 'edmairys', nombre: 'Edgmairys Apóstol', principal: 'clientes' },
+  { id: 'edmairys', nombre: 'Edmairys Apóstol', principal: 'clientes' },
   { id: 'santiago', nombre: 'Santiago Loyo', principal: 'productos' },
   { id: 'ismael', nombre: 'Ismael Torres', principal: 'promociones' },
   { id: 'elias', nombre: 'Elías Armas', principal: 'entregas' },
 ];
 
-const vacio = { pdf: '', docx: '', thumb: '' };
+const vacio = { pdf: '', docx: '', plantilla: '', thumb: '' };
 const m = (id, nombre, responsable, informe = vacio) => ({ id, nombre, responsable, ...informe });
 
 export const modulos = [
@@ -49,9 +49,18 @@ export const modulos = [
   m('respaldos', 'Respaldos', 'moises'),
 
   // Edgmairys
-  m('clientes', 'Clientes', 'edmairys'),
-  m('proveedores', 'Proveedores', 'edmairys'),
-  m('categorias', 'Categorías', 'edmairys'),
+  m('clientes', 'Clientes', 'edmairys', {
+    docx: 'docs/pruebas/informe-clientes-plantilla.docx',
+    thumb: 'img/pruebas/thumb-informe-clientes.png',
+  }),
+  m('proveedores', 'Proveedores', 'edmairys', {
+    docx: 'docs/pruebas/informe-proveedores-plantilla.docx',
+    thumb: 'img/pruebas/thumb-informe-proveedores.png',
+  }),
+  m('categorias', 'Categorías', 'edmairys', {
+    docx: 'docs/pruebas/informe-categorias-plantilla.docx',
+    thumb: 'img/pruebas/thumb-informe-categorias.png',
+  }),
 
   // Santiago
   m('productos', 'Productos', 'santiago', {

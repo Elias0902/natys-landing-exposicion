@@ -26,5 +26,5 @@ El contenido de la portada se edita en `src/data/content.js`:
 ## Agregar un informe de pruebas
 
 1. Copia el PDF a `public/docs/pruebas/`. Si tienes el archivo Word, guárdalo en la misma carpeta. La miniatura opcional va en `public/img/pruebas/`.
-2. En `src/data/pruebas.js`, busca la tarjeta del módulo existente y añade sus rutas en `pdf`, `docx` y `thumb`, sin el prefijo `public/`. Las tarjetas de Edgmairys tienen los identificadores `clientes`, `proveedores` y `categorias`.
-3. Abre `#/pruebas` y selecciona el filtro de la persona para comprobar el informe. La tarjeta muestra **Pendiente** mientras `pdf` y `docx` estén vacíos.
+2. En `src/data/pruebas.js`, busca la tarjeta del módulo existente y añade sus rutas en `pdf`, `docx` y `thumb`, sin el prefijo `public/`. Las tarjetas de Edmairys tienen los identificadores `clientes`, `proveedores` y `categorias`.
+3. Abre `#/pruebas` y selecciona el filtro de la persona para comprobar el informe. Los Word se muestran dentro del visor como las demás pruebas y también ofrecen descarga.

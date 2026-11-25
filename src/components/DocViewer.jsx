@@ -115,6 +115,40 @@ function PdfView({ src, zoom, scroller, onPages, onError }) {
   );
 }
 
+function DocxView({ src, zoom }) {
+  const host = useRef(null);
+  const [error, setError] = useState(false);
+
+  useEffect(() => {
+    let alive = true;
+    setError(false);
+    Promise.all([
+      fetch(src),
+      import('docx-preview'),
+    ]).then(async ([response, { renderAsync }]) => {
+      if (!response.ok) throw new Error('No se pudo cargar el documento');
+      if (!alive || !host.current) return;
+      host.current.replaceChildren();
+      await renderAsync(await response.arrayBuffer(), host.current, null, {
+        inWrapper: true,
+        ignoreWidth: false,
+        ignoreHeight: false,
+      });
+    }).catch(() => alive && setError(true));
+    return () => { alive = false; };
+  }, [src]);
+
+  if (error) {
+    return (
+      <div className="pv__msg">
+        Este documento no se pudo previsualizar.
+      </div>
+    );
+  }
+
+  return <div ref={host} className="docx-view" style={{ width: `${zoom * 100}%` }} />;
+}
+
 export default function DocViewer({ doc, onClose }) {
   const scroller = useRef(null);
   const [zoom, setZoom] = useState(0);
@@ -135,6 +169,7 @@ export default function DocViewer({ doc, onClose }) {
 
   const download = asset(doc.download || doc.file);
   const z = ZOOMS[zoom];
+  const isDocx = doc.type === 'docx' && /\.docx$/i.test(doc.file);
 
   // Página actual = la que ocupa el centro del visor
   const onScroll = (e) => {
@@ -166,6 +201,8 @@ export default function DocViewer({ doc, onClose }) {
         <a className="btn btn--sm" href={download} download>Descargar</a>
       </div>
     );
+  } else if (isDocx) {
+    body = <DocxView src={asset(doc.file)} zoom={z} />;
   } else {
     body = <img className="pv__img" src={asset(doc.file)} alt={doc.title} style={{ width: `${z * 100}%` }} />;
   }
