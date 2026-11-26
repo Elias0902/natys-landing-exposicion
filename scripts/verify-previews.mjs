@@ -20,41 +20,49 @@ try {
   w.eval(await readFile('public/vendor/drawio/viewer-static.min.js', 'utf8'));
   console.log('Visor Draw.io local cargado.');
   assert.equal(typeof w.GraphViewer, 'function');
-  let pages = 0;
-  for (const file of diagrams.values()) {
-    console.log(`Comprobando ${file.title || file.file}…`);
-    container.replaceChildren();
-    const xml = w.mxUtils.parseXml(await readFile(`public/${file.file}`, 'utf8'));
-    const viewer = new w.GraphViewer(container, xml.documentElement, { 'check-visible-state': false, resize: false, nav: false, lightbox: false, 'dark-mode': 'light' });
-    assert.ok(viewer.graph, `${file.file}: no graph`);
-    const count = xml.getElementsByTagName('diagram').length || 1;
-    for (let i = 0; i < count; i++) {
-      if (i) viewer.selectPage(i);
-      const cells = Object.values(viewer.graph.getModel().cells);
-      assert.ok(cells.some((cell) => cell.vertex), `${file.file}: empty page ${i}`);
-      assert.ok(container.querySelector('svg'), `${file.file}: SVG missing`);
-      pages++;
-    }
-    viewer.graph.destroy();
-  }
-  // Runs our message bridge too, to catch initialization and toolbar failures.
   const messages = [];
   w.postMessage = (data) => messages.push(data);
   w.eval(await readFile('public/diagram-viewer.js', 'utf8'));
-  const example = [...diagrams.values()][0];
-  w.dispatchEvent(new w.MessageEvent('message', { origin: w.location.origin, source: w, data: { channel: 'natys-diagram', action: 'load', xml: await readFile(`public/${example.file}`, 'utf8') } }));
+  let pages = 0;
+  for (const file of diagrams.values()) {
+    console.log(`Comprobando ${file.title || file.file}…`);
+    const source = await readFile(`public/${file.file}`, 'utf8');
+    const xml = w.mxUtils.parseXml(source);
+    w.document.getElementById('status').hidden = false;
+    w.dispatchEvent(new w.MessageEvent('message', { origin: w.location.origin, source: w, data: { channel: 'natys-diagram', action: 'load', xml: source } }));
+    const count = xml.getElementsByTagName('diagram').length || 1;
+    for (let i = 0; i < count; i++) {
+      if (i) {
+        const select = w.document.getElementById('pages');
+        select.value = String(i);
+        select.dispatchEvent(new w.Event('change'));
+        await new Promise((resolve) => w.requestAnimationFrame(resolve));
+      }
+      const svg = container.querySelector('svg');
+      assert.ok(svg, `${file.file}: SVG missing`);
+      assert.ok(svg.querySelectorAll('path, rect, ellipse, foreignObject').length > 1, `${file.file}: drawing is empty`);
+      const viewBox = svg.getAttribute('viewBox')?.split(/\s+/).map(Number);
+      assert.ok(viewBox?.length === 4 && viewBox.every(Number.isFinite) && viewBox[2] > 0 && viewBox[3] > 0, `${file.file}: initial viewport is not fitted`);
+      assert.equal(w.document.getElementById('status').hidden, true, `${file.file}: initial display still loading`);
+      pages++;
+    }
+  }
+  // Runs our message bridge too, to catch initialization and toolbar failures.
   await new Promise((resolve) => w.requestAnimationFrame(resolve));
   assert.ok(!messages.some((m) => m.action === 'error'), JSON.stringify(messages));
   assert.ok(messages.some((m) => m.action === 'rendered'), 'Renderer handshake failed');
   assert.equal(w.document.getElementById('status').hidden, true);
+  const svg = container.querySelector('svg');
+  const initialWidth = Number(svg.getAttribute('viewBox').split(' ')[2]);
   w.document.getElementById('in').click();
+  assert.ok(Number(svg.getAttribute('viewBox').split(' ')[2]) < initialWidth, 'Zoom did not enlarge drawing');
   w.document.getElementById('out').click();
   w.document.getElementById('fit').click();
   for (const [archive, entries] of Object.entries(archives)) {
     assert.ok(entries.length, `${archive}: empty archive`);
     for (const entry of entries) assert.equal((await readFile(`public/${entry.file}`)).length, entry.size);
   }
-  console.log(`OK: ${diagrams.size} diagramas, ${pages} páginas, zoom y puente del visor; ${Object.keys(archives).length} paquetes con contenido interno.`);
+  console.log(`OK: ${diagrams.size} diagramas visibles desde el primer render, ${pages} páginas, zoom y puente del visor; ${Object.keys(archives).length} paquetes con contenido interno.`);
 } finally {
   dom.window.close();
 }

@@ -2,6 +2,8 @@
 
 Repositorio en React + Vite con carpetas de pruebas, ingeniería, base de datos y programación de pruebas. Los materiales se muestran en tarjetas con vistas previas, búsqueda, filtros y descarga del original. El menú lateral se puede plegar y recuerda la preferencia.
 
+La vista inicial entra directamente en las tarjetas. El resumen y los cuadros de áreas se pueden desplegar con «Mostrar resumen de áreas»; las variantes y los paquetes ZIP/RAR están en «Opciones de archivos». En celular, el menú funciona como panel deslizable y se cierra al elegir una carpeta.
+
 Los diagramas Draw.io se renderizan dentro de la página con el visor oficial servido localmente: ajuste, zoom, desplazamiento y selección de páginas. Los PDF, Word, imágenes y SQL también tienen vista interna. Los ZIP/RAR muestran su contenido y permiten abrir los documentos sin salir de la landing. La exposición anterior, QR, evaluación, Ismael y simulador se conservan en el apartado secundario «Archivo de la exposición».
 
 ## Uso local

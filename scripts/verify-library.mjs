@@ -29,6 +29,12 @@ try {
   await act(async () => root.render(createElement(App)));
   assert.ok(w.document.querySelectorAll('.repo-file-card').length > 50, 'Cards were not rendered');
   assert.equal(w.document.querySelector('.repo-table'), null, 'Old table is still present');
+  assert.equal(w.document.querySelector('.repo-intro'), null, 'Overview must be collapsed initially');
+  assert.equal(w.document.querySelector('.repo-folders'), null, 'Area cards must be collapsed initially');
+  await click(w.document.querySelector('[aria-controls="repo-overview"]'));
+  assert.ok(w.document.querySelector('.repo-folders'), 'Overview cannot be reopened');
+  await click(w.document.querySelector('[aria-controls="repo-overview"]'));
+  assert.equal(w.document.querySelector('.repo-folders'), null);
   assert.equal(w.document.getElementById('repo-sidebar').hidden, false);
   await click(w.document.querySelector('[aria-label="Cerrar menú lateral"]'));
   assert.equal(w.document.getElementById('repo-sidebar').hidden, true);
@@ -71,7 +77,7 @@ try {
   await act(async () => { await new Promise((resolve) => w.setTimeout(resolve, 20)); });
   assert.equal(w.document.getElementById('repo-sidebar').hidden, true, 'Mobile drawer should close after choosing a folder');
   assert.equal(w.document.body.style.overflow, '');
-  assert.match(w.document.querySelector('h1').textContent, /Base de datos/);
+  assert.match(w.document.getElementById('files-title').textContent, /Base de datos/);
   console.log('OK: galería de tarjetas, filtro Draw.io, visor interno, archivos dentro de RAR y menú plegable con preferencia persistente.');
   console.log('OK: menú móvil cerrado al inicio, bloqueo de desplazamiento y cierre al elegir una carpeta.');
 } finally {

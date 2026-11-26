@@ -28,5 +28,5 @@ export default function DrawioView({ src, title, thumbnail = false, onClose }) {
     }).then((text) => { xml = text; send(); }).catch((e) => { if (e.name !== 'AbortError') setError(e.message); });
     return () => { controller.abort(); window.removeEventListener('message', onMessage); };
   }, [src, thumbnail, onClose]);
-  return error ? <div className="preview-error">{error}</div> : <iframe ref={frame} className="drawio-frame" src={asset('diagram-viewer.html')} title={`Diagrama · ${title}`} sandbox="allow-scripts allow-same-origin" tabIndex={thumbnail ? -1 : 0} />;
+  return error ? <div className="preview-error">{error}</div> : <iframe ref={frame} className="drawio-frame" src={asset('diagram-viewer.html?v=2')} title={`Diagrama · ${title}`} sandbox="allow-scripts allow-same-origin" tabIndex={thumbnail ? -1 : 0} />;
 }

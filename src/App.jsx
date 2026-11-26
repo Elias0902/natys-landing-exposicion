@@ -51,6 +51,8 @@ function Library({ hash, onOpen }) {
   const [format, setFormat] = useState('todos');
   const [order, setOrder] = useState('destacados');
   const [versions, setVersions] = useState(false);
+  const [showOverview, setShowOverview] = useState(false);
+  const [showPackages, setShowPackages] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(() => {
     try {
       const saved = localStorage.getItem('natys-sidebar-open');
@@ -73,11 +75,11 @@ function Library({ hash, onOpen }) {
   const visible = (f) => versions || f.version !== 'Carpeta 03 · versión alternativa';
   const formats = [...new Set(files.filter((f) => matches(f, folder)).map((f) => f.format))].sort();
   const list = useMemo(() => {
-    const result = files.filter((f) => matches(f, folder) && (format === 'todos' || f.format === format) && (versions || f.version !== 'Carpeta 03 · versión alternativa') && normal([f.title, f.group, f.owner, f.original, f.version].filter(Boolean).join(' ')).includes(normal(query)));
+    const result = files.filter((f) => matches(f, folder) && (format === 'todos' || f.format === format) && (showPackages || format !== 'todos' || !['RAR', 'ZIP'].includes(f.format)) && (versions || f.version !== 'Carpeta 03 · versión alternativa') && normal([f.title, f.group, f.owner, f.original, f.version].filter(Boolean).join(' ')).includes(normal(query)));
     if (order === 'nombre') result.sort((a, b) => a.title.localeCompare(b.title, 'es'));
     if (order === 'tipo') result.sort((a, b) => a.format.localeCompare(b.format) || a.title.localeCompare(b.title, 'es'));
     return result;
-  }, [folder, query, format, order, versions]);
+  }, [folder, query, format, order, versions, showPackages]);
   const selected = folders.find((f) => f.id === folder);
   const choose = (id) => {
     setFormat('todos'); setQuery('');
@@ -93,11 +95,13 @@ function Library({ hash, onOpen }) {
     <div className={`repo-layout ${sidebarOpen ? '' : 'is-sidebar-closed'}`}>
       {sidebarOpen && <button className="repo-sidebar-backdrop" onClick={toggleSidebar} aria-label="Cerrar menú lateral desde el fondo" tabIndex={-1} />}
       <aside id="repo-sidebar" className="repo-sidebar" hidden={!sidebarOpen} aria-label="Carpetas del repositorio"><div className="repo-sidebar-mobile-head"><b>Carpetas del proyecto</b><button onClick={toggleSidebar} aria-label="Cerrar carpetas">×</button></div><span className="repo-eyebrow">ESPACIO DE TRABAJO</span><nav>{folders.map((f) => <button key={f.id} className={folder === f.id ? 'is-selected' : ''} onClick={() => choose(f.id)} aria-current={folder === f.id ? 'page' : undefined}><Icon name={f.icon} /><span>{f.title}</span><small>{files.filter((file) => matches(file, f.id) && visible(file)).length}</small></button>)}</nav><div className="repo-sidebar-note"><Icon name="folder" /><b>Materiales del equipo</b><p>Consulta los documentos y descarga sus archivos originales.</p></div><details className="repo-archive"><summary>Archivo de la exposición</summary><p>Automatización de las Pruebas y Pipelines · 13 de noviembre de 2026</p><a href="#/exposicion">Abrir exposición anterior</a><a href="#/ismael">Material de Ismael</a><a href="#/dashboard">Dashboards y simulador</a></details></aside>
-      <main className="repo-main"><div className="repo-breadcrumb">Proyecto Natys <span>/</span> {selected.title}</div><section className="repo-intro"><div><span className="repo-eyebrow">DOCUMENTACIÓN Y EVIDENCIAS</span><h1>{folder === 'todos' ? 'Todo el proyecto, organizado.' : selected.title}</h1><p>{folder === 'todos' ? 'Pruebas, ingeniería y base de datos. Los materiales de Galletas Natys, listos para consultar y presentar.' : selected.description}</p></div><div className="repo-intro-icon"><Icon name={selected.icon} /></div></section>
-        <section className="repo-folders" aria-label="Explorar por área">{folders.slice(1).map((f) => <button key={f.id} className={`repo-folder ${folder === f.id ? 'is-selected' : ''}`} onClick={() => choose(f.id)}><span className={`repo-folder-icon tone-${f.id}`}><Icon name={f.icon} /></span><b>{f.title}</b><p>{f.description}</p><small>{files.filter((file) => matches(file, f.id) && visible(file)).length} archivos</small></button>)}</section>
+      <main className="repo-main repo-main--compact">
+        <div className="repo-overview-control"><button onClick={() => setShowOverview((open) => !open)} aria-expanded={showOverview} aria-controls="repo-overview">{showOverview ? 'Ocultar resumen de áreas' : 'Mostrar resumen de áreas'}</button></div>
+        {showOverview && <div id="repo-overview"><div className="repo-breadcrumb">Proyecto Natys <span>/</span> {selected.title}</div><section className="repo-intro"><div><span className="repo-eyebrow">DOCUMENTACIÓN Y EVIDENCIAS</span><h1>{folder === 'todos' ? 'Todo el proyecto, organizado.' : selected.title}</h1><p>{folder === 'todos' ? 'Pruebas, ingeniería y base de datos. Los materiales de Galletas Natys, listos para consultar y presentar.' : selected.description}</p></div><div className="repo-intro-icon"><Icon name={selected.icon} /></div></section>
+        <section className="repo-folders" aria-label="Explorar por área">{folders.slice(1).map((f) => <button key={f.id} className={`repo-folder ${folder === f.id ? 'is-selected' : ''}`} onClick={() => choose(f.id)}><span className={`repo-folder-icon tone-${f.id}`}><Icon name={f.icon} /></span><b>{f.title}</b><p>{f.description}</p><small>{files.filter((file) => matches(file, f.id) && visible(file)).length} archivos</small></button>)}</section></div>}
         <section className="repo-files" id="documentos" aria-labelledby="files-title"><div className="repo-files-heading"><div><h2 id="files-title">{folder === 'todos' ? 'Explorar archivos' : `Archivos · ${selected.title}`}</h2><p>Previsualiza los documentos o descarga el editable.</p></div><span className="repo-count" aria-live="polite">{list.length} archivos</span></div>
           <div className="repo-toolbar"><label className="repo-search"><Icon name="search" /><input aria-label="Buscar archivos" placeholder="Buscar un documento, módulo o integrante…" value={query} onChange={(e) => setQuery(e.target.value)} />{query && <button aria-label="Limpiar búsqueda" onClick={() => setQuery('')}>×</button>}</label><select aria-label="Filtrar por formato" value={format} onChange={(e) => setFormat(e.target.value)}><option value="todos">Todos los formatos</option>{formats.map((f) => <option key={f}>{f}</option>)}</select><select aria-label="Ordenar archivos" value={order} onChange={(e) => setOrder(e.target.value)}><option value="destacados">Orden del repositorio</option><option value="nombre">Nombre A–Z</option><option value="tipo">Tipo de archivo</option></select></div>
-          <label className="repo-versions"><input type="checkbox" checked={versions} onChange={(e) => setVersions(e.target.checked)} /> Incluir carpeta alternativa «03 - Bases de Datos»</label>
+          <details className="repo-extra-options"><summary>Opciones de archivos</summary><label className="repo-versions"><input type="checkbox" checked={versions} onChange={(e) => setVersions(e.target.checked)} /> Incluir carpeta alternativa «03 - Bases de Datos»</label><label className="repo-versions"><input type="checkbox" checked={showPackages} onChange={(e) => setShowPackages(e.target.checked)} /> Mostrar paquetes originales ZIP / RAR</label></details>
           <ul className="repo-file-grid" aria-label="Archivos disponibles">
             {list.map((f) => <li key={f.id} className="repo-file-card">
               <button className="repo-card-preview" onClick={() => preview(f)} aria-label={`Previsualizar ${f.title} (${f.format})`}><FileThumbnail file={f} /></button>
