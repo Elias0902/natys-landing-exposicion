@@ -175,7 +175,7 @@ export function TestsPage({ onOpen, filtroInicial }) {
               <span className="doc__pills"><span className="pill pill--main">★ Aceptación</span><span className="pill pill--ok">Informe</span></span>
             </div>
           </button>
-          {[['IMG_8833.jpg', 'Evidencia de aceptación · 1'], ['IMG_8834.jpg', 'Evidencia de aceptación · 2']].map(([file, title]) => (
+          {quien === 'elias' && [['IMG_8833.jpg', 'Evidencia de aceptación · 1'], ['IMG_8834.jpg', 'Evidencia de aceptación · 2']].map(([file, title]) => (
             <button key={file} className="doc card" onClick={() => onOpen({
               title,
               type: 'image',
