@@ -1,0 +1,2 @@
+# Preserve the supplied originals byte for byte, including their line endings.
+public/docs/materiales/** -text
