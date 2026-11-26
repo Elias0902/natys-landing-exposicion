@@ -194,7 +194,8 @@ function ViewerContent({ doc, onClose, onBack, onOpen }) {
     };
   }, [onClose]);
 
-  const download = asset(doc.download || doc.file);
+  const resolveFile = (file) => /^blob:|^https?:/i.test(file) ? file : asset(file);
+  const download = resolveFile(doc.download || doc.file);
   const z = ZOOMS[zoom];
   const isDocx = doc.type === 'docx' && /\.docx$/i.test(doc.file);
 
@@ -212,7 +213,7 @@ function ViewerContent({ doc, onClose, onBack, onOpen }) {
   if (isPdf && !fallback) {
     body = (
       <PdfView
-        src={asset(doc.file)}
+        src={resolveFile(doc.file)}
         zoom={z}
         scroller={scroller}
         onPages={setPages}
@@ -229,7 +230,7 @@ function ViewerContent({ doc, onClose, onBack, onOpen }) {
       </div>
     );
   } else if (isDocx) {
-    body = <DocxView src={asset(doc.file)} zoom={z} />;
+    body = <DocxView src={resolveFile(doc.file)} zoom={z} />;
   } else if (doc.type === 'text') {
     body = <TextView src={asset(doc.file)} />;
   } else if (doc.type === 'drawio') {

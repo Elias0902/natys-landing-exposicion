@@ -60,7 +60,7 @@ const mensajeError = (e) => {
 };
 
 // Une todos los PDF disponibles, en el orden de la lista, y descarga el resultado
-function MergeButton() {
+function MergeButton({ onOpen }) {
   const conPdf = modulos.filter((m) => m.pdf);
   const [ocupado, setOcupado] = useState(false);
   const [estado, setEstado] = useState('');
@@ -98,6 +98,7 @@ function MergeButton() {
       a.click();
       a.remove();
       setTimeout(() => URL.revokeObjectURL(url), 60000);
+      onOpen({ title: 'Vista previa · informes de pruebas Natys', type: 'pdf', file: url, download: url });
       setEstado(`Listo: informes-pruebas-natys.pdf (${MB(blob.size)} MB) está en tus descargas.`);
     } catch (e) {
       setError(true);
@@ -115,8 +116,8 @@ function MergeButton() {
           {estado || `Une los ${conPdf.length} informes disponibles: ${conPdf.map((m) => m.nombre).join(', ')}.`}
         </small>
       </div>
-      <button className="btn" onClick={juntar} disabled={ocupado || !conPdf.length}>
-        {ocupado ? 'Uniendo…' : error ? 'Reintentar' : 'Juntar y descargar'}
+        <button className="btn" onClick={juntar} disabled={ocupado || !conPdf.length}>
+        {ocupado ? 'Uniendo…' : error ? 'Reintentar' : 'Juntar, descargar y previsualizar'}
       </button>
     </div>
   );
@@ -161,6 +162,19 @@ export function TestsPage({ onOpen, filtroInicial }) {
         </div>
 
         <div className="docs">
+          <button className="doc card is-main" onClick={() => onOpen({
+            title: 'Plan de pruebas de aceptación',
+            type: 'docx',
+            file: 'docs/pruebas/Plan_de_Pruebas_de_Aceptacion_CORREGIDO.docx',
+            download: 'docs/pruebas/Plan_de_Pruebas_de_Aceptacion_CORREGIDO.docx',
+          })}>
+            <div className="doc__thumb"><span className="doc__icon">DOCX</span></div>
+            <div className="doc__body">
+              <b>Plan de pruebas de aceptación</b>
+              <small>Documento general · Equipo 8</small>
+              <span className="doc__pills"><span className="pill pill--main">★ Aceptación</span><span className="pill pill--ok">Informe</span></span>
+            </div>
+          </button>
           {lista.map((m) => {
             const listo = Boolean(m.pdf || m.docx);
             const disponible = listo || Boolean(m.plantilla);
@@ -206,7 +220,7 @@ export function TestsPage({ onOpen, filtroInicial }) {
           </section>
         ) : null}
 
-        <MergeButton />
+        <MergeButton onOpen={onOpen} />
       </div>
     </section>
   );
