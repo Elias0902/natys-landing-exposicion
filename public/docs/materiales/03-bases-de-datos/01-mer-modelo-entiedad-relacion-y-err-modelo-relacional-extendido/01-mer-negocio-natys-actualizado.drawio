@@ -1,0 +1,913 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.6.6 Chrome/144.0.7559.236 Electron/40.8.4 Safari/537.36" version="29.6.6">
+  <diagram id="mer_negocio" name="MER - BD Negocio">
+    <mxGraphModel dx="10130" dy="6405" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="3000" pageHeight="2200" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="titulo" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=30;fontStyle=1;" value="MER - BASE DE DATOS NEGOCIO" vertex="1">
+          <mxGeometry height="60" width="900" x="714" y="-170" as="geometry" />
+        </mxCell>
+        <mxCell id="e_proveedores" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;fontStyle=1;fontSize=13;" value="PROVEEDORES" vertex="1">
+          <mxGeometry height="60" width="180" x="-223" y="450" as="geometry" />
+        </mxCell>
+        <mxCell id="a_proveedores_0" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="&lt;u&gt;id_proveedor&lt;/u&gt;" vertex="1">
+          <mxGeometry height="40" width="150" x="-208" y="240" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_proveedores_0" edge="1" parent="1" source="e_proveedores" style="edgeStyle=none;fillColor=none;" target="a_proveedores_0">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_proveedores_1" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="nombre_proveedor" vertex="1">
+          <mxGeometry height="40" width="150" x="50" y="323" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_proveedores_1" edge="1" parent="1" source="e_proveedores" style="edgeStyle=none;fillColor=none;" target="a_proveedores_1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_proveedores_2" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="tipo_id" vertex="1">
+          <mxGeometry height="40" width="150" x="114" y="509" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_proveedores_2" edge="1" parent="1" source="e_proveedores" style="edgeStyle=none;fillColor=none;" target="a_proveedores_2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_proveedores_3" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="email_proveedor" vertex="1">
+          <mxGeometry height="40" width="150" x="-65" y="658" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_proveedores_3" edge="1" parent="1" source="e_proveedores" style="edgeStyle=none;fillColor=none;" target="a_proveedores_3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_proveedores_4" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="tlf_proveedor" vertex="1">
+          <mxGeometry height="40" width="150" x="-351" y="658" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_proveedores_4" edge="1" parent="1" source="e_proveedores" style="edgeStyle=none;fillColor=none;" target="a_proveedores_4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_proveedores_5" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="direccion_proveedor" vertex="1">
+          <mxGeometry height="40" width="150" x="-530" y="509" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_proveedores_5" edge="1" parent="1" source="e_proveedores" style="edgeStyle=none;fillColor=none;" target="a_proveedores_5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_proveedores_6" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="status" vertex="1">
+          <mxGeometry height="40" width="150" x="-466" y="323" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_proveedores_6" edge="1" parent="1" source="e_proveedores" style="edgeStyle=none;fillColor=none;" target="a_proveedores_6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_materia_prima" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;fontStyle=1;fontSize=13;" value="MATERIA_PRIMA" vertex="1">
+          <mxGeometry height="60" width="180" x="957" y="450" as="geometry" />
+        </mxCell>
+        <mxCell id="a_materia_prima_0" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="&lt;u&gt;id_materia_prima&lt;/u&gt;" vertex="1">
+          <mxGeometry height="40" width="150" x="972" y="240" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_materia_prima_0" edge="1" parent="1" source="e_materia_prima" style="edgeStyle=none;fillColor=none;" target="a_materia_prima_0">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_materia_prima_1" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="nombre_materia_prima" vertex="1">
+          <mxGeometry height="40" width="150" x="1258" y="350" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_materia_prima_1" edge="1" parent="1" source="e_materia_prima" style="edgeStyle=none;fillColor=none;" target="a_materia_prima_1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_materia_prima_2" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="descripcion_materia_prima" vertex="1">
+          <mxGeometry height="40" width="150" x="1258" y="570" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_materia_prima_2" edge="1" parent="1" source="e_materia_prima" style="edgeStyle=none;fillColor=none;" target="a_materia_prima_2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_materia_prima_3" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="stock_actual" vertex="1">
+          <mxGeometry height="40" width="150" x="972" y="680" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_materia_prima_3" edge="1" parent="1" source="e_materia_prima" style="edgeStyle=none;fillColor=none;" target="a_materia_prima_3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_materia_prima_4" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="id_unidad_medida" vertex="1">
+          <mxGeometry height="40" width="150" x="686" y="570" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_materia_prima_4" edge="1" parent="1" source="e_materia_prima" style="edgeStyle=none;fillColor=none;" target="a_materia_prima_4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_materia_prima_5" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="status" vertex="1">
+          <mxGeometry height="40" width="150" x="686" y="350" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_materia_prima_5" edge="1" parent="1" source="e_materia_prima" style="edgeStyle=none;fillColor=none;" target="a_materia_prima_5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_producciones" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;fontStyle=1;fontSize=13;" value="PRODUCCIONES" vertex="1">
+          <mxGeometry height="60" width="180" x="2137" y="450" as="geometry" />
+        </mxCell>
+        <mxCell id="a_producciones_0" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="&lt;u&gt;id_produccion&lt;/u&gt;" vertex="1">
+          <mxGeometry height="40" width="150" x="2152" y="240" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_producciones_0" edge="1" parent="1" source="e_producciones" style="edgeStyle=none;fillColor=none;" target="a_producciones_0">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_producciones_1" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="fecha_produccion" vertex="1">
+          <mxGeometry height="40" width="150" x="2438" y="350" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_producciones_1" edge="1" parent="1" source="e_producciones" style="edgeStyle=none;fillColor=none;" target="a_producciones_1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_producciones_2" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="cantidad_producida" vertex="1">
+          <mxGeometry height="40" width="150" x="2438" y="570" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_producciones_2" edge="1" parent="1" source="e_producciones" style="edgeStyle=none;fillColor=none;" target="a_producciones_2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_producciones_3" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="motivo_produccion" vertex="1">
+          <mxGeometry height="40" width="150" x="2152" y="680" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_producciones_3" edge="1" parent="1" source="e_producciones" style="edgeStyle=none;fillColor=none;" target="a_producciones_3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_producciones_4" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="observacion" vertex="1">
+          <mxGeometry height="40" width="150" x="1866" y="570" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_producciones_4" edge="1" parent="1" source="e_producciones" style="edgeStyle=none;fillColor=none;" target="a_producciones_4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_producciones_5" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="status" vertex="1">
+          <mxGeometry height="40" width="150" x="1866" y="350" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_producciones_5" edge="1" parent="1" source="e_producciones" style="edgeStyle=none;fillColor=none;" target="a_producciones_5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_categorias" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;fontStyle=1;fontSize=13;" value="CATEGORIAS" vertex="1">
+          <mxGeometry height="60" width="180" x="3317" y="450" as="geometry" />
+        </mxCell>
+        <mxCell id="a_categorias_0" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="&lt;u&gt;id_categoria&lt;/u&gt;" vertex="1">
+          <mxGeometry height="40" width="150" x="3332" y="240" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_categorias_0" edge="1" parent="1" source="e_categorias" style="edgeStyle=none;fillColor=none;" target="a_categorias_0">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_categorias_1" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="nombre_categoria" vertex="1">
+          <mxGeometry height="40" width="150" x="3618" y="570" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_categorias_1" edge="1" parent="1" source="e_categorias" style="edgeStyle=none;fillColor=none;" target="a_categorias_1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_categorias_2" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="status" vertex="1">
+          <mxGeometry height="40" width="150" x="3046" y="570" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_categorias_2" edge="1" parent="1" source="e_categorias" style="edgeStyle=none;fillColor=none;" target="a_categorias_2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_compras" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;fontStyle=1;fontSize=13;" value="COMPRAS" vertex="1">
+          <mxGeometry height="60" width="180" x="-223" y="1430" as="geometry" />
+        </mxCell>
+        <mxCell id="a_compras_0" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="&lt;u&gt;id_compra&lt;/u&gt;" vertex="1">
+          <mxGeometry height="40" width="150" x="-208" y="1220" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_compras_0" edge="1" parent="1" source="e_compras" style="edgeStyle=none;fillColor=none;" target="a_compras_0">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_compras_1" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="fecha_compra" vertex="1">
+          <mxGeometry height="40" width="150" x="78" y="1330" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_compras_1" edge="1" parent="1" source="e_compras" style="edgeStyle=none;fillColor=none;" target="a_compras_1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_compras_2" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="monto_total_compra" vertex="1">
+          <mxGeometry height="40" width="150" x="78" y="1550" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_compras_2" edge="1" parent="1" source="e_compras" style="edgeStyle=none;fillColor=none;" target="a_compras_2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_compras_3" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="id_estado_pago" vertex="1">
+          <mxGeometry height="40" width="150" x="-208" y="1660" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_compras_3" edge="1" parent="1" source="e_compras" style="edgeStyle=none;fillColor=none;" target="a_compras_3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_compras_4" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="observaciones" vertex="1">
+          <mxGeometry height="40" width="150" x="-494" y="1550" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_compras_4" edge="1" parent="1" source="e_compras" style="edgeStyle=none;fillColor=none;" target="a_compras_4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_compras_5" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="status" vertex="1">
+          <mxGeometry height="40" width="150" x="-494" y="1330" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_compras_5" edge="1" parent="1" source="e_compras" style="edgeStyle=none;fillColor=none;" target="a_compras_5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_tasa_dia" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;fontStyle=1;fontSize=13;" value="TASA_DIA" vertex="1">
+          <mxGeometry height="60" width="180" x="957" y="1430" as="geometry" />
+        </mxCell>
+        <mxCell id="a_tasa_dia_0" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="&lt;u&gt;id_tasa&lt;/u&gt;" vertex="1">
+          <mxGeometry height="40" width="150" x="972" y="1220" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_tasa_dia_0" edge="1" parent="1" source="e_tasa_dia" style="edgeStyle=none;fillColor=none;" target="a_tasa_dia_0">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_tasa_dia_1" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="monto_tasa" vertex="1">
+          <mxGeometry height="40" width="150" x="1302" y="1440" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_tasa_dia_1" edge="1" parent="1" source="e_tasa_dia" style="edgeStyle=none;fillColor=none;" target="a_tasa_dia_1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_tasa_dia_2" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="fecha_tasa" vertex="1">
+          <mxGeometry height="40" width="150" x="972" y="1660" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_tasa_dia_2" edge="1" parent="1" source="e_tasa_dia" style="edgeStyle=none;fillColor=none;" target="a_tasa_dia_2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_tasa_dia_3" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="status" vertex="1">
+          <mxGeometry height="40" width="150" x="642" y="1440" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_tasa_dia_3" edge="1" parent="1" source="e_tasa_dia" style="edgeStyle=none;fillColor=none;" target="a_tasa_dia_3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_productos" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;fontStyle=1;fontSize=13;" value="PRODUCTOS" vertex="1">
+          <mxGeometry height="60" width="180" x="2137" y="1430" as="geometry" />
+        </mxCell>
+        <mxCell id="a_productos_0" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="&lt;u&gt;id_producto&lt;/u&gt;" vertex="1">
+          <mxGeometry height="40" width="150" x="2152" y="1220" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_productos_0" edge="1" parent="1" source="e_productos" style="edgeStyle=none;fillColor=none;" target="a_productos_0">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_productos_1" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="nombre_producto" vertex="1">
+          <mxGeometry height="40" width="150" x="2385" y="1284" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_productos_1" edge="1" parent="1" source="e_productos" style="edgeStyle=none;fillColor=none;" target="a_productos_1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_productos_2" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="precio_venta" vertex="1">
+          <mxGeometry height="40" width="150" x="2482" y="1440" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_productos_2" edge="1" parent="1" source="e_productos" style="edgeStyle=none;fillColor=none;" target="a_productos_2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_productos_3" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="stock" vertex="1">
+          <mxGeometry height="40" width="150" x="2385" y="1596" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_productos_3" edge="1" parent="1" source="e_productos" style="edgeStyle=none;fillColor=none;" target="a_productos_3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_productos_4" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="fecha_vencimiento" vertex="1">
+          <mxGeometry height="40" width="150" x="2152" y="1660" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_productos_4" edge="1" parent="1" source="e_productos" style="edgeStyle=none;fillColor=none;" target="a_productos_4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_productos_5" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="fecha_registro" vertex="1">
+          <mxGeometry height="40" width="150" x="1919" y="1596" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_productos_5" edge="1" parent="1" source="e_productos" style="edgeStyle=none;fillColor=none;" target="a_productos_5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_productos_6" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="imagen" vertex="1">
+          <mxGeometry height="40" width="150" x="1822" y="1440" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_productos_6" edge="1" parent="1" source="e_productos" style="edgeStyle=none;fillColor=none;" target="a_productos_6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_productos_7" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="status" vertex="1">
+          <mxGeometry height="40" width="150" x="1919" y="1284" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_productos_7" edge="1" parent="1" source="e_productos" style="edgeStyle=none;fillColor=none;" target="a_productos_7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_promociones" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;fontStyle=1;fontSize=13;" value="PROMOCIONES" vertex="1">
+          <mxGeometry height="60" width="180" x="3317" y="1430" as="geometry" />
+        </mxCell>
+        <mxCell id="a_promociones_0" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="&lt;u&gt;id_promocion&lt;/u&gt;" vertex="1">
+          <mxGeometry height="40" width="150" x="3332" y="1220" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_promociones_0" edge="1" parent="1" source="e_promociones" style="edgeStyle=none;fillColor=none;" target="a_promociones_0">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_promociones_1" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="nombre_promocion" vertex="1">
+          <mxGeometry height="40" width="150" x="3565" y="1284" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_promociones_1" edge="1" parent="1" source="e_promociones" style="edgeStyle=none;fillColor=none;" target="a_promociones_1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_promociones_2" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="descripcion_promocion" vertex="1">
+          <mxGeometry height="40" width="150" x="3662" y="1440" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_promociones_2" edge="1" parent="1" source="e_promociones" style="edgeStyle=none;fillColor=none;" target="a_promociones_2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_promociones_3" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="tipo_descuento" vertex="1">
+          <mxGeometry height="40" width="150" x="3565" y="1596" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_promociones_3" edge="1" parent="1" source="e_promociones" style="edgeStyle=none;fillColor=none;" target="a_promociones_3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_promociones_4" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="valor_descuento" vertex="1">
+          <mxGeometry height="40" width="150" x="3332" y="1660" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_promociones_4" edge="1" parent="1" source="e_promociones" style="edgeStyle=none;fillColor=none;" target="a_promociones_4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_promociones_5" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="fecha_inicio" vertex="1">
+          <mxGeometry height="40" width="150" x="3002" y="1570" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_promociones_5" edge="1" parent="1" source="e_promociones" style="edgeStyle=none;fillColor=none;" target="a_promociones_5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_promociones_6" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="fecha_fin" vertex="1">
+          <mxGeometry height="40" width="150" x="3002" y="1440" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_promociones_6" edge="1" parent="1" source="e_promociones" style="edgeStyle=none;fillColor=none;" target="a_promociones_6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_promociones_7" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="status" vertex="1">
+          <mxGeometry height="40" width="150" x="3099" y="1284" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_promociones_7" edge="1" parent="1" source="e_promociones" style="edgeStyle=none;fillColor=none;" target="a_promociones_7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_cuenta_x_pagar" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;fontStyle=1;fontSize=13;" value="CUENTA_X_PAGAR" vertex="1">
+          <mxGeometry height="60" width="180" x="-223" y="2410" as="geometry" />
+        </mxCell>
+        <mxCell id="a_cuenta_x_pagar_0" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="&lt;u&gt;id_cuenta_x_pagar&lt;/u&gt;" vertex="1">
+          <mxGeometry height="40" width="150" x="-208" y="2200" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_cuenta_x_pagar_0" edge="1" parent="1" source="e_cuenta_x_pagar" style="edgeStyle=none;fillColor=none;" target="a_cuenta_x_pagar_0">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_cuenta_x_pagar_1" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="monto_total" vertex="1">
+          <mxGeometry height="40" width="150" x="50" y="2283" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_cuenta_x_pagar_1" edge="1" parent="1" source="e_cuenta_x_pagar" style="edgeStyle=none;fillColor=none;" target="a_cuenta_x_pagar_1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_cuenta_x_pagar_2" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="saldo_pendiente" vertex="1">
+          <mxGeometry height="40" width="150" x="114" y="2469" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_cuenta_x_pagar_2" edge="1" parent="1" source="e_cuenta_x_pagar" style="edgeStyle=none;fillColor=none;" target="a_cuenta_x_pagar_2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_cuenta_x_pagar_3" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="fecha_emision" vertex="1">
+          <mxGeometry height="40" width="150" x="-65" y="2618" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_cuenta_x_pagar_3" edge="1" parent="1" source="e_cuenta_x_pagar" style="edgeStyle=none;fillColor=none;" target="a_cuenta_x_pagar_3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_cuenta_x_pagar_4" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="fecha_vencimiento" vertex="1">
+          <mxGeometry height="40" width="150" x="-351" y="2618" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_cuenta_x_pagar_4" edge="1" parent="1" source="e_cuenta_x_pagar" style="edgeStyle=none;fillColor=none;" target="a_cuenta_x_pagar_4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_cuenta_x_pagar_5" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="estado_pago" vertex="1">
+          <mxGeometry height="40" width="150" x="-530" y="2469" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_cuenta_x_pagar_5" edge="1" parent="1" source="e_cuenta_x_pagar" style="edgeStyle=none;fillColor=none;" target="a_cuenta_x_pagar_5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_cuenta_x_pagar_6" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="status" vertex="1">
+          <mxGeometry height="40" width="150" x="-466" y="2283" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_cuenta_x_pagar_6" edge="1" parent="1" source="e_cuenta_x_pagar" style="edgeStyle=none;fillColor=none;" target="a_cuenta_x_pagar_6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_cuenta_x_cobrar" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;fontStyle=1;fontSize=13;" value="CUENTA_X_COBRAR" vertex="1">
+          <mxGeometry height="60" width="180" x="957" y="2410" as="geometry" />
+        </mxCell>
+        <mxCell id="a_cuenta_x_cobrar_0" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="&lt;u&gt;id_cuenta_x_cobrar&lt;/u&gt;" vertex="1">
+          <mxGeometry height="40" width="150" x="972" y="2200" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_cuenta_x_cobrar_0" edge="1" parent="1" source="e_cuenta_x_cobrar" style="edgeStyle=none;fillColor=none;" target="a_cuenta_x_cobrar_0">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_cuenta_x_cobrar_1" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="monto_total" vertex="1">
+          <mxGeometry height="40" width="150" x="1230" y="2283" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_cuenta_x_cobrar_1" edge="1" parent="1" source="e_cuenta_x_cobrar" style="edgeStyle=none;fillColor=none;" target="a_cuenta_x_cobrar_1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_cuenta_x_cobrar_2" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="saldo_pendiente" vertex="1">
+          <mxGeometry height="40" width="150" x="1294" y="2469" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_cuenta_x_cobrar_2" edge="1" parent="1" source="e_cuenta_x_cobrar" style="edgeStyle=none;fillColor=none;" target="a_cuenta_x_cobrar_2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_cuenta_x_cobrar_3" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="fecha_emision" vertex="1">
+          <mxGeometry height="40" width="150" x="1115" y="2618" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_cuenta_x_cobrar_3" edge="1" parent="1" source="e_cuenta_x_cobrar" style="edgeStyle=none;fillColor=none;" target="a_cuenta_x_cobrar_3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_cuenta_x_cobrar_4" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="fecha_vencimiento" vertex="1">
+          <mxGeometry height="40" width="150" x="829" y="2618" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_cuenta_x_cobrar_4" edge="1" parent="1" source="e_cuenta_x_cobrar" style="edgeStyle=none;fillColor=none;" target="a_cuenta_x_cobrar_4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_cuenta_x_cobrar_5" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="estado_cuenta" vertex="1">
+          <mxGeometry height="40" width="150" x="650" y="2469" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_cuenta_x_cobrar_5" edge="1" parent="1" source="e_cuenta_x_cobrar" style="edgeStyle=none;fillColor=none;" target="a_cuenta_x_cobrar_5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_cuenta_x_cobrar_6" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="status" vertex="1">
+          <mxGeometry height="40" width="150" x="714" y="2283" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_cuenta_x_cobrar_6" edge="1" parent="1" source="e_cuenta_x_cobrar" style="edgeStyle=none;fillColor=none;" target="a_cuenta_x_cobrar_6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_pedidos" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;fontStyle=1;fontSize=13;" value="PEDIDOS" vertex="1">
+          <mxGeometry height="60" width="180" x="2137" y="2410" as="geometry" />
+        </mxCell>
+        <mxCell id="a_pedidos_0" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="&lt;u&gt;id_pedido&lt;/u&gt;" vertex="1">
+          <mxGeometry height="40" width="150" x="2152" y="2200" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_pedidos_0" edge="1" parent="1" source="e_pedidos" style="edgeStyle=none;fillColor=none;" target="a_pedidos_0">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_pedidos_1" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="fecha_pedido" vertex="1">
+          <mxGeometry height="40" width="150" x="2364" y="2251" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_pedidos_1" edge="1" parent="1" source="e_pedidos" style="edgeStyle=none;fillColor=none;" target="a_pedidos_1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_pedidos_2" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="monto_total_pedido" vertex="1">
+          <mxGeometry height="40" width="150" x="2477" y="2382" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_pedidos_2" edge="1" parent="1" source="e_pedidos" style="edgeStyle=none;fillColor=none;" target="a_pedidos_2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_pedidos_3" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="direccion_entrega" vertex="1">
+          <mxGeometry height="40" width="150" x="2438" y="2530" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_pedidos_3" edge="1" parent="1" source="e_pedidos" style="edgeStyle=none;fillColor=none;" target="a_pedidos_3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_pedidos_4" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="tlf_contacto" vertex="1">
+          <mxGeometry height="40" width="150" x="2265" y="2627" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_pedidos_4" edge="1" parent="1" source="e_pedidos" style="edgeStyle=none;fillColor=none;" target="a_pedidos_4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_pedidos_5" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="id_estado_pedido" vertex="1">
+          <mxGeometry height="40" width="150" x="2039" y="2627" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_pedidos_5" edge="1" parent="1" source="e_pedidos" style="edgeStyle=none;fillColor=none;" target="a_pedidos_5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_pedidos_6" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="id_estado_pago" vertex="1">
+          <mxGeometry height="40" width="150" x="1866" y="2530" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_pedidos_6" edge="1" parent="1" source="e_pedidos" style="edgeStyle=none;fillColor=none;" target="a_pedidos_6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_pedidos_7" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="observaciones" vertex="1">
+          <mxGeometry height="40" width="150" x="1827" y="2382" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_pedidos_7" edge="1" parent="1" source="e_pedidos" style="edgeStyle=none;fillColor=none;" target="a_pedidos_7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_pedidos_8" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="status" vertex="1">
+          <mxGeometry height="40" width="150" x="1940" y="2251" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_pedidos_8" edge="1" parent="1" source="e_pedidos" style="edgeStyle=none;fillColor=none;" target="a_pedidos_8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_clientes" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;fontStyle=1;fontSize=13;" value="CLIENTES" vertex="1">
+          <mxGeometry height="60" width="180" x="3317" y="2410" as="geometry" />
+        </mxCell>
+        <mxCell id="a_clientes_0" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="&lt;u&gt;id_cliente&lt;/u&gt;" vertex="1">
+          <mxGeometry height="40" width="150" x="3332" y="2200" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_clientes_0" edge="1" parent="1" source="e_clientes" style="edgeStyle=none;fillColor=none;" target="a_clientes_0">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_clientes_1" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="nombre_cliente" vertex="1">
+          <mxGeometry height="40" width="150" x="3544" y="2251" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_clientes_1" edge="1" parent="1" source="e_clientes" style="edgeStyle=none;fillColor=none;" target="a_clientes_1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_clientes_2" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="tipo_id" vertex="1">
+          <mxGeometry height="40" width="150" x="3657" y="2382" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_clientes_2" edge="1" parent="1" source="e_clientes" style="edgeStyle=none;fillColor=none;" target="a_clientes_2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_clientes_3" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="email_cliente" vertex="1">
+          <mxGeometry height="40" width="150" x="3618" y="2530" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_clientes_3" edge="1" parent="1" source="e_clientes" style="edgeStyle=none;fillColor=none;" target="a_clientes_3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_clientes_4" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="tlf_cliente" vertex="1">
+          <mxGeometry height="40" width="150" x="3445" y="2627" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_clientes_4" edge="1" parent="1" source="e_clientes" style="edgeStyle=none;fillColor=none;" target="a_clientes_4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_clientes_5" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="direccion_cliente" vertex="1">
+          <mxGeometry height="40" width="150" x="3219" y="2627" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_clientes_5" edge="1" parent="1" source="e_clientes" style="edgeStyle=none;fillColor=none;" target="a_clientes_5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_clientes_6" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="sector" vertex="1">
+          <mxGeometry height="40" width="150" x="3046" y="2530" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_clientes_6" edge="1" parent="1" source="e_clientes" style="edgeStyle=none;fillColor=none;" target="a_clientes_6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_clientes_7" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="img_cliente" vertex="1">
+          <mxGeometry height="40" width="150" x="3007" y="2382" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_clientes_7" edge="1" parent="1" source="e_clientes" style="edgeStyle=none;fillColor=none;" target="a_clientes_7">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_clientes_8" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="status" vertex="1">
+          <mxGeometry height="40" width="150" x="3120" y="2251" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_clientes_8" edge="1" parent="1" source="e_clientes" style="edgeStyle=none;fillColor=none;" target="a_clientes_8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_pagos_proveedores" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;fontStyle=1;fontSize=13;" value="PAGOS_PROVEEDORES" vertex="1">
+          <mxGeometry height="60" width="180" x="-223" y="3390" as="geometry" />
+        </mxCell>
+        <mxCell id="a_pagos_proveedores_0" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="&lt;u&gt;id_pago_proveedor&lt;/u&gt;" vertex="1">
+          <mxGeometry height="40" width="150" x="-100" y="3200" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_pagos_proveedores_0" edge="1" parent="1" source="e_pagos_proveedores" style="edgeStyle=none;fillColor=none;" target="a_pagos_proveedores_0">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_pagos_proveedores_1" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="monto" vertex="1">
+          <mxGeometry height="40" width="150" x="50" y="3263" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_pagos_proveedores_1" edge="1" parent="1" source="e_pagos_proveedores" style="edgeStyle=none;fillColor=none;" target="a_pagos_proveedores_1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_pagos_proveedores_2" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="fecha_pago" vertex="1">
+          <mxGeometry height="40" width="150" x="114" y="3449" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_pagos_proveedores_2" edge="1" parent="1" source="e_pagos_proveedores" style="edgeStyle=none;fillColor=none;" target="a_pagos_proveedores_2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_pagos_proveedores_3" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="nro_referencia" vertex="1">
+          <mxGeometry height="40" width="150" x="-65" y="3598" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_pagos_proveedores_3" edge="1" parent="1" source="e_pagos_proveedores" style="edgeStyle=none;fillColor=none;" target="a_pagos_proveedores_3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_pagos_proveedores_4" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="concepto" vertex="1">
+          <mxGeometry height="40" width="150" x="-351" y="3598" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_pagos_proveedores_4" edge="1" parent="1" source="e_pagos_proveedores" style="edgeStyle=none;fillColor=none;" target="a_pagos_proveedores_4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_pagos_proveedores_5" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="img_pago" vertex="1">
+          <mxGeometry height="40" width="150" x="-530" y="3449" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_pagos_proveedores_5" edge="1" parent="1" source="e_pagos_proveedores" style="edgeStyle=none;fillColor=none;" target="a_pagos_proveedores_5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_pagos_proveedores_6" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="id_metodo_pago" vertex="1">
+          <mxGeometry height="40" width="150" x="-466" y="3263" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_pagos_proveedores_6" edge="1" parent="1" source="e_pagos_proveedores" style="edgeStyle=none;fillColor=none;" target="a_pagos_proveedores_6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_pagos" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;fontStyle=1;fontSize=13;" value="PAGOS" vertex="1">
+          <mxGeometry height="60" width="180" x="957" y="3390" as="geometry" />
+        </mxCell>
+        <mxCell id="a_pagos_0" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="&lt;u&gt;id_pago&lt;/u&gt;" vertex="1">
+          <mxGeometry height="40" width="150" x="972" y="3180" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_pagos_0" edge="1" parent="1" source="e_pagos" style="edgeStyle=none;fillColor=none;" target="a_pagos_0">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_pagos_1" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="monto_pago" vertex="1">
+          <mxGeometry height="40" width="150" x="1230" y="3263" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_pagos_1" edge="1" parent="1" source="e_pagos" style="edgeStyle=none;fillColor=none;" target="a_pagos_1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_pagos_2" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="fecha_pago" vertex="1">
+          <mxGeometry height="40" width="150" x="1294" y="3449" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_pagos_2" edge="1" parent="1" source="e_pagos" style="edgeStyle=none;fillColor=none;" target="a_pagos_2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_pagos_3" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="nro_referencia" vertex="1">
+          <mxGeometry height="40" width="150" x="1115" y="3598" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_pagos_3" edge="1" parent="1" source="e_pagos" style="edgeStyle=none;fillColor=none;" target="a_pagos_3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_pagos_4" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="concepto" vertex="1">
+          <mxGeometry height="40" width="150" x="829" y="3598" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_pagos_4" edge="1" parent="1" source="e_pagos" style="edgeStyle=none;fillColor=none;" target="a_pagos_4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_pagos_5" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="img_pago" vertex="1">
+          <mxGeometry height="40" width="150" x="650" y="3449" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_pagos_5" edge="1" parent="1" source="e_pagos" style="edgeStyle=none;fillColor=none;" target="a_pagos_5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_pagos_6" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="id_metodo_pago" vertex="1">
+          <mxGeometry height="40" width="150" x="714" y="3263" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_pagos_6" edge="1" parent="1" source="e_pagos" style="edgeStyle=none;fillColor=none;" target="a_pagos_6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_entregas" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;fontStyle=1;fontSize=13;" value="ENTREGAS" vertex="1">
+          <mxGeometry height="60" width="180" x="2137" y="3390" as="geometry" />
+        </mxCell>
+        <mxCell id="a_entregas_0" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="&lt;u&gt;id_entregas&lt;/u&gt;" vertex="1">
+          <mxGeometry height="40" width="150" x="2152" y="3180" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_entregas_0" edge="1" parent="1" source="e_entregas" style="edgeStyle=none;fillColor=none;" target="a_entregas_0">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_entregas_1" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="fecha_entrega_programada" vertex="1">
+          <mxGeometry height="40" width="150" x="2346" y="3222" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_entregas_1" edge="1" parent="1" source="e_entregas" style="edgeStyle=none;fillColor=none;" target="a_entregas_1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_entregas_2" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="fecha_entrega_real" vertex="1">
+          <mxGeometry height="40" width="150" x="2466" y="3332" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_entregas_2" edge="1" parent="1" source="e_entregas" style="edgeStyle=none;fillColor=none;" target="a_entregas_2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_entregas_5" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="repartidor" vertex="1">
+          <mxGeometry height="40" width="150" x="2152" y="3620" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_entregas_5" edge="1" parent="1" source="e_entregas" style="edgeStyle=none;fillColor=none;" target="a_entregas_5">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_entregas_6" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="id_estado_entrega" vertex="1">
+          <mxGeometry height="40" width="150" x="1958" y="3578" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_entregas_6" edge="1" parent="1" source="e_entregas" style="edgeStyle=none;fillColor=none;" target="a_entregas_6">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_entregas_8" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="observaciones" vertex="1">
+          <mxGeometry height="40" width="150" x="1838" y="3332" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_entregas_8" edge="1" parent="1" source="e_entregas" style="edgeStyle=none;fillColor=none;" target="a_entregas_8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_entregas_9" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="status" vertex="1">
+          <mxGeometry height="40" width="150" x="1958" y="3222" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_entregas_9" edge="1" parent="1" source="e_entregas" style="edgeStyle=none;fillColor=none;" target="a_entregas_9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_tipos_clientes" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;fontStyle=1;fontSize=13;" value="TIPOS_CLIENTES" vertex="1">
+          <mxGeometry height="60" width="180" x="3317" y="3390" as="geometry" />
+        </mxCell>
+        <mxCell id="a_tipos_clientes_0" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="&lt;u&gt;id_tipo_cliente&lt;/u&gt;" vertex="1">
+          <mxGeometry height="40" width="150" x="3332" y="3180" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_tipos_clientes_0" edge="1" parent="1" source="e_tipos_clientes" style="edgeStyle=none;fillColor=none;" target="a_tipos_clientes_0">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_tipos_clientes_1" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="nombre_tipo_cliente" vertex="1">
+          <mxGeometry height="40" width="150" x="3662" y="3400" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_tipos_clientes_1" edge="1" parent="1" source="e_tipos_clientes" style="edgeStyle=none;fillColor=none;" target="a_tipos_clientes_1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_tipos_clientes_2" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="dias_credito" vertex="1">
+          <mxGeometry height="40" width="150" x="3332" y="3620" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_tipos_clientes_2" edge="1" parent="1" source="e_tipos_clientes" style="edgeStyle=none;fillColor=none;" target="a_tipos_clientes_2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_tipos_clientes_3" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="status" vertex="1">
+          <mxGeometry height="40" width="150" x="3002" y="3400" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_tipos_clientes_3" edge="1" parent="1" source="e_tipos_clientes" style="edgeStyle=none;fillColor=none;" target="a_tipos_clientes_3">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r_0" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=none;fontStyle=1;fontSize=11;" value="SUMINISTRA" vertex="1">
+          <mxGeometry height="80" width="160" x="377" y="440" as="geometry" />
+        </mxCell>
+        <mxCell id="l_r_0_a" edge="1" parent="1" source="e_proveedores" style="edgeStyle=none;endArrow=none;fontSize=14;fontStyle=1;fillColor=none;" target="r_0" value="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="l_r_0_b" edge="1" parent="1" source="r_0" style="edgeStyle=none;endArrow=none;fontSize=14;fontStyle=1;fillColor=none;" target="e_materia_prima" value="N">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r_1" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=none;fontStyle=1;fontSize=11;" value="GENERA" vertex="1">
+          <mxGeometry height="80" width="160" x="-213" y="930" as="geometry" />
+        </mxCell>
+        <mxCell id="l_r_1_a" edge="1" parent="1" source="e_proveedores" style="edgeStyle=none;endArrow=none;fontSize=14;fontStyle=1;fillColor=none;" target="r_1" value="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="l_r_1_b" edge="1" parent="1" source="r_1" style="edgeStyle=none;endArrow=none;fontSize=14;fontStyle=1;fillColor=none;" target="e_compras" value="N">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r_2" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=none;fontStyle=1;fontSize=11;" value="INCLUYE" vertex="1">
+          <mxGeometry height="80" width="160" x="377" y="930" as="geometry" />
+        </mxCell>
+        <mxCell id="l_r_2_a" edge="1" parent="1" source="e_compras" style="edgeStyle=none;endArrow=none;fontSize=14;fontStyle=1;fillColor=none;" target="r_2" value="N">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="l_r_2_b" edge="1" parent="1" source="r_2" style="edgeStyle=none;endArrow=none;fontSize=14;fontStyle=1;fillColor=none;" target="e_materia_prima" value="M">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ra_2_0" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="cantidad" vertex="1">
+          <mxGeometry height="40" width="150" x="484" y="1073" as="geometry" />
+        </mxCell>
+        <mxCell id="l_ra_2_0" edge="1" parent="1" source="r_2" style="edgeStyle=none;fillColor=none;" target="ra_2_0">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ra_2_1" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="precio_unitario" vertex="1">
+          <mxGeometry height="40" width="150" x="280" y="827" as="geometry" />
+        </mxCell>
+        <mxCell id="l_ra_2_1" edge="1" parent="1" source="r_2" style="edgeStyle=none;fillColor=none;" target="ra_2_1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r_3" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=none;fontStyle=1;fontSize=11;" value="ORIGINA" vertex="1">
+          <mxGeometry height="80" width="160" x="-213" y="1910" as="geometry" />
+        </mxCell>
+        <mxCell id="l_r_3_a" edge="1" parent="1" source="e_compras" style="edgeStyle=none;endArrow=none;fontSize=14;fontStyle=1;fillColor=none;" target="r_3" value="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="l_r_3_b" edge="1" parent="1" source="r_3" style="edgeStyle=none;endArrow=none;fontSize=14;fontStyle=1;fillColor=none;" target="e_cuenta_x_pagar" value="N">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r_4" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=none;fontStyle=1;fontSize=11;" value="COTIZA" vertex="1">
+          <mxGeometry height="80" width="160" x="377" y="1420" as="geometry" />
+        </mxCell>
+        <mxCell id="l_r_4_a" edge="1" parent="1" source="e_tasa_dia" style="edgeStyle=none;endArrow=none;fontSize=14;fontStyle=1;fillColor=none;" target="r_4" value="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="l_r_4_b" edge="1" parent="1" source="r_4" style="edgeStyle=none;endArrow=none;fontSize=14;fontStyle=1;fillColor=none;" target="e_compras" value="N">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r_5" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=none;fontStyle=1;fontSize=11;" value="SE ABONA CON" vertex="1">
+          <mxGeometry height="80" width="160" x="-213" y="2890" as="geometry" />
+        </mxCell>
+        <mxCell id="l_r_5_a" edge="1" parent="1" source="e_cuenta_x_pagar" style="edgeStyle=none;endArrow=none;fontSize=14;fontStyle=1;fillColor=none;" target="r_5" value="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="l_r_5_b" edge="1" parent="1" source="r_5" style="edgeStyle=none;endArrow=none;fontSize=14;fontStyle=1;fillColor=none;" target="e_pagos_proveedores" value="N">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r_6" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=none;fontStyle=1;fontSize=11;" value="SE UTILIZA EN" vertex="1">
+          <mxGeometry height="80" width="160" x="1557" y="440" as="geometry" />
+        </mxCell>
+        <mxCell id="l_r_6_a" edge="1" parent="1" source="e_materia_prima" style="edgeStyle=none;endArrow=none;fontSize=14;fontStyle=1;fillColor=none;" target="r_6" value="M">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="l_r_6_b" edge="1" parent="1" source="r_6" style="edgeStyle=none;endArrow=none;fontSize=14;fontStyle=1;fillColor=none;" target="e_producciones" value="N">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ra_6_0" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="cantidad_utilizada" vertex="1">
+          <mxGeometry height="40" width="150" x="1562" y="620" as="geometry" />
+        </mxCell>
+        <mxCell id="l_ra_6_0" edge="1" parent="1" source="r_6" style="edgeStyle=none;fillColor=none;" target="ra_6_0">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r_7" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=none;fontStyle=1;fontSize=11;" value="SE PRODUCE EN" vertex="1">
+          <mxGeometry height="80" width="160" x="2147" y="930" as="geometry" />
+        </mxCell>
+        <mxCell id="l_r_7_a" edge="1" parent="1" source="e_productos" style="edgeStyle=none;endArrow=none;fontSize=14;fontStyle=1;fillColor=none;" target="r_7" value="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="l_r_7_b" edge="1" parent="1" source="r_7" style="edgeStyle=none;endArrow=none;fontSize=14;fontStyle=1;fillColor=none;" target="e_producciones" value="N">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r_8" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=none;fontStyle=1;fontSize=11;" value="CLASIFICA" vertex="1">
+          <mxGeometry height="80" width="160" x="2737" y="930" as="geometry" />
+        </mxCell>
+        <mxCell id="l_r_8_a" edge="1" parent="1" source="e_categorias" style="edgeStyle=none;endArrow=none;fontSize=14;fontStyle=1;fillColor=none;" target="r_8" value="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="l_r_8_b" edge="1" parent="1" source="r_8" style="edgeStyle=none;endArrow=none;fontSize=14;fontStyle=1;fillColor=none;" target="e_productos" value="N">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r_9" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=none;fontStyle=1;fontSize=11;" value="PROMOCIONA" vertex="1">
+          <mxGeometry height="80" width="160" x="2737" y="1420" as="geometry" />
+        </mxCell>
+        <mxCell id="l_r_9_a" edge="1" parent="1" source="e_promociones" style="edgeStyle=none;endArrow=none;fontSize=14;fontStyle=1;fillColor=none;" target="r_9" value="N">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="l_r_9_b" edge="1" parent="1" source="r_9" style="edgeStyle=none;endArrow=none;fontSize=14;fontStyle=1;fillColor=none;" target="e_productos" value="M">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r_10" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=none;fontStyle=1;fontSize=11;" value="APLICA" vertex="1">
+          <mxGeometry height="80" width="160" x="2737" y="1910" as="geometry" />
+        </mxCell>
+        <mxCell id="l_r_10_a" edge="1" parent="1" source="e_promociones" style="edgeStyle=none;endArrow=none;fontSize=14;fontStyle=1;fillColor=none;" target="r_10" value="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="l_r_10_b" edge="1" parent="1" source="r_10" style="edgeStyle=none;endArrow=none;fontSize=14;fontStyle=1;fillColor=none;" target="e_pedidos" value="N">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r_11" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=none;fontStyle=1;fontSize=11;" value="CONTIENE" vertex="1">
+          <mxGeometry height="80" width="160" x="2147" y="1910" as="geometry" />
+        </mxCell>
+        <mxCell id="l_r_11_a" edge="1" parent="1" source="e_pedidos" style="edgeStyle=none;endArrow=none;fontSize=14;fontStyle=1;fillColor=none;" target="r_11" value="N">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="l_r_11_b" edge="1" parent="1" source="r_11" style="edgeStyle=none;endArrow=none;fontSize=14;fontStyle=1;fillColor=none;" target="e_productos" value="M">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ra_11_0" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="cantidad" vertex="1">
+          <mxGeometry height="40" width="150" x="2312" y="1930" as="geometry" />
+        </mxCell>
+        <mxCell id="l_ra_11_0" edge="1" parent="1" source="r_11" style="edgeStyle=none;fillColor=none;" target="ra_11_0">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ra_11_1" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="precio_unitario" vertex="1">
+          <mxGeometry height="40" width="150" x="1992" y="1930" as="geometry" />
+        </mxCell>
+        <mxCell id="l_ra_11_1" edge="1" parent="1" source="r_11" style="edgeStyle=none;fillColor=none;" target="ra_11_1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r_12" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=none;fontStyle=1;fontSize=11;" value="VALORA" vertex="1">
+          <mxGeometry height="80" width="160" x="1557" y="1910" as="geometry" />
+        </mxCell>
+        <mxCell id="l_r_12_a" edge="1" parent="1" source="e_tasa_dia" style="edgeStyle=none;endArrow=none;fontSize=14;fontStyle=1;fillColor=none;" target="r_12" value="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="l_r_12_b" edge="1" parent="1" source="r_12" style="edgeStyle=none;endArrow=none;fontSize=14;fontStyle=1;fillColor=none;" target="e_pedidos" value="N">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r_13" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=none;fontStyle=1;fontSize=11;" value="GENERA" vertex="1">
+          <mxGeometry height="80" width="160" x="1557" y="2400" as="geometry" />
+        </mxCell>
+        <mxCell id="l_r_13_a" edge="1" parent="1" source="e_pedidos" style="edgeStyle=none;endArrow=none;fontSize=14;fontStyle=1;fillColor=none;" target="r_13" value="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="l_r_13_b" edge="1" parent="1" source="r_13" style="edgeStyle=none;endArrow=none;fontSize=14;fontStyle=1;fillColor=none;" target="e_cuenta_x_cobrar" value="N">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r_14" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=none;fontStyle=1;fontSize=11;" value="REALIZA" vertex="1">
+          <mxGeometry height="80" width="160" x="2737" y="2400" as="geometry" />
+        </mxCell>
+        <mxCell id="l_r_14_a" edge="1" parent="1" source="e_clientes" style="edgeStyle=none;endArrow=none;fontSize=14;fontStyle=1;fillColor=none;" target="r_14" value="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="l_r_14_b" edge="1" parent="1" source="r_14" style="edgeStyle=none;endArrow=none;fontSize=14;fontStyle=1;fillColor=none;" target="e_pedidos" value="N">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r_15" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=none;fontStyle=1;fontSize=11;" value="PERTENECE" vertex="1">
+          <mxGeometry height="80" width="160" x="3327" y="2890" as="geometry" />
+        </mxCell>
+        <mxCell id="l_r_15_a" edge="1" parent="1" source="e_tipos_clientes" style="edgeStyle=none;endArrow=none;fontSize=14;fontStyle=1;fillColor=none;" target="r_15" value="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="l_r_15_b" edge="1" parent="1" source="r_15" style="edgeStyle=none;endArrow=none;fontSize=14;fontStyle=1;fillColor=none;" target="e_clientes" value="N">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r_16" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=none;fontStyle=1;fontSize=11;" value="RECIBE" vertex="1">
+          <mxGeometry height="80" width="160" x="1557" y="2890" as="geometry" />
+        </mxCell>
+        <mxCell id="l_r_16_a" edge="1" parent="1" source="e_pedidos" style="edgeStyle=none;endArrow=none;fontSize=14;fontStyle=1;fillColor=none;" target="r_16" value="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="l_r_16_b" edge="1" parent="1" source="r_16" style="edgeStyle=none;endArrow=none;fontSize=14;fontStyle=1;fillColor=none;" target="e_pagos" value="N">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="r_17" parent="1" style="rhombus;whiteSpace=wrap;html=1;fillColor=none;fontStyle=1;fontSize=11;" value="DESPACHA" vertex="1">
+          <mxGeometry height="80" width="160" x="2147" y="2890" as="geometry" />
+        </mxCell>
+        <mxCell id="l_r_17_a" edge="1" parent="1" source="e_pedidos" style="edgeStyle=none;endArrow=none;fontSize=14;fontStyle=1;fillColor=none;" target="r_17" value="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="l_r_17_b" edge="1" parent="1" source="r_17" style="edgeStyle=none;endArrow=none;fontSize=14;fontStyle=1;fillColor=none;" target="e_entregas" value="N">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_entregas_10" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="id_pedido" vertex="1">
+          <mxGeometry height="40" width="150" x="2466" y="3468" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_entregas_10" edge="1" parent="1" source="e_entregas" style="edgeStyle=none;fillColor=none;" target="a_entregas_10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_entregas_11" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="id_estado" vertex="1">
+          <mxGeometry height="40" width="150" x="1838" y="3468" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_entregas_11" edge="1" parent="1" source="e_entregas" style="edgeStyle=none;fillColor=none;" target="a_entregas_11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_clientes_9" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="estado_cliente" vertex="1">
+          <mxGeometry height="40" width="150" x="3332" y="2730" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_clientes_9" edge="1" parent="1" source="e_clientes" style="edgeStyle=none;fillColor=none;" target="a_clientes_9">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_promociones_8" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="estado" vertex="1">
+          <mxGeometry height="40" width="150" x="3332" y="1760" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_promociones_8" edge="1" parent="1" source="e_promociones" style="edgeStyle=none;fillColor=none;" target="a_promociones_8">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="a_tasa_dia_4" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;fontSize=11;" value="moneda_tasa" vertex="1">
+          <mxGeometry height="40" width="150" x="1302" y="1220" as="geometry" />
+        </mxCell>
+        <mxCell id="l_a_tasa_dia_4" edge="1" parent="1" source="e_tasa_dia" style="edgeStyle=none;fillColor=none;" target="a_tasa_dia_4">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

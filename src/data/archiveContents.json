@@ -1,0 +1,334 @@
+{
+  "docs/materiales/01-diagrama-de-clases-natys.rar": [
+    {
+      "title": "01-Diagrama_De_Clases-Natys.drawio",
+      "original": "01-Diagrama_De_Clases-Natys.drawio",
+      "format": "DRAWIO",
+      "file": "docs/materiales/01-diagrama-de-clases-natys.drawio",
+      "size": 61790
+    }
+  ],
+  "docs/materiales/03-bases-de-datos.rar": [
+    {
+      "title": "01-MER_Negocio-Natys-Actualizado.drawio",
+      "original": "03 - Bases de Datos/01 - MER (MODELO ENTIEDAD RELACION) Y ERR (Modelo Relacional Extendido)/01-MER_Negocio-Natys-Actualizado.drawio",
+      "format": "DRAWIO",
+      "file": "docs/materiales/03-bases-de-datos/01-mer-modelo-entiedad-relacion-y-err-modelo-relacional-extendido/01-mer-negocio-natys-actualizado.drawio",
+      "size": 71241
+    },
+    {
+      "title": "02-MER_Seguridad-Natys-Actualizado.drawio",
+      "original": "03 - Bases de Datos/01 - MER (MODELO ENTIEDAD RELACION) Y ERR (Modelo Relacional Extendido)/02-MER_Seguridad-Natys-Actualizado.drawio",
+      "format": "DRAWIO",
+      "file": "docs/materiales/03-bases-de-datos/01-mer-modelo-entiedad-relacion-y-err-modelo-relacional-extendido/02-mer-seguridad-natys-actualizado.drawio",
+      "size": 45527
+    },
+    {
+      "title": "03_-_ER_Negocio-Natys.drawio",
+      "original": "03 - Bases de Datos/01 - MER (MODELO ENTIEDAD RELACION) Y ERR (Modelo Relacional Extendido)/03_-_ER_Negocio-Natys.drawio",
+      "format": "DRAWIO",
+      "file": "docs/materiales/03-bases-de-datos/01-mer-modelo-entiedad-relacion-y-err-modelo-relacional-extendido/03-er-negocio-natys.drawio",
+      "size": 40166
+    },
+    {
+      "title": "04_-_ER_Seguridad-Natys.drawio",
+      "original": "03 - Bases de Datos/01 - MER (MODELO ENTIEDAD RELACION) Y ERR (Modelo Relacional Extendido)/04_-_ER_Seguridad-Natys.drawio",
+      "format": "DRAWIO",
+      "file": "docs/materiales/03-bases-de-datos/01-mer-modelo-entiedad-relacion-y-err-modelo-relacional-extendido/04-er-seguridad-natys.drawio",
+      "size": 17438
+    },
+    {
+      "title": "DDL_Larence-Natys.docx",
+      "original": "03 - Bases de Datos/02 - DDL/DDL_Larence-Natys.docx",
+      "format": "DOCX",
+      "file": "docs/materiales/bases-de-datos/02-ddl/ddl-larence-natys-original.docx",
+      "size": 1805906
+    },
+    {
+      "title": "larence.sql",
+      "original": "03 - Bases de Datos/03-SQL/larence.sql",
+      "format": "SQL",
+      "file": "docs/materiales/03-bases-de-datos/04-base-de-datos-del-negocio-seguridad/01-negocio/larence.sql",
+      "size": 55853
+    },
+    {
+      "title": "larence_seguridad.sql",
+      "original": "03 - Bases de Datos/03-SQL/larence_seguridad.sql",
+      "format": "SQL",
+      "file": "docs/materiales/03-bases-de-datos/04-base-de-datos-del-negocio-seguridad/02-seguridad/larence-seguridad.sql",
+      "size": 372771
+    },
+    {
+      "title": "BASE DE DATOS_LARENCE.drawio",
+      "original": "03 - Bases de Datos/04 - Base de Datos del Negocio & Seguridad/01-NEGOCIO/BASE DE DATOS_LARENCE.drawio",
+      "format": "DRAWIO",
+      "file": "docs/materiales/03-bases-de-datos/04-base-de-datos-del-negocio-seguridad/01-negocio/base-de-datos-larence.drawio",
+      "size": 352603
+    },
+    {
+      "title": "BASE DE DATOS_LARENCE.drawio.png",
+      "original": "03 - Bases de Datos/04 - Base de Datos del Negocio & Seguridad/01-NEGOCIO/BASE DE DATOS_LARENCE.drawio.png",
+      "format": "PNG",
+      "file": "docs/materiales/bases-de-datos/04-base-de-datos-del-negocio-seguridad/02-seguridad/base-de-datos-seguridad-larence.drawio.png",
+      "size": 280220
+    },
+    {
+      "title": "BASE DE DATOS_LARENCE.drawio.svg",
+      "original": "03 - Bases de Datos/04 - Base de Datos del Negocio & Seguridad/01-NEGOCIO/BASE DE DATOS_LARENCE.drawio.svg",
+      "format": "SVG",
+      "file": "docs/materiales/03-bases-de-datos/04-base-de-datos-del-negocio-seguridad/01-negocio/base-de-datos-larence.drawio.svg",
+      "size": 471686
+    },
+    {
+      "title": "larence.sql",
+      "original": "03 - Bases de Datos/04 - Base de Datos del Negocio & Seguridad/01-NEGOCIO/larence.sql",
+      "format": "SQL",
+      "file": "docs/materiales/03-bases-de-datos/04-base-de-datos-del-negocio-seguridad/01-negocio/larence.sql",
+      "size": 55853
+    },
+    {
+      "title": "BASE DE DATOS_SEGURIDAD_LARENCE.drawio",
+      "original": "03 - Bases de Datos/04 - Base de Datos del Negocio & Seguridad/02-SEGURIDAD/BASE DE DATOS_SEGURIDAD_LARENCE.drawio",
+      "format": "DRAWIO",
+      "file": "docs/materiales/03-bases-de-datos/04-base-de-datos-del-negocio-seguridad/02-seguridad/base-de-datos-seguridad-larence.drawio",
+      "size": 166918
+    },
+    {
+      "title": "BASE DE DATOS_SEGURIDAD_LARENCE.drawio.png",
+      "original": "03 - Bases de Datos/04 - Base de Datos del Negocio & Seguridad/02-SEGURIDAD/BASE DE DATOS_SEGURIDAD_LARENCE.drawio.png",
+      "format": "PNG",
+      "file": "docs/materiales/bases-de-datos/04-base-de-datos-del-negocio-seguridad/02-seguridad/base-de-datos-seguridad-larence.drawio.png",
+      "size": 280220
+    },
+    {
+      "title": "BASE DE DATOS_SEGURIDAD_LARENCE.drawio.svg",
+      "original": "03 - Bases de Datos/04 - Base de Datos del Negocio & Seguridad/02-SEGURIDAD/BASE DE DATOS_SEGURIDAD_LARENCE.drawio.svg",
+      "format": "SVG",
+      "file": "docs/materiales/03-bases-de-datos/04-base-de-datos-del-negocio-seguridad/02-seguridad/base-de-datos-seguridad-larence.drawio.svg",
+      "size": 242542
+    },
+    {
+      "title": "larence_seguridad.sql",
+      "original": "03 - Bases de Datos/04 - Base de Datos del Negocio & Seguridad/02-SEGURIDAD/larence_seguridad.sql",
+      "format": "SQL",
+      "file": "docs/materiales/03-bases-de-datos/04-base-de-datos-del-negocio-seguridad/02-seguridad/larence-seguridad.sql",
+      "size": 372771
+    },
+    {
+      "title": "DICCIONARIO DE DATOS ACTUALIZADO.docx",
+      "original": "03 - Bases de Datos/05 - Diccionario de Datos/DICCIONARIO DE DATOS ACTUALIZADO.docx",
+      "format": "DOCX",
+      "file": "docs/materiales/03-bases-de-datos/05-diccionario-de-datos/diccionario-de-datos-actualizado.docx",
+      "size": 71842
+    }
+  ],
+  "docs/materiales/bases-de-datos.zip": [
+    {
+      "title": "01-MER_Negocio-Natys-Actualizado.drawio",
+      "original": "Bases de Datos/01 - MER (MODELO ENTIEDAD RELACION) Y ERR (Modelo Relacional Extendido)/01-MER_Negocio-Natys-Actualizado.drawio",
+      "format": "DRAWIO",
+      "file": "docs/materiales/bases-de-datos/01-mer-modelo-entiedad-relacion-y-err-modelo-relacional-extendido/01-mer-negocio-natys-actualizado.drawio",
+      "size": 52765
+    },
+    {
+      "title": "02-MER_Seguridad-Natys-Actualizado.drawio",
+      "original": "Bases de Datos/01 - MER (MODELO ENTIEDAD RELACION) Y ERR (Modelo Relacional Extendido)/02-MER_Seguridad-Natys-Actualizado.drawio",
+      "format": "DRAWIO",
+      "file": "docs/materiales/bases-de-datos/01-mer-modelo-entiedad-relacion-y-err-modelo-relacional-extendido/02-mer-seguridad-natys-actualizado.drawio",
+      "size": 40710
+    },
+    {
+      "title": "03_-_ER_Negocio-Natys.drawio",
+      "original": "Bases de Datos/01 - MER (MODELO ENTIEDAD RELACION) Y ERR (Modelo Relacional Extendido)/03_-_ER_Negocio-Natys.drawio",
+      "format": "DRAWIO",
+      "file": "docs/materiales/bases-de-datos/01-mer-modelo-entiedad-relacion-y-err-modelo-relacional-extendido/03-er-negocio-natys.drawio",
+      "size": 92840
+    },
+    {
+      "title": "04_-_ER_Seguridad-Natys.drawio",
+      "original": "Bases de Datos/01 - MER (MODELO ENTIEDAD RELACION) Y ERR (Modelo Relacional Extendido)/04_-_ER_Seguridad-Natys.drawio",
+      "format": "DRAWIO",
+      "file": "docs/materiales/bases-de-datos/01-mer-modelo-entiedad-relacion-y-err-modelo-relacional-extendido/04-er-seguridad-natys.drawio",
+      "size": 38355
+    },
+    {
+      "title": "05-MR_Negocio-Natys.drawio",
+      "original": "Bases de Datos/01 - MER (MODELO ENTIEDAD RELACION) Y ERR (Modelo Relacional Extendido)/05-MR_Negocio-Natys.drawio",
+      "format": "DRAWIO",
+      "file": "docs/materiales/bases-de-datos/04-base-de-datos-del-negocio-seguridad/01-negocio/base-de-datos-larence.drawio",
+      "size": 114206
+    },
+    {
+      "title": "06-MR_Seguridad-Natys.drawio",
+      "original": "Bases de Datos/01 - MER (MODELO ENTIEDAD RELACION) Y ERR (Modelo Relacional Extendido)/06-MR_Seguridad-Natys.drawio",
+      "format": "DRAWIO",
+      "file": "docs/materiales/bases-de-datos/04-base-de-datos-del-negocio-seguridad/02-seguridad/base-de-datos-seguridad-larence.drawio",
+      "size": 49617
+    },
+    {
+      "title": "larence_EER.drawio.svg",
+      "original": "Bases de Datos/01 - MER (MODELO ENTIEDAD RELACION) Y ERR (Modelo Relacional Extendido)/larence_EER.drawio.svg",
+      "format": "SVG",
+      "file": "docs/materiales/bases-de-datos/01-mer-modelo-entiedad-relacion-y-err-modelo-relacional-extendido/larence-eer.drawio.svg",
+      "size": 1843152
+    },
+    {
+      "title": "larence_MER.drawio.svg",
+      "original": "Bases de Datos/01 - MER (MODELO ENTIEDAD RELACION) Y ERR (Modelo Relacional Extendido)/larence_MER.drawio.svg",
+      "format": "SVG",
+      "file": "docs/materiales/bases-de-datos/01-mer-modelo-entiedad-relacion-y-err-modelo-relacional-extendido/larence-mer.drawio.svg",
+      "size": 899355
+    },
+    {
+      "title": "larence_MR.drawio.svg",
+      "original": "Bases de Datos/01 - MER (MODELO ENTIEDAD RELACION) Y ERR (Modelo Relacional Extendido)/larence_MR.drawio.svg",
+      "format": "SVG",
+      "file": "docs/materiales/bases-de-datos/04-base-de-datos-del-negocio-seguridad/01-negocio/base-de-datos-larence.drawio.svg",
+      "size": 563067
+    },
+    {
+      "title": "larence_seguridad_EER.drawio.svg",
+      "original": "Bases de Datos/01 - MER (MODELO ENTIEDAD RELACION) Y ERR (Modelo Relacional Extendido)/larence_seguridad_EER.drawio.svg",
+      "format": "SVG",
+      "file": "docs/materiales/bases-de-datos/01-mer-modelo-entiedad-relacion-y-err-modelo-relacional-extendido/larence-seguridad-eer.drawio.svg",
+      "size": 708106
+    },
+    {
+      "title": "larence_seguridad_MER.drawio.svg",
+      "original": "Bases de Datos/01 - MER (MODELO ENTIEDAD RELACION) Y ERR (Modelo Relacional Extendido)/larence_seguridad_MER.drawio.svg",
+      "format": "SVG",
+      "file": "docs/materiales/bases-de-datos/01-mer-modelo-entiedad-relacion-y-err-modelo-relacional-extendido/larence-seguridad-mer.drawio.svg",
+      "size": 673368
+    },
+    {
+      "title": "larence_seguridad_MR.drawio.svg",
+      "original": "Bases de Datos/01 - MER (MODELO ENTIEDAD RELACION) Y ERR (Modelo Relacional Extendido)/larence_seguridad_MR.drawio.svg",
+      "format": "SVG",
+      "file": "docs/materiales/bases-de-datos/04-base-de-datos-del-negocio-seguridad/02-seguridad/base-de-datos-seguridad-larence.drawio.svg",
+      "size": 212642
+    },
+    {
+      "title": "DDL_Larence-Natys-original.docx",
+      "original": "Bases de Datos/02 - DDL/DDL_Larence-Natys-original.docx",
+      "format": "DOCX",
+      "file": "docs/materiales/bases-de-datos/02-ddl/ddl-larence-natys-original.docx",
+      "size": 1805906
+    },
+    {
+      "title": "DDL_Larence-Natys.docx",
+      "original": "Bases de Datos/02 - DDL/DDL_Larence-Natys.docx",
+      "format": "DOCX",
+      "file": "docs/materiales/bases-de-datos/02-ddl/ddl-larence-natys.docx",
+      "size": 1822686
+    },
+    {
+      "title": "larence_ddl.sql",
+      "original": "Bases de Datos/02 - DDL/larence_ddl.sql",
+      "format": "SQL",
+      "file": "docs/materiales/bases-de-datos/02-ddl/larence-ddl.sql",
+      "size": 51945
+    },
+    {
+      "title": "larence_seguridad_ddl.sql",
+      "original": "Bases de Datos/02 - DDL/larence_seguridad_ddl.sql",
+      "format": "SQL",
+      "file": "docs/materiales/bases-de-datos/02-ddl/larence-seguridad-ddl.sql",
+      "size": 15896
+    },
+    {
+      "title": "larence.sql",
+      "original": "Bases de Datos/03-SQL/larence.sql",
+      "format": "SQL",
+      "file": "docs/materiales/bases-de-datos/04-base-de-datos-del-negocio-seguridad/01-negocio/larence.sql",
+      "size": 183130
+    },
+    {
+      "title": "larence_seguridad.sql",
+      "original": "Bases de Datos/03-SQL/larence_seguridad.sql",
+      "format": "SQL",
+      "file": "docs/materiales/bases-de-datos/04-base-de-datos-del-negocio-seguridad/02-seguridad/larence-seguridad.sql",
+      "size": 468160
+    },
+    {
+      "title": "BASE DE DATOS_LARENCE.drawio",
+      "original": "Bases de Datos/04 - Base de Datos del Negocio & Seguridad/01-NEGOCIO/BASE DE DATOS_LARENCE.drawio",
+      "format": "DRAWIO",
+      "file": "docs/materiales/bases-de-datos/04-base-de-datos-del-negocio-seguridad/01-negocio/base-de-datos-larence.drawio",
+      "size": 114206
+    },
+    {
+      "title": "BASE DE DATOS_LARENCE.drawio.png",
+      "original": "Bases de Datos/04 - Base de Datos del Negocio & Seguridad/01-NEGOCIO/BASE DE DATOS_LARENCE.drawio.png",
+      "format": "PNG",
+      "file": "docs/materiales/bases-de-datos/04-base-de-datos-del-negocio-seguridad/02-seguridad/base-de-datos-seguridad-larence.drawio.png",
+      "size": 280220
+    },
+    {
+      "title": "BASE DE DATOS_LARENCE.drawio.svg",
+      "original": "Bases de Datos/04 - Base de Datos del Negocio & Seguridad/01-NEGOCIO/BASE DE DATOS_LARENCE.drawio.svg",
+      "format": "SVG",
+      "file": "docs/materiales/bases-de-datos/04-base-de-datos-del-negocio-seguridad/01-negocio/base-de-datos-larence.drawio.svg",
+      "size": 563067
+    },
+    {
+      "title": "larence.sql",
+      "original": "Bases de Datos/04 - Base de Datos del Negocio & Seguridad/01-NEGOCIO/larence.sql",
+      "format": "SQL",
+      "file": "docs/materiales/bases-de-datos/04-base-de-datos-del-negocio-seguridad/01-negocio/larence.sql",
+      "size": 183130
+    },
+    {
+      "title": "BASE DE DATOS_SEGURIDAD_LARENCE.drawio",
+      "original": "Bases de Datos/04 - Base de Datos del Negocio & Seguridad/02-SEGURIDAD/BASE DE DATOS_SEGURIDAD_LARENCE.drawio",
+      "format": "DRAWIO",
+      "file": "docs/materiales/bases-de-datos/04-base-de-datos-del-negocio-seguridad/02-seguridad/base-de-datos-seguridad-larence.drawio",
+      "size": 49617
+    },
+    {
+      "title": "BASE DE DATOS_SEGURIDAD_LARENCE.drawio.png",
+      "original": "Bases de Datos/04 - Base de Datos del Negocio & Seguridad/02-SEGURIDAD/BASE DE DATOS_SEGURIDAD_LARENCE.drawio.png",
+      "format": "PNG",
+      "file": "docs/materiales/bases-de-datos/04-base-de-datos-del-negocio-seguridad/02-seguridad/base-de-datos-seguridad-larence.drawio.png",
+      "size": 280220
+    },
+    {
+      "title": "BASE DE DATOS_SEGURIDAD_LARENCE.drawio.svg",
+      "original": "Bases de Datos/04 - Base de Datos del Negocio & Seguridad/02-SEGURIDAD/BASE DE DATOS_SEGURIDAD_LARENCE.drawio.svg",
+      "format": "SVG",
+      "file": "docs/materiales/bases-de-datos/04-base-de-datos-del-negocio-seguridad/02-seguridad/base-de-datos-seguridad-larence.drawio.svg",
+      "size": 212642
+    },
+    {
+      "title": "larence_seguridad.sql",
+      "original": "Bases de Datos/04 - Base de Datos del Negocio & Seguridad/02-SEGURIDAD/larence_seguridad.sql",
+      "format": "SQL",
+      "file": "docs/materiales/bases-de-datos/04-base-de-datos-del-negocio-seguridad/02-seguridad/larence-seguridad.sql",
+      "size": 468160
+    },
+    {
+      "title": "DICCIONARIO DE DATOS ACTUALIZADO.docx",
+      "original": "Bases de Datos/05 - Diccionario de Datos/DICCIONARIO DE DATOS ACTUALIZADO.docx",
+      "format": "DOCX",
+      "file": "docs/materiales/bases-de-datos/05-diccionario-de-datos/diccionario-de-datos-actualizado.docx",
+      "size": 7291
+    }
+  ],
+  "docs/materiales/casos-de-usos-del-sistema.rar": [
+    {
+      "title": "Casos-de-Usos-del sistema-JULIO-v2.drawio",
+      "original": "Casos-de-Usos-del sistema-JULIO-v2.drawio",
+      "format": "DRAWIO",
+      "file": "docs/materiales/casos-de-usos-del-sistema-julio-v2.drawio",
+      "size": 386532
+    }
+  ],
+  "docs/materiales/mapa-navegacional.rar": [
+    {
+      "title": "MAPA NAVEGACIONAL.drawio",
+      "original": "MAPA NAVEGACIONAL.drawio",
+      "format": "DRAWIO",
+      "file": "docs/materiales/mapa-navegacional.drawio",
+      "size": 68767
+    }
+  ]
+}

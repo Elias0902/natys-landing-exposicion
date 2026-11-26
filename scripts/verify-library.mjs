@@ -1,0 +1,81 @@
+import assert from 'node:assert/strict';
+import { readFile } from 'node:fs/promises';
+import { JSDOM } from 'jsdom';
+import { createServer } from 'vite';
+
+const dom = new JSDOM('<!doctype html><div id="root"></div>', { url: 'http://localhost/renamed-project/', pretendToBeVisual: true });
+const w = dom.window;
+globalThis.window = w;
+globalThis.document = w.document;
+globalThis.HTMLElement = w.HTMLElement;
+globalThis.localStorage = w.localStorage;
+globalThis.IS_REACT_ACT_ENVIRONMENT = true;
+w.scrollTo = () => {};
+w.matchMedia = () => ({ matches: true });
+globalThis.IntersectionObserver = class { observe() {} disconnect() {} };
+globalThis.ResizeObserver = class { observe() {} disconnect() {} };
+globalThis.fetch = async (src) => {
+  const pathname = new URL(src, w.location.href).pathname.replace('/renamed-project/', '');
+  return new Response(await readFile(`public/${pathname}`));
+};
+const server = await createServer({ server: { middlewareMode: true, hmr: false, watch: null }, appType: 'custom' });
+const { act } = await import('react');
+const { createRoot } = await import('react-dom/client');
+const { createElement } = await import('react');
+const { default: App } = await server.ssrLoadModule('/src/App.jsx');
+let root = createRoot(w.document.getElementById('root'));
+const click = async (element) => { assert.ok(element, 'Missing control'); await act(async () => element.click()); };
+try {
+  await act(async () => root.render(createElement(App)));
+  assert.ok(w.document.querySelectorAll('.repo-file-card').length > 50, 'Cards were not rendered');
+  assert.equal(w.document.querySelector('.repo-table'), null, 'Old table is still present');
+  assert.equal(w.document.getElementById('repo-sidebar').hidden, false);
+  await click(w.document.querySelector('[aria-label="Cerrar menú lateral"]'));
+  assert.equal(w.document.getElementById('repo-sidebar').hidden, true);
+  assert.equal(w.localStorage.getItem('natys-sidebar-open'), '0');
+  await act(async () => root.unmount());
+  root = createRoot(w.document.getElementById('root'));
+  await act(async () => root.render(createElement(App)));
+  assert.equal(w.document.getElementById('repo-sidebar').hidden, true, 'Sidebar preference was not restored');
+  await click(w.document.querySelector('[aria-label="Abrir menú lateral"]'));
+  assert.equal(w.document.getElementById('repo-sidebar').hidden, false);
+
+  const format = w.document.querySelector('[aria-label="Filtrar por formato"]');
+  await act(async () => { format.value = 'DRAWIO'; format.dispatchEvent(new w.Event('change', { bubbles: true })); });
+  const diagrams = w.document.querySelectorAll('.repo-file-card');
+  assert.ok(diagrams.length >= 11, 'Draw.io filter missing diagrams');
+  assert.ok([...diagrams].every((card) => card.querySelector('.repo-format').textContent === 'DRAWIO'));
+  await click(diagrams[0].querySelector('.repo-card-preview'));
+  assert.ok(w.document.querySelector('.modal .drawio-frame'), 'Diagram did not open inside modal');
+  assert.equal(w.document.querySelector('.modal a[target="_blank"]'), null, 'Viewer links to an external page');
+  await click(w.document.querySelector('[aria-label="Cerrar"]'));
+  assert.equal(w.document.querySelector('.modal'), null);
+
+  await act(async () => { format.value = 'RAR'; format.dispatchEvent(new w.Event('change', { bubbles: true })); });
+  await click(w.document.querySelector('.repo-card-preview'));
+  assert.ok(w.document.querySelector('.archive-view li button'), 'Archive contents not visible');
+  await click(w.document.querySelector('.archive-view li button'));
+  assert.ok(w.document.querySelector('.modal .drawio-frame'), 'Archived diagram cannot be previewed');
+  await click([...w.document.querySelectorAll('.modal button')].find((button) => button.textContent === 'Volver al paquete'));
+  assert.ok(w.document.querySelector('.archive-view'), 'Archive back navigation failed');
+  await click(w.document.querySelector('[aria-label="Cerrar"]'));
+  await act(async () => root.unmount());
+  w.localStorage.clear();
+  w.matchMedia = (query) => ({ matches: query.includes('max-width'), addEventListener() {}, removeEventListener() {} });
+  root = createRoot(w.document.getElementById('root'));
+  await act(async () => root.render(createElement(App)));
+  assert.equal(w.document.getElementById('repo-sidebar').hidden, true, 'Mobile menu should start closed');
+  await click(w.document.querySelector('[aria-label="Abrir menú lateral"]'));
+  assert.equal(w.document.body.style.overflow, 'hidden', 'Mobile drawer must lock background scroll');
+  await click([...w.document.querySelectorAll('.repo-sidebar nav button')].find((button) => button.textContent.startsWith('Base de datos')));
+  await act(async () => { await new Promise((resolve) => w.setTimeout(resolve, 20)); });
+  assert.equal(w.document.getElementById('repo-sidebar').hidden, true, 'Mobile drawer should close after choosing a folder');
+  assert.equal(w.document.body.style.overflow, '');
+  assert.match(w.document.querySelector('h1').textContent, /Base de datos/);
+  console.log('OK: galería de tarjetas, filtro Draw.io, visor interno, archivos dentro de RAR y menú plegable con preferencia persistente.');
+  console.log('OK: menú móvil cerrado al inicio, bloqueo de desplazamiento y cierre al elegir una carpeta.');
+} finally {
+  await act(async () => root.unmount());
+  await server.close();
+  dom.window.close();
+}

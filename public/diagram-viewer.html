@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'none'">
+  <title>Vista previa del diagrama</title>
+  <link rel="stylesheet" href="diagram-viewer.css">
+  <script src="diagram-viewer-config.js"></script>
+  <script src="vendor/drawio/viewer-static.min.js" defer></script>
+  <script src="diagram-viewer.js" defer></script>
+</head>
+<body>
+  <header id="controls" hidden>
+    <label id="pages-label" hidden>Página <select id="pages" aria-label="Página del diagrama"></select></label>
+    <div class="zoom"><button id="out" aria-label="Alejar diagrama">−</button><button id="fit">Ajustar</button><button id="in" aria-label="Acercar diagrama">+</button></div>
+    <span id="scale" aria-live="polite"></span>
+    <small>Arrastra para moverte</small>
+  </header>
+  <div id="graph" role="img" aria-label="Diagrama Draw.io"></div>
+  <p id="status" role="status">Cargando diagrama…</p>
+</body>
+</html>

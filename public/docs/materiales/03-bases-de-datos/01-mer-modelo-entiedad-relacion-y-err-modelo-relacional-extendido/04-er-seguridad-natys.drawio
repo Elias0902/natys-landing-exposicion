@@ -1,0 +1,127 @@
+<mxfile host="Electron" agent="drawio">
+  <diagram id="er_seguridad" name="ER - BASE DE DATOS SEGURIDAD">
+    <mxGraphModel dx="748" dy="2667" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="3000" pageHeight="2200" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="titulo" parent="1" style="text;html=1;strokeColor=none;fillColor=none;align=center;fontSize=28;fontStyle=1;" value="ER - BASE DE DATOS SEGURIDAD" vertex="1">
+          <mxGeometry height="50" width="800" x="400" y="-120" as="geometry" />
+        </mxCell>
+        <mxCell id="t_modulos" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="modulos" vertex="1">
+          <mxGeometry height="163" width="250" as="geometry" />
+        </mxCell>
+        <mxCell id="t_modulos_cols" parent="t_modulos" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;" value="&lt;b&gt;&lt;u&gt;PK id_modulo&lt;/u&gt;&lt;/b&gt;&#xa;   nombre_modulo&#xa;   descripcion&#xa;   status&#xa;   tipo_modulo&#xa;   ruta&#xa;   icono" vertex="1">
+          <mxGeometry height="133" width="250" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="t_roles" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="roles" vertex="1">
+          <mxGeometry height="106" width="250" y="142" as="geometry" />
+        </mxCell>
+        <mxCell id="t_roles_cols" parent="t_roles" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;" value="&lt;b&gt;&lt;u&gt;PK id_rol&lt;/u&gt;&lt;/b&gt;&#xa;   nombre_rol&#xa;   descripcion&#xa;   status" vertex="1">
+          <mxGeometry height="76" width="250" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="t_permisos" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="permisos" vertex="1">
+          <mxGeometry height="68" width="250" y="318" as="geometry" />
+        </mxCell>
+        <mxCell id="t_permisos_cols" parent="t_permisos" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;" value="&lt;b&gt;&lt;u&gt;PK id_permisos&lt;/u&gt;&lt;/b&gt;&#xa;   nombre_permiso" vertex="1">
+          <mxGeometry height="38" width="250" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="t_accesos" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="accesos" vertex="1">
+          <mxGeometry height="125" width="250" x="400" as="geometry" />
+        </mxCell>
+        <mxCell id="t_accesos_cols" parent="t_accesos" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;" value="&lt;b&gt;&lt;u&gt;PK id_accesos&lt;/u&gt;&lt;/b&gt;&#xa;FK id_rol&#xa;FK id_modulo&#xa;FK id_permiso&#xa;   status" vertex="1">
+          <mxGeometry height="95" width="250" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="t_usuarios" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="usuarios" vertex="1">
+          <mxGeometry height="258" width="250" x="400" y="193" as="geometry" />
+        </mxCell>
+        <mxCell id="t_usuarios_cols" parent="t_usuarios" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;" value="&lt;b&gt;&lt;u&gt;PK id_usuario&lt;/u&gt;&lt;/b&gt;&#xa;FK id_cliente (BD negocio)&#xa;   nombre_usuario&#xa;   password_usuario&#xa;   email_usuario&#xa;   email_verificado&#xa;FK id_rol_usuario&#xa;   avatar&#xa;   intentos_fallidos&#xa;   ultimo_acceso&#xa;   fecha_registro&#xa;   status" vertex="1">
+          <mxGeometry height="228" width="250" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="t_bitacoras" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="bitacoras" vertex="1">
+          <mxGeometry height="144" width="250" x="800" as="geometry" />
+        </mxCell>
+        <mxCell id="t_bitacoras_cols" parent="t_bitacoras" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;" value="&lt;b&gt;&lt;u&gt;PK id_bitacora&lt;/u&gt;&lt;/b&gt;&#xa;FK id_usuario&#xa;   modulo&#xa;   accion&#xa;   descripcion&#xa;   fecha_bitacora" vertex="1">
+          <mxGeometry height="114" width="250" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="t_notificaciones" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="notificaciones" vertex="1">
+          <mxGeometry height="217" width="250" x="800" y="210" as="geometry" />
+        </mxCell>
+        <mxCell id="t_notificaciones_cols" parent="t_notificaciones" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;" value="&lt;b&gt;&lt;u&gt;PK id_notificaciones&lt;/u&gt;&lt;/b&gt;&#xa;FK id_usuario&#xa;   titulo&#xa;   descripcion_notificacion&#xa;   enlace&#xa;   fecha_notificacion&#xa;   leido&#xa;   tipo&#xa;   alcance&#xa;   status" vertex="1">
+          <mxGeometry height="187" width="250" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="t_tokens" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="tokens" vertex="1">
+          <mxGeometry height="163" width="250" x="800" y="500" as="geometry" />
+        </mxCell>
+        <mxCell id="t_tokens_cols" parent="t_tokens" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;" value="&lt;b&gt;&lt;u&gt;PK id_tokens&lt;/u&gt;&lt;/b&gt;&#xa;FK id_usuario&#xa;   codigo&#xa;   token&#xa;   expira&#xa;   usado&#xa;   fecha_creacion" vertex="1">
+          <mxGeometry height="133" width="250" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="t_respaldos" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="respaldos" vertex="1">
+          <mxGeometry height="220" width="250" x="1200" as="geometry" />
+        </mxCell>
+        <mxCell id="t_respaldos_cols" parent="t_respaldos" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;" value="&lt;b&gt;&lt;u&gt;PK id_respaldo&lt;/u&gt;&lt;/b&gt;&#xa;   nombre_archivo&#xa;   tipo_respaldo&#xa;   ruta_almacenamiento&#xa;   peso_kb&#xa;   total_registros&#xa;FK id_usuario&#xa;   fecha_creacion&#xa;   tipo_bd&#xa;   formato" vertex="1">
+          <mxGeometry height="190" width="250" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="t_respaldo_programado" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="respaldo_programado" vertex="1">
+          <mxGeometry height="201" width="250" x="1200" y="300" as="geometry" />
+        </mxCell>
+        <mxCell id="t_respaldo_programado_cols" parent="t_respaldo_programado" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;" value="&lt;b&gt;&lt;u&gt;PK id_programado&lt;/u&gt;&lt;/b&gt;&#xa;   frecuencia&#xa;   base_datos&#xa;   formato&#xa;   activo&#xa;   ultima_ejecucion&#xa;   proxima_ejecucion&#xa;FK id_usuario&#xa;   fecha_creacion" vertex="1">
+          <mxGeometry height="171" width="250" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="t_conversaciones_ia" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="conversaciones_ia" vertex="1">
+          <mxGeometry height="87" width="250" x="1600" as="geometry" />
+        </mxCell>
+        <mxCell id="t_conversaciones_ia_cols" parent="t_conversaciones_ia" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;" value="&lt;b&gt;&lt;u&gt;PK id_conversacion&lt;/u&gt;&lt;/b&gt;&#xa;FK id_usuario&#xa;   fecha_inicio" vertex="1">
+          <mxGeometry height="57" width="250" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="t_mensajes_ia" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="mensajes_ia" vertex="1">
+          <mxGeometry height="144" width="250" x="1600" y="150" as="geometry" />
+        </mxCell>
+        <mxCell id="t_mensajes_ia_cols" parent="t_mensajes_ia" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;" value="&lt;b&gt;&lt;u&gt;PK id_mensaje&lt;/u&gt;&lt;/b&gt;&#xa;FK id_conversacion&#xa;   contexto&#xa;   solicitud&#xa;   respuesta&#xa;   fecha_envio" vertex="1">
+          <mxGeometry height="114" width="250" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_0" edge="1" parent="1" source="t_roles" style="edgeStyle=entityRelationEdgeStyle;fontSize=12;html=1;rounded=0;startArrow=ERone;startFill=0;startSize=12;endArrow=ERmany;endFill=0;endSize=12;strokeColor=#000000;" target="t_accesos" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_1" edge="1" parent="1" source="t_modulos" style="edgeStyle=entityRelationEdgeStyle;fontSize=12;html=1;rounded=0;startArrow=ERone;startFill=0;startSize=12;endArrow=ERmany;endFill=0;endSize=12;strokeColor=#000000;" target="t_accesos" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_2" edge="1" parent="1" source="t_permisos" style="edgeStyle=entityRelationEdgeStyle;fontSize=12;html=1;rounded=0;startArrow=ERone;startFill=0;startSize=12;endArrow=ERmany;endFill=0;endSize=12;strokeColor=#000000;" target="t_accesos" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_3" edge="1" parent="1" source="t_roles" style="edgeStyle=entityRelationEdgeStyle;fontSize=12;html=1;rounded=0;startArrow=ERone;startFill=0;startSize=12;endArrow=ERmany;endFill=0;endSize=12;strokeColor=#000000;" target="t_usuarios" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_4" edge="1" parent="1" source="t_usuarios" style="edgeStyle=entityRelationEdgeStyle;fontSize=12;html=1;rounded=0;startArrow=ERone;startFill=0;startSize=12;endArrow=ERmany;endFill=0;endSize=12;strokeColor=#000000;" target="t_bitacoras" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_5" edge="1" parent="1" source="t_usuarios" style="edgeStyle=entityRelationEdgeStyle;fontSize=12;html=1;rounded=0;startArrow=ERone;startFill=0;startSize=12;endArrow=ERmany;endFill=0;endSize=12;strokeColor=#000000;" target="t_notificaciones" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_6" edge="1" parent="1" source="t_usuarios" style="edgeStyle=entityRelationEdgeStyle;fontSize=12;html=1;rounded=0;startArrow=ERone;startFill=0;startSize=12;endArrow=ERmany;endFill=0;endSize=12;strokeColor=#000000;" target="t_tokens" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_7" edge="1" parent="1" source="t_usuarios" style="edgeStyle=entityRelationEdgeStyle;fontSize=12;html=1;rounded=0;startArrow=ERone;startFill=0;startSize=12;endArrow=ERmany;endFill=0;endSize=12;strokeColor=#000000;" target="t_respaldos" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_8" edge="1" parent="1" source="t_usuarios" style="edgeStyle=entityRelationEdgeStyle;fontSize=12;html=1;rounded=0;startArrow=ERone;startFill=0;startSize=12;endArrow=ERmany;endFill=0;endSize=12;strokeColor=#000000;" target="t_respaldo_programado" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_9" edge="1" parent="1" source="t_usuarios" style="edgeStyle=entityRelationEdgeStyle;fontSize=12;html=1;rounded=0;startArrow=ERone;startFill=0;startSize=12;endArrow=ERmany;endFill=0;endSize=12;strokeColor=#000000;" target="t_conversaciones_ia" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_10" edge="1" parent="1" source="t_conversaciones_ia" style="edgeStyle=entityRelationEdgeStyle;fontSize=12;html=1;rounded=0;startArrow=ERone;startFill=0;startSize=12;endArrow=ERmany;endFill=0;endSize=12;strokeColor=#000000;" target="t_mensajes_ia" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="t_permisos_usuario" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;fillColor=#dae8fc;strokeColor=#6c8ebf;" value="permisos_usuario" vertex="1">
+          <mxGeometry height="125" width="250" y="410" as="geometry" />
+        </mxCell>
+        <mxCell id="t_permisos_usuario_cols" parent="t_permisos_usuario" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;" value="&lt;b&gt;&lt;u&gt;PK id_permiso_usuario&lt;/u&gt;&lt;/b&gt;&#xa;FK id_usuario&#xa;FK id_modulo&#xa;FK id_permiso&#xa;   status" vertex="1">
+          <mxGeometry height="95" width="250" y="30" as="geometry" />
+        </mxCell>
+        <mxCell id="rel_11" edge="1" parent="1" source="t_usuarios" style="edgeStyle=entityRelationEdgeStyle;fontSize=12;html=1;rounded=0;startArrow=ERone;startFill=0;startSize=12;endArrow=ERmany;endFill=0;endSize=12;strokeColor=#000000;" target="t_permisos_usuario" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

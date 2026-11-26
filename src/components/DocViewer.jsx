@@ -1,20 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 import { asset } from '../data/content';
-
-// pdf.js se carga desde CDN solo al abrir un PDF (sin npm install)
-const PDFJS = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/legacy/build/pdf.min.mjs';
-const PDFJS_WORKER = 'https://cdn.jsdelivr.net/npm/pdfjs-dist@4.10.38/legacy/build/pdf.worker.min.mjs';
+import { loadPdfjs, pdfSource } from '../lib/pdf';
+import { previewDocument } from '../lib/filePreview';
+import DrawioView from './DrawioView';
+import archiveContents from '../data/archiveContents.json';
 
 const ZOOMS = [1, 1.5, 2];
-
-let pdfjsPromise;
-function loadPdfjs() {
-  pdfjsPromise ??= import(/* @vite-ignore */ PDFJS).then((lib) => {
-    lib.GlobalWorkerOptions.workerSrc = PDFJS_WORKER;
-    return lib;
-  });
-  return pdfjsPromise;
-}
 
 // Una página: reserva su alto y se dibuja solo cuando está cerca de la pantalla
 function PdfPage({ pdf, num, ratio, width, root }) {
@@ -82,7 +73,7 @@ function PdfView({ src, zoom, scroller, onPages, onError }) {
     let task;
     loadPdfjs()
       .then((lib) => {
-        task = lib.getDocument({ url: src });
+        task = lib.getDocument(pdfSource(src));
         return task.promise;
       })
       .then(async (d) => {
@@ -117,7 +108,16 @@ function PdfView({ src, zoom, scroller, onPages, onError }) {
 
 function DocxView({ src, zoom }) {
   const host = useRef(null);
+  const stage = useRef(null);
+  const [width, setWidth] = useState(816);
+  const [pageWidth, setPageWidth] = useState(816);
   const [error, setError] = useState(false);
+
+  useEffect(() => {
+    const observer = new ResizeObserver(() => setWidth(stage.current?.clientWidth || 816));
+    observer.observe(stage.current);
+    return () => observer.disconnect();
+  }, []);
 
   useEffect(() => {
     let alive = true;
@@ -134,6 +134,7 @@ function DocxView({ src, zoom }) {
         ignoreWidth: false,
         ignoreHeight: false,
       });
+      if (alive) setPageWidth(host.current?.querySelector('section.docx')?.offsetWidth || 816);
     }).catch(() => alive && setError(true));
     return () => { alive = false; };
   }, [src]);
@@ -146,10 +147,36 @@ function DocxView({ src, zoom }) {
     );
   }
 
-  return <div ref={host} className="docx-view" style={{ width: `${zoom * 100}%` }} />;
+  return <div ref={stage} className="docx-stage"><div ref={host} className="docx-view" style={{ zoom: zoom * Math.min(1, Math.max(0.1, (width - 24) / pageWidth)) }} /></div>;
+}
+
+function TextView({ src }) {
+  const [text, setText] = useState('Cargando archivo…');
+  useEffect(() => {
+    const controller = new AbortController();
+    fetch(src, { signal: controller.signal }).then((r) => {
+      if (!r.ok) throw new Error('No se pudo cargar');
+      return r.text();
+    }).then(setText).catch((e) => {
+      if (e.name !== 'AbortError') setText('No se pudo cargar la vista previa. Puedes descargar el original.');
+    });
+    return () => controller.abort();
+  }, [src]);
+  return <pre className="pv__source">{text}</pre>;
+}
+
+function ArchiveView({ doc, onOpen }) {
+  const entries = archiveContents[doc.file] || [];
+  return <div className="archive-view"><h2>Contenido de {doc.title}</h2><p>{entries.length} archivos · Selecciona uno para previsualizarlo aquí.</p><ul>{entries.map((entry) => <li key={entry.original}><button onClick={() => onOpen(previewDocument(entry))}><span>{entry.title}</span><small>{entry.original}</small><b>{entry.format}</b></button></li>)}</ul></div>;
 }
 
 export default function DocViewer({ doc, onClose }) {
+  const [stack, setStack] = useState([doc]);
+  const currentDoc = stack[stack.length - 1];
+  return <ViewerContent key={currentDoc.file} doc={currentDoc} onClose={onClose} onBack={stack.length > 1 ? () => setStack((list) => list.slice(0, -1)) : null} onOpen={(next) => setStack((list) => [...list, next])} />;
+}
+
+function ViewerContent({ doc, onClose, onBack, onOpen }) {
   const scroller = useRef(null);
   const [zoom, setZoom] = useState(0);
   const [pages, setPages] = useState(0);
@@ -203,25 +230,33 @@ export default function DocViewer({ doc, onClose }) {
     );
   } else if (isDocx) {
     body = <DocxView src={asset(doc.file)} zoom={z} />;
+  } else if (doc.type === 'text') {
+    body = <TextView src={asset(doc.file)} />;
+  } else if (doc.type === 'drawio') {
+    body = <DrawioView src={asset(doc.file)} title={doc.title} onClose={onClose} />;
+  } else if (doc.type === 'archive') {
+    body = <ArchiveView doc={doc} onOpen={onOpen} />;
+  } else if (doc.type === 'download') {
+    body = <div className="pv__download"><h2>{doc.title}</h2><p>No hay vista previa para este formato.</p><a className="btn" href={download} download>Descargar {doc.format}</a></div>;
   } else {
     body = <img className="pv__img" src={asset(doc.file)} alt={doc.title} style={{ width: `${z * 100}%` }} />;
   }
 
   return (
-    <div className="modal" onClick={onClose}>
-      <div className="modal__box" onClick={(e) => e.stopPropagation()}>
+    <div className="modal" onClick={onClose} role="dialog" aria-modal="true" aria-label={doc.title}>
+      <div className={`modal__box ${doc.type === 'drawio' ? 'modal__box--diagram' : ''}`} onClick={(e) => e.stopPropagation()}>
         <div className="modal__head">
           <b className="modal__title">{doc.title}</b>
           <div className="modal__tools">
+            {onBack && <button className="btn btn--sm btn--ghost" onClick={onBack}>Volver al paquete</button>}
             {pages > 0 && !fallback && <span className="pv__count">{current} / {pages}</span>}
-            {!fallback && (
+            {!fallback && ['pdf', 'docx', 'image'].includes(doc.type) && (
               <span className="pv__zoom">
                 <button onClick={() => setZoom(Math.max(0, zoom - 1))} disabled={zoom === 0} aria-label="Alejar">−</button>
                 <button onClick={() => setZoom(0)} title="Ajustar al ancho">{Math.round(z * 100)}%</button>
                 <button onClick={() => setZoom(Math.min(ZOOMS.length - 1, zoom + 1))} disabled={zoom === ZOOMS.length - 1} aria-label="Acercar">+</button>
               </span>
             )}
-            <a className="btn btn--sm btn--ghost pv__open" href={asset(doc.file)} target="_blank" rel="noreferrer">Abrir</a>
             <a className="btn btn--sm" href={download} download>Descargar</a>
             <button className="close" onClick={onClose} aria-label="Cerrar">✕</button>
           </div>

@@ -123,7 +123,7 @@ function MergeButton() {
 }
 
 // Página aparte (#/pruebas): un contenedor por módulo con su informe de pruebas
-function TestsPage({ onOpen, filtroInicial }) {
+export function TestsPage({ onOpen, filtroInicial }) {
   const [quien, setQuien] = useState(() => (
     integrantes.some(({ id }) => id === filtroInicial) ? filtroInicial : 'todos'
   ));

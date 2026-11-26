@@ -1,298 +1,128 @@
-import { useEffect, useState } from 'react';
-import Dashboard from './components/Dashboard';
-import TestsPage from './components/TestsSection';
+import { lazy, Suspense, useEffect, useMemo, useState } from 'react';
 import DocViewer from './components/DocViewer';
-import SimulacionPrueba from './components/SimulacionPrueba';
-import { LoginModal, yaDesbloqueado } from './components/AccesoPrivado';
-import { asset, documents, event, guide } from './data/content';
-import { scenarios } from './data/metrics';
+import { asset } from './data/content';
+import { integrantes, modulos } from './data/pruebas';
+import materials from './data/materials.json';
+import FileThumbnail from './components/FileThumbnail';
+import { previewDocument } from './lib/filePreview';
+import './repository.css';
 
-// Documentos que solo se ven con login (el resto queda público)
-const PRIVADOS = new Set(['formulario', 'asignaciones', 'guia', 'punto1', 'informe']);
-
-function Navbar({ onSimular, onLogin }) {
-  const [mobile, setMobile] = useState(false);
-
-  return (
-    <header className="nav">
-      <div className="nav__inner">
-        <a href="#inicio" className="brand">
-          <span className="brand__logo">N</span>
-          <span>
-            Natys <small>· {event.team}</small>
-          </span>
-        </a>
-        <button className="nav__burger" onClick={() => setMobile(!mobile)} aria-label="Menú">
-          ☰
-        </button>
-        <nav className={`nav__links ${mobile ? 'is-open' : ''}`}>
-          <a href="#inicio" onClick={() => setMobile(false)}>Inicio</a>
-          <a href="#/pruebas" onClick={() => setMobile(false)}>Pruebas</a>
-          <a href="#/ismael" onClick={() => setMobile(false)}>Ismael</a>
-          <a href="#documentos" onClick={() => setMobile(false)}>Documentos</a>
-          <button
-            className="btn btn--sm btn--ghost"
-            onClick={() => {
-              setMobile(false);
-              onSimular();
-            }}
-          >
-            ▶ Simular prueba
-          </button>
-          <button
-            className="btn btn--sm btn--ghost"
-            onClick={() => {
-              setMobile(false);
-              onLogin();
-            }}
-          >
-            Login
-          </button>
-          <a className="btn btn--sm" href={event.formUrl} target="_blank" rel="noreferrer">
-            Evaluación
-          </a>
-        </nav>
-      </div>
-    </header>
-  );
+const Legacy = lazy(() => import('./LegacyPresentation'));
+const Tests = lazy(() => import('./components/TestsSection').then((module) => ({ default: module.TestsPage })));
+const folders = [
+  { id: 'todos', title: 'Todos los archivos', description: 'El proyecto completo en un solo lugar.', icon: 'library' },
+  { id: 'pruebas', title: 'Pruebas', description: 'Plan maestro, trazabilidad e informes por módulo.', icon: 'check' },
+  { id: 'ingenieria', title: 'Ingeniería de software', description: 'Requisitos, casos de uso, clases y navegación.', icon: 'layers' },
+  { id: 'base-datos', title: 'Base de datos', description: 'Modelos, diccionario, DDL y scripts SQL.', icon: 'database' },
+  { id: 'programacion', title: 'Programación de pruebas', description: 'Informes técnicos y evidencias de automatización.', icon: 'code' },
+];
+const people = Object.fromEntries(integrantes.map((p) => [p.id, p.nombre]));
+const reports = modulos.flatMap((m) => ['pdf', 'docx'].filter((type) => m[type]).map((type) => ({
+  id: `informe-${m.id}-${type}`, title: `Informe de pruebas · ${m.nombre}`, category: 'pruebas', group: 'Informes por módulo',
+  owner: people[m.responsable], format: type.toUpperCase(), file: m[type], original: m[type], module: m.id, thumb: m.thumb,
+})));
+const evidence = [
+  { id: 'codigo-unitaria', title: 'Prueba unitaria · Promociones', file: 'img/email-promociones-unitaria.jpg', group: 'PHPUnit · evidencia de código' },
+  { id: 'codigo-pipeline', title: 'Pipeline de pruebas · Promociones', file: 'img/email-promociones-pipeline.jpg', group: 'Pipeline · evidencia de código' },
+].map((f) => ({ ...f, category: 'programacion', format: 'JPG', owner: 'Ismael Torres' }));
+const files = [...materials, ...reports, ...evidence];
+const matches = (file, folder) => folder === 'todos' || file.category === folder || (folder === 'programacion' && Boolean(file.module));
+const normal = (s) => s.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+const sizeLabel = (s) => s >= 1048576 ? `${(s / 1048576).toFixed(1)} MB` : `${Math.max(1, Math.round(s / 1024))} KB`;
+function Icon({ name }) {
+  const paths = {
+    library: <><rect x="3" y="3" width="7" height="7" rx="1" /><rect x="14" y="3" width="7" height="7" rx="1" /><rect x="3" y="14" width="7" height="7" rx="1" /><rect x="14" y="14" width="7" height="7" rx="1" /></>,
+    folder: <path d="M3 7h6l2 2h10v11H3z M3 7V4h6l2 3" />,
+    check: <><path d="m7 12 3 3 7-7" /><rect x="3" y="3" width="18" height="18" rx="4" /></>,
+    layers: <path d="m12 3 10 5-10 5L2 8z M2 12l10 5 10-5 M2 17l10 5 10-5" />,
+    database: <><ellipse cx="12" cy="5" rx="9" ry="3" /><path d="M3 5v14c0 4 18 4 18 0V5 M3 12c0 4 18 4 18 0" /></>,
+    code: <path d="m8 6-6 6 6 6 m8-12 6 6-6 6 m-3-16-2 20" />,
+    search: <><circle cx="10" cy="10" r="7" /><path d="m15 15 6 6" /></>,
+    download: <path d="M12 3v12 m-5-5 5 5 5-5 M3 16v5h18v-5" />,
+    file: <path d="M5 2h9l5 5v15H5z M14 2v6h5 M8 13h8 M8 17h6" />,
+    menu: <path d="M4 6h16 M4 12h16 M4 18h16" />,
+  };
+  return <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">{paths[name] || paths.file}</svg>;
 }
-
-function Hero() {
-  const publicos = documents.filter((d) => !PRIVADOS.has(d.id)).length;
-  return (
-    <section id="inicio" className="hero">
-      <div className="container hero__grid">
-        <div>
-          <span className="badge">{event.section} · {event.team}</span>
-          <h1>{event.title}</h1>
-          <p className="lead">
-            Caso práctico: <strong>{event.project}</strong>. Software probado por máquinas: más
-            rápido, más confiable y sin errores humanos.
-          </p>
-          <div className="hero__actions">
-            <a className="btn btn--ghost" href="#documentos">Documentos</a>
-          </div>
-          <p className="muted">Exposición · {event.date}</p>
-        </div>
-        <div className="hero__qr card">
-          <img src={asset('img/qr-evaluacion.png')} alt="QR de la evaluación" />
-          <a href={event.formUrl} target="_blank" rel="noreferrer">{event.formUrl.replace('https://', '')}</a>
-        </div>
-      </div>
-      <div className="container stats">
-        <div className="stat"><b>5</b><span>Integrantes</span></div>
-        <div className="stat"><b>{publicos}</b><span>Documentos</span></div>
-        <div className="stat"><b>20</b><span>Preguntas</span></div>
-        <div className="stat"><b>{scenarios.length}</b><span>Dashboards</span></div>
-      </div>
-    </section>
-  );
-}
-
-function GuideSection() {
-  const [active, setActive] = useState(1);
-  return (
-    <section id="guia" className="section section--alt">
-      <div className="container">
-        <SectionTitle kicker="Guion" title="Guía de la exposición" text="Orden, responsable y lo que se hablará en cada parte." />
-        <div className="guide">
-          <ol className="guide__list">
-            {guide.map((g) => (
-              <li key={g.order}>
-                <button className={`step ${active === g.order ? 'is-active' : ''}`} onClick={() => setActive(g.order)}>
-                  <span className="step__num">{g.order}</span>
-                  <span>
-                    <b>{g.name}</b>
-                    <small>{g.topic}</small>
-                  </span>
-                </button>
-              </li>
-            ))}
-          </ol>
-          {guide.filter((g) => g.order === active).map((g) => (
-            <article key={g.order} className="card guide__detail">
-              <span className="badge">Parte {g.order} · {g.role}</span>
-              <h3>{g.topic}</h3>
-              <p className="muted">Expone: {g.name}</p>
-              <ul className="points">
-                {g.points.map((p) => <li key={p}>{p}</li>)}
-              </ul>
-              {g.examples?.length > 0 && (
-                <div className="examples">
-                  <h4>Ejemplos en el sistema Naty's</h4>
-                  <ul>
-                    {g.examples.map((e) => <li key={e}>{e}</li>)}
-                  </ul>
-                </div>
-              )}
-              <a className="btn btn--sm btn--ghost guide__tests" href={`#/pruebas/${g.integrante}`}>
-                Ver pruebas de {g.name.split(' ')[0]}
-              </a>
-            </article>
-          ))}
-        </div>
-
-      </div>
-    </section>
-  );
-}
-
-// Documentos: los públicos siempre; los privados aparecen al hacer login
-function DocumentsSection({ onOpen, ok }) {
-  const visibles = documents.filter((d) => ok || !PRIVADOS.has(d.id));
-  const categories = ['Todos', ...new Set(visibles.map((d) => d.category))];
-  const [filter, setFilter] = useState('Todos');
-  const list = visibles.filter((d) => filter === 'Todos' || d.category === filter);
-  return (
-    <section id="documentos" className="section">
-      <div className="container">
-        <SectionTitle kicker="Material" title="Documentos" text="Haz clic en un documento para verlo aquí mismo." />
-        <div className="tabs">
-          {categories.map((c) => (
-            <button key={c} className={`tab ${c === filter ? 'is-active' : ''}`} onClick={() => setFilter(c)}>{c}</button>
-          ))}
-        </div>
-        <div className="docs">
-          {list.map((d) => (
-            <button key={d.id} className={`doc card ${d.file ? '' : 'is-pending'}`} onClick={() => d.file && onOpen(d)}>
-              <div className="doc__thumb">
-                {d.thumb ? <img src={asset(d.thumb)} alt={d.title} loading="lazy" /> : <span className="doc__icon">PDF</span>}
-              </div>
-              <div className="doc__body">
-                <b>{d.title}</b>
-                <small>{d.owner}</small>
-                <span className={`pill ${d.file ? 'pill--ok' : ''}`}>{d.file ? d.category : 'Pendiente'}</span>
-              </div>
-            </button>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function IsmaelPage() {
-  return (
-    <section className="section page" aria-labelledby="ismael-titulo">
-      <div className="container">
-        <a className="back" href="#inicio">← Volver al inicio</a>
-        <div className="stitle">
-          <h2 id="ismael-titulo">Ismael</h2>
-        </div>
-        <div className="code-gallery">
-          <figure className="code-shot card">
-            <img src={asset('img/email-promociones-unitaria.jpg')} alt="Prueba unitaria de Promociones en PHPUnit" />
-            <figcaption><b>Prueba unitaria</b><span>PromocionTest.php · acción inválida</span></figcaption>
-          </figure>
-          <figure className="code-shot card">
-            <img src={asset('img/email-promociones-pipeline.jpg')} alt="Código de PipelineTest.php para verificar la conexión y el cálculo de un pedido" />
-            <figcaption><b>Pipeline de pruebas</b><span>PipelineTest.php · conexión y cálculo de pedido</span></figcaption>
-          </figure>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-// Página del dashboard (#/dashboard): se abre desde "Ver dashboard" en la simulación
-function DashboardPage({ selected, onSelect }) {
-  return (
-    <>
-      <div className="container">
-        <a className="back" href="#inicio">← Volver al inicio</a>
-      </div>
-      <Dashboard selected={selected} onSelect={onSelect} />
-    </>
-  );
-}
-
-function SectionTitle({ kicker, title, text }) {
-  return (
-    <div className="stitle">
-      <span>{kicker}</span>
-      <h2>{title}</h2>
-      <p>{text}</p>
-    </div>
-  );
-}
-
-// Las rutas que empiezan con #/ abren páginas aparte de la landing.
-const rutaActual = (h) => {
-  if (h.startsWith('#/pruebas')) return 'pruebas';
-  if (h.startsWith('#/dashboard')) return 'dashboard';
-  if (h === '#/ismael') return 'ismael';
-  return 'inicio';
-};
-
-export default function App() {
-  const [dashboard, setDashboard] = useState(scenarios[0].id);
-  const [doc, setDoc] = useState(null);
-  const [hash, setHash] = useState(() => window.location.hash);
-  const ruta = rutaActual(hash);
-  const [simulando, setSimulando] = useState(false);
-  const [privado, setPrivado] = useState(yaDesbloqueado);
-  const [login, setLogin] = useState(false);
-
+function Library({ hash, onOpen }) {
+  const initial = hash.startsWith('#/carpeta/') ? hash.split('/')[2] : 'todos';
+  const folder = folders.some((f) => f.id === initial) ? initial : 'todos';
+  const [query, setQuery] = useState('');
+  const [format, setFormat] = useState('todos');
+  const [order, setOrder] = useState('destacados');
+  const [versions, setVersions] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(() => {
+    try {
+      const saved = localStorage.getItem('natys-sidebar-open');
+      if (saved !== null) return saved === '1';
+    } catch { /* El menú también funciona sin almacenamiento. */ }
+    return window.matchMedia('(min-width: 761px)').matches;
+  });
+  const toggleSidebar = () => setSidebarOpen((open) => {
+    try { localStorage.setItem('natys-sidebar-open', open ? '0' : '1'); } catch { /* Almacenamiento opcional. */ }
+    return !open;
+  });
   useEffect(() => {
-    const onHash = () => {
-      const nextHash = window.location.hash;
-      const next = rutaActual(nextHash);
-      setHash(nextHash);
-      // Relee la sesión por si se entró desde la página de Pruebas
-      setPrivado(yaDesbloqueado());
-      // Al volver a la landing, baja a la sección del enlace (#guia, #documentos...)
-      const id = nextHash.slice(1);
-      requestAnimationFrame(() => {
-        const el = next === 'inicio' && id && document.getElementById(id);
-        if (el) el.scrollIntoView();
-        else window.scrollTo(0, 0);
-      });
-    };
-    window.addEventListener('hashchange', onHash);
-    return () => window.removeEventListener('hashchange', onHash);
-  }, []);
-
-  return (
-    <>
-      <Navbar onSimular={() => setSimulando(true)} onLogin={() => setLogin(true)} />
-      <main>
-        {ruta === 'pruebas' && <TestsPage key={hash} onOpen={setDoc} filtroInicial={hash.split('/')[2]} />}
-        {ruta === 'dashboard' && <DashboardPage selected={dashboard} onSelect={setDashboard} />}
-        {ruta === 'ismael' && <IsmaelPage />}
-        {ruta === 'inicio' && (
-          <>
-            <Hero />
-            {privado && <GuideSection />}
-            <DocumentsSection onOpen={setDoc} ok={privado} />
-          </>
-        )}
+    const mobile = window.matchMedia('(max-width: 760px)');
+    const previous = document.body.style.overflow;
+    const update = () => { document.body.style.overflow = sidebarOpen && mobile.matches ? 'hidden' : previous; };
+    update();
+    mobile.addEventListener?.('change', update);
+    return () => { document.body.style.overflow = previous; mobile.removeEventListener?.('change', update); };
+  }, [sidebarOpen]);
+  const visible = (f) => versions || f.version !== 'Carpeta 03 · versión alternativa';
+  const formats = [...new Set(files.filter((f) => matches(f, folder)).map((f) => f.format))].sort();
+  const list = useMemo(() => {
+    const result = files.filter((f) => matches(f, folder) && (format === 'todos' || f.format === format) && (versions || f.version !== 'Carpeta 03 · versión alternativa') && normal([f.title, f.group, f.owner, f.original, f.version].filter(Boolean).join(' ')).includes(normal(query)));
+    if (order === 'nombre') result.sort((a, b) => a.title.localeCompare(b.title, 'es'));
+    if (order === 'tipo') result.sort((a, b) => a.format.localeCompare(b.format) || a.title.localeCompare(b.title, 'es'));
+    return result;
+  }, [folder, query, format, order, versions]);
+  const selected = folders.find((f) => f.id === folder);
+  const choose = (id) => {
+    setFormat('todos'); setQuery('');
+    if (window.matchMedia('(max-width: 760px)').matches) {
+      setSidebarOpen(false);
+      try { localStorage.setItem('natys-sidebar-open', '0'); } catch { /* Preferencia opcional. */ }
+    }
+    window.location.hash = id === 'todos' ? '#inicio' : `#/carpeta/${id}`;
+  };
+  const preview = (f) => onOpen(previewDocument(f));
+  return <div className="repository" id="inicio">
+    <header className="repo-header"><button className="repo-menu-toggle" onClick={toggleSidebar} aria-expanded={sidebarOpen} aria-controls="repo-sidebar" aria-label={sidebarOpen ? 'Cerrar menú lateral' : 'Abrir menú lateral'} title={sidebarOpen ? 'Cerrar menú lateral' : 'Abrir menú lateral'}><Icon name="menu" /></button><a className="repo-brand" href="#inicio"><span className="repo-logo">N’</span><span>Natys<small>Repositorio del proyecto</small></span></a><div className="repo-team">IN3103 <span>/</span> Equipo 8</div><a className="repo-header-link" href="#/pruebas">Informes por módulo</a></header>
+    <div className={`repo-layout ${sidebarOpen ? '' : 'is-sidebar-closed'}`}>
+      {sidebarOpen && <button className="repo-sidebar-backdrop" onClick={toggleSidebar} aria-label="Cerrar menú lateral desde el fondo" tabIndex={-1} />}
+      <aside id="repo-sidebar" className="repo-sidebar" hidden={!sidebarOpen} aria-label="Carpetas del repositorio"><div className="repo-sidebar-mobile-head"><b>Carpetas del proyecto</b><button onClick={toggleSidebar} aria-label="Cerrar carpetas">×</button></div><span className="repo-eyebrow">ESPACIO DE TRABAJO</span><nav>{folders.map((f) => <button key={f.id} className={folder === f.id ? 'is-selected' : ''} onClick={() => choose(f.id)} aria-current={folder === f.id ? 'page' : undefined}><Icon name={f.icon} /><span>{f.title}</span><small>{files.filter((file) => matches(file, f.id) && visible(file)).length}</small></button>)}</nav><div className="repo-sidebar-note"><Icon name="folder" /><b>Materiales del equipo</b><p>Consulta los documentos y descarga sus archivos originales.</p></div><details className="repo-archive"><summary>Archivo de la exposición</summary><p>Automatización de las Pruebas y Pipelines · 13 de noviembre de 2026</p><a href="#/exposicion">Abrir exposición anterior</a><a href="#/ismael">Material de Ismael</a><a href="#/dashboard">Dashboards y simulador</a></details></aside>
+      <main className="repo-main"><div className="repo-breadcrumb">Proyecto Natys <span>/</span> {selected.title}</div><section className="repo-intro"><div><span className="repo-eyebrow">DOCUMENTACIÓN Y EVIDENCIAS</span><h1>{folder === 'todos' ? 'Todo el proyecto, organizado.' : selected.title}</h1><p>{folder === 'todos' ? 'Pruebas, ingeniería y base de datos. Los materiales de Galletas Natys, listos para consultar y presentar.' : selected.description}</p></div><div className="repo-intro-icon"><Icon name={selected.icon} /></div></section>
+        <section className="repo-folders" aria-label="Explorar por área">{folders.slice(1).map((f) => <button key={f.id} className={`repo-folder ${folder === f.id ? 'is-selected' : ''}`} onClick={() => choose(f.id)}><span className={`repo-folder-icon tone-${f.id}`}><Icon name={f.icon} /></span><b>{f.title}</b><p>{f.description}</p><small>{files.filter((file) => matches(file, f.id) && visible(file)).length} archivos</small></button>)}</section>
+        <section className="repo-files" id="documentos" aria-labelledby="files-title"><div className="repo-files-heading"><div><h2 id="files-title">{folder === 'todos' ? 'Explorar archivos' : `Archivos · ${selected.title}`}</h2><p>Previsualiza los documentos o descarga el editable.</p></div><span className="repo-count" aria-live="polite">{list.length} archivos</span></div>
+          <div className="repo-toolbar"><label className="repo-search"><Icon name="search" /><input aria-label="Buscar archivos" placeholder="Buscar un documento, módulo o integrante…" value={query} onChange={(e) => setQuery(e.target.value)} />{query && <button aria-label="Limpiar búsqueda" onClick={() => setQuery('')}>×</button>}</label><select aria-label="Filtrar por formato" value={format} onChange={(e) => setFormat(e.target.value)}><option value="todos">Todos los formatos</option>{formats.map((f) => <option key={f}>{f}</option>)}</select><select aria-label="Ordenar archivos" value={order} onChange={(e) => setOrder(e.target.value)}><option value="destacados">Orden del repositorio</option><option value="nombre">Nombre A–Z</option><option value="tipo">Tipo de archivo</option></select></div>
+          <label className="repo-versions"><input type="checkbox" checked={versions} onChange={(e) => setVersions(e.target.checked)} /> Incluir carpeta alternativa «03 - Bases de Datos»</label>
+          <ul className="repo-file-grid" aria-label="Archivos disponibles">
+            {list.map((f) => <li key={f.id} className="repo-file-card">
+              <button className="repo-card-preview" onClick={() => preview(f)} aria-label={`Previsualizar ${f.title} (${f.format})`}><FileThumbnail file={f} /></button>
+              <div className="repo-card-body">
+                <div className="repo-card-meta"><span>{folders.find((c) => c.id === f.category)?.title}</span><span className="repo-format">{f.format}</span></div>
+                <h3><button onClick={() => preview(f)}>{f.title}</button></h3>
+                <p className="repo-card-owner">{f.owner || f.version || (f.format === 'DRAWIO' ? 'Diagrama editable' : 'Archivo original')}{f.size ? ` · ${sizeLabel(f.size)}` : ''}</p>
+                <div className="repo-card-actions"><button onClick={() => preview(f)}>Previsualizar</button><a href={asset(f.file)} download aria-label={`Descargar ${f.title} (${f.format})`} title="Descargar original"><Icon name="download" /></a></div>
+              </div>
+            </li>)}
+          </ul>
+          {!list.length && <div className="repo-empty"><Icon name="search" /><h3>No se encontraron archivos</h3><p>Prueba otro nombre o cambia los filtros.</p><button onClick={() => { setQuery(''); setFormat('todos'); }}>Limpiar filtros</button></div>}
+          {folder === 'programacion' && <p className="repo-footnote">Los informes incluyen evidencias de automatización. Las capturas de código se identifican como imágenes; los scripts ejecutables se podrán incorporar cuando estén disponibles.</p>}
+        </section><footer className="repo-footer"><span>Natys · Equipo 8</span><span>Documentación del sistema · IN3103</span></footer>
       </main>
-      <footer className="footer">
-        <div className="container">
-          {event.team} · {event.section} · {event.project} · {event.date}
-        </div>
-      </footer>
-      {doc && <DocViewer doc={doc} onClose={() => setDoc(null)} />}
-      {login && (
-        <LoginModal
-          onOk={() => {
-            setPrivado(true);
-            setLogin(false);
-          }}
-          onClose={() => setLogin(false)}
-        />
-      )}
-      {simulando && (
-        <SimulacionPrueba
-          scenario={scenarios.find((x) => x.id === dashboard) ?? scenarios[0]}
-          onClose={() => setSimulando(false)}
-          onVerDashboard={(id) => {
-            setDashboard(id);
-            setSimulando(false);
-            window.location.hash = '#/dashboard';
-          }}
-        />
-      )}
-    </>
-  );
+    </div>
+  </div>;
 }
+export default function App() {
+  const [hash, setHash] = useState(() => window.location.hash);
+  const [doc, setDoc] = useState(null);
+  useEffect(() => { const update = () => { setHash(window.location.hash); setDoc(null); window.scrollTo(0, 0); }; window.addEventListener('hashchange', update); return () => window.removeEventListener('hashchange', update); }, []);
+  const legacy = ['#/exposicion', '#/ismael', '#/dashboard'].some((route) => hash.startsWith(route));
+  if (legacy) return <Suspense fallback={<p className="repo-loading">Cargando archivo…</p>}><Legacy /></Suspense>;
+  if (hash.startsWith('#/pruebas')) return <><header className="repo-header"><a href="#inicio" className="repo-header-link">Volver al repositorio</a></header><Suspense fallback={<p>Cargando informes…</p>}><Tests key={hash} onOpen={setDoc} filtroInicial={hash.split('/')[2]} /></Suspense>{doc && <DocViewer key={doc.id || doc.file} doc={doc} onClose={() => setDoc(null)} />}</>;
+  return <><Library key={initialFolder(hash)} hash={hash} onOpen={setDoc} />{doc && <DocViewer key={doc.id || doc.file} doc={doc} onClose={() => setDoc(null)} />}</>;
+}
+const initialFolder = (hash) => hash.startsWith('#/carpeta/') ? hash.split('/')[2] : 'todos';

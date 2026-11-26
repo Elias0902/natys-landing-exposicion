@@ -1,0 +1,421 @@
+<mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/29.6.6 Chrome/144.0.7559.236 Electron/40.8.4 Safari/537.36" version="29.6.6">
+  <diagram id="diagram_1" name="Diagrama de Clases - UPTAEB">
+    <mxGraphModel dx="6116" dy="6367" grid="0" gridSize="10" guides="0" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="c_conexion" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;fillColor=none;" value="Conexion" vertex="1">
+          <mxGeometry height="142" width="240" x="1100" y="600" as="geometry" />
+        </mxCell>
+        <mxCell id="c_conexion_attr" parent="c_conexion" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;" value="# connNegocio&#xa;# connSeguridad" vertex="1">
+          <mxGeometry height="36" width="240" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="c_conexion_line" parent="c_conexion" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;rotatable=0;strokeColor=inherit;" value="" vertex="1">
+          <mxGeometry height="8" width="240" y="62" as="geometry" />
+        </mxCell>
+        <mxCell id="c_conexion_meth" parent="c_conexion" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;" value="+ __construct()&#xa;+ getConnectionNegocio()&#xa;+ getConnectionSeguridad()&#xa;+ closeConnection()" vertex="1">
+          <mxGeometry height="72" width="240" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="c_autenticator" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;fillColor=none;" value="Autenticator" vertex="1">
+          <mxGeometry height="664" width="240" x="1790" y="-1090" as="geometry" />
+        </mxCell>
+        <mxCell id="c_autenticator_attr" parent="c_autenticator" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;" value="- usuario_id&#xa;- usuario_name&#xa;- usuario_email&#xa;- usuario_password&#xa;- usuario_rol&#xa;- codigo&#xa;- token" vertex="1">
+          <mxGeometry height="126" width="240" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="c_autenticator_line" parent="c_autenticator" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;rotatable=0;strokeColor=inherit;" value="" vertex="1">
+          <mxGeometry height="8" width="240" y="152" as="geometry" />
+        </mxCell>
+        <mxCell id="c_autenticator_meth" parent="c_autenticator" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;" value="+ __construct()&#xa;- setUsuarioData()&#xa;- setUsuarioLoginData()&#xa;- setConfirmarData()&#xa;- setEmailData()&#xa;- setUsuarioUpdateData()&#xa;- setUsuarioPasswordData()&#xa;- setUsuarioID()&#xa;- getID()&#xa;- getUsername()&#xa;- getEmail()&#xa;- getPassword()&#xa;- getRol()&#xa;- getCodigo()&#xa;- getToken()&#xa;+ manejarAccion()&#xa;- Registrar_Usuario()&#xa;- Iniciar_Session()&#xa;- Recuperar_Usuario()&#xa;- Cambiar_Password()&#xa;- Confirmar_Email()&#xa;- Reenviar_Verificacion()&#xa;- Ultima_Session()&#xa;- Obtener_Usuario()&#xa;- enviarEmail()&#xa;- enviarConSMTP()&#xa;- enviarVerificacionEmail()&#xa;- enviarCodigoEmail()" vertex="1">
+          <mxGeometry height="504" width="240" y="160" as="geometry" />
+        </mxCell>
+        <mxCell id="c_usuario" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;fillColor=none;" value="Usuario" vertex="1">
+          <mxGeometry height="592" width="240" x="1450" y="-1090" as="geometry" />
+        </mxCell>
+        <mxCell id="c_usuario_attr" parent="c_usuario" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;" value="- id_usuario&#xa;- nombre_usuario&#xa;- email_usuario&#xa;- password_usuario&#xa;- id_rol_usuario&#xa;- status&#xa;- token_verificacion&#xa;- id_cliente" vertex="1">
+          <mxGeometry height="144" width="240" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="c_usuario_line" parent="c_usuario" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;rotatable=0;strokeColor=inherit;" value="" vertex="1">
+          <mxGeometry height="8" width="240" y="170" as="geometry" />
+        </mxCell>
+        <mxCell id="c_usuario_meth" parent="c_usuario" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;" value="+ __construct()&#xa;- setUsuarioUpdateData()&#xa;- setUsuarioData()&#xa;- setUsuarioUsername()&#xa;- setUsuarioVincule()&#xa;- setUsuarioID()&#xa;- getID()&#xa;- getCliente()&#xa;- getNombre()&#xa;- getEmail()&#xa;- getPassword()&#xa;- getRol()&#xa;+ manejarAccion()&#xa;- Mostrar_Usuario()&#xa;- Registrar_Usuario()&#xa;- Obtener_Usuario()&#xa;- Modificar_Usuario()&#xa;- Eliminar_Usuario()&#xa;- Eliminar_Usuario_Ecommerce()&#xa;- Vincular_Usuario_Ecommerce()&#xa;- Mostrar_UsuarioPDF()&#xa;- Mostrar_UsuarioRolPDF()&#xa;- Mostrar_UsuarioGrafica()" vertex="1">
+          <mxGeometry height="414" width="240" y="178" as="geometry" />
+        </mxCell>
+        <mxCell id="c_rol" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;fillColor=none;" value="Rol" vertex="1">
+          <mxGeometry height="304" width="220" x="1450" y="-470" as="geometry" />
+        </mxCell>
+        <mxCell id="c_rol_attr" parent="c_rol" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;" value="- id_rol&#xa;- nombre_rol&#xa;- descripcion_rol" vertex="1">
+          <mxGeometry height="54" width="220" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="c_rol_line" parent="c_rol" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;rotatable=0;strokeColor=inherit;" value="" vertex="1">
+          <mxGeometry height="8" width="220" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="c_rol_meth" parent="c_rol" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;" value="+ __construct()&#xa;- setRolData()&#xa;- getRolData()&#xa;+ manejarAccion()&#xa;- Mostrar_Rol()&#xa;- Mostrar_Roles()&#xa;- Obtener_Rol()&#xa;- Registrar_Rol()&#xa;- ObtenerRoles()&#xa;- Modificar_Rol()&#xa;- Eliminar_Rol()&#xa;- PreCargaAccess()" vertex="1">
+          <mxGeometry height="216" width="220" y="88" as="geometry" />
+        </mxCell>
+        <mxCell id="c_permiso" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;fillColor=none;" value="Permiso" vertex="1">
+          <mxGeometry height="466" width="240" x="1790" y="-406" as="geometry" />
+        </mxCell>
+        <mxCell id="c_permiso_attr" parent="c_permiso" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;" value="- status&#xa;- modulo&#xa;- id&#xa;- rol&#xa;- permiso" vertex="1">
+          <mxGeometry height="90" width="240" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="c_permiso_line" parent="c_permiso" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;rotatable=0;strokeColor=inherit;" value="" vertex="1">
+          <mxGeometry height="8" width="240" y="116" as="geometry" />
+        </mxCell>
+        <mxCell id="c_permiso_meth" parent="c_permiso" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;" value="+ __construct()&#xa;- setPermisoData()&#xa;- setPermisoUpdateData()&#xa;- setPermisoRolData()&#xa;- setUsuarioPermisoToggleData()&#xa;- getModulo()&#xa;- getRol()&#xa;- getPermiso()&#xa;- getStatus()&#xa;+ manejarAccion()&#xa;- verificar_Permiso()&#xa;- setVerificarEspecialData()&#xa;- Verificar_Permiso_Especial()&#xa;- Modificar_Permiso()&#xa;- Obtener_Permisos()&#xa;- Obtener_Permisos_Modulo()&#xa;- Obtener_Usuarios()&#xa;- Obtener_Matriz_Permisos_Usuario()&#xa;- Guardar_Permiso_Usuario()" vertex="1">
+          <mxGeometry height="342" width="240" y="124" as="geometry" />
+        </mxCell>
+        <mxCell id="c_notificacion" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;fillColor=none;" value="Notificacion" vertex="1">
+          <mxGeometry height="412" width="240" x="2130" y="-1090" as="geometry" />
+        </mxCell>
+        <mxCell id="c_notificacion_attr" parent="c_notificacion" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;" value="- notificacion_id&#xa;- notificacion_id_usuario&#xa;- notificacion_descripcion&#xa;- notificacion_titulo&#xa;- notificacion_enlace&#xa;- notificacion_fecha&#xa;- notificacion_visto&#xa;- notificacion_tipo&#xa;- notificacion_alcance" vertex="1">
+          <mxGeometry height="162" width="240" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="c_notificacion_line" parent="c_notificacion" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;rotatable=0;strokeColor=inherit;" value="" vertex="1">
+          <mxGeometry height="8" width="240" y="188" as="geometry" />
+        </mxCell>
+        <mxCell id="c_notificacion_meth" parent="c_notificacion" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;" value="+ __construct()&#xa;- setNotificacionData()&#xa;- setNotificacionGlobalData()&#xa;- getNotificacionData()&#xa;+ manejarAccion()&#xa;- Mostrar_Notificacion()&#xa;- MarcarComoVista()&#xa;- Limpiar_Notificacion()&#xa;- Registrar_Notificacion()&#xa;- Registrar_NotificacionGlobal()&#xa;- Obtener_Notificacion()&#xa;- MarcarTodasComoVistas()" vertex="1">
+          <mxGeometry height="216" width="240" y="196" as="geometry" />
+        </mxCell>
+        <mxCell id="c_respaldo" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;fillColor=none;" value="Respaldo" vertex="1">
+          <mxGeometry height="1060" width="240" x="2130" y="-550" as="geometry" />
+        </mxCell>
+        <mxCell id="c_respaldo_attr" parent="c_respaldo" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;" value="- id_respaldo&#xa;- nombre_archivo&#xa;- tipo_respaldo&#xa;- ruta_almacenamiento&#xa;- peso_kb&#xa;- total_registros&#xa;- id_usuario&#xa;- fecha_creacion&#xa;- tipo_bd&#xa;- base_datos&#xa;- formato&#xa;- tablas_seleccionadas&#xa;- respaldar_todas&#xa;- ruta_base" vertex="1">
+          <mxGeometry height="252" width="240" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="c_respaldo_line" parent="c_respaldo" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;rotatable=0;strokeColor=inherit;" value="" vertex="1">
+          <mxGeometry height="8" width="240" y="278" as="geometry" />
+        </mxCell>
+        <mxCell id="c_respaldo_meth" parent="c_respaldo" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;" value="- setRespaldoData()&#xa;- setRespaldoID()&#xa;- setTipoBDData()&#xa;- setProgramarData()&#xa;- setRestaurarArchivoData()&#xa;- setRestaurarData()&#xa;- getID()&#xa;- getNombreArchivo()&#xa;- getTipoRespaldo()&#xa;- getRutaAlmacenamiento()&#xa;- getPesoKB()&#xa;- getTotalRegistros()&#xa;- getIdUsuario()&#xa;- getFechaCreacion()&#xa;- getTipoBD()&#xa;- getFormato()&#xa;+ manejarAccion()&#xa;- Registrar_Respaldo()&#xa;- conectarBaseDatos()&#xa;- obtenerTablasARespaldar()&#xa;- contarRegistrosTotales()&#xa;- generarRespaldoPorFormato()&#xa;- generarSQL()&#xa;- generarJSON()&#xa;- generarCSV()&#xa;- generarXML()&#xa;- insertarRespaldoDB()&#xa;- Obtener_Tablas_Negocio()&#xa;- Obtener_Tablas_Seguridad()&#xa;- Mostrar_Respaldos()&#xa;- Obtener_Respaldo()&#xa;- Obtener_Respaldo_Descarga()&#xa;- Obtener_Respaldos_Por_BD()&#xa;- Restaurar_Respaldo()&#xa;- Restaurar_Desde_Ruta()&#xa;- snapshotDB()&#xa;- compararSnapshot()&#xa;- Ejecutar_SQL()&#xa;- calcularProxima()&#xa;- Registrar_Programacion()&#xa;- Obtener_Programacion()&#xa;- Desactivar_Programacion()&#xa;- Verificar_Y_Ejecutar_Programado()" vertex="1">
+          <mxGeometry height="774" width="240" y="286" as="geometry" />
+        </mxCell>
+        <mxCell id="c_bitacora" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;fillColor=none;" value="Bitacora" vertex="1">
+          <mxGeometry height="268" width="240" x="1790" y="6" as="geometry" />
+        </mxCell>
+        <mxCell id="c_bitacora_attr" parent="c_bitacora" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;" value="- id_bitacora&#xa;- id_usuario&#xa;- fecha_bitacora&#xa;- modulo_bitacora&#xa;- accion_bitacora&#xa;- descripcion_bitacora" vertex="1">
+          <mxGeometry height="108" width="240" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="c_bitacora_line" parent="c_bitacora" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;rotatable=0;strokeColor=inherit;" value="" vertex="1">
+          <mxGeometry height="8" width="240" y="134" as="geometry" />
+        </mxCell>
+        <mxCell id="c_bitacora_meth" parent="c_bitacora" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;" value="+ __construct()&#xa;- setBitacoraData()&#xa;- getBitacoraData()&#xa;+ manejarAccion()&#xa;- Mostrar_Bitacora()&#xa;- Registrar_Bitacora()&#xa;- Obtener_Bitacora()" vertex="1">
+          <mxGeometry height="126" width="240" y="142" as="geometry" />
+        </mxCell>
+        <mxCell id="c_perfil" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;fillColor=none;" value="Perfil" vertex="1">
+          <mxGeometry height="376" width="280" x="1450" y="-42" as="geometry" />
+        </mxCell>
+        <mxCell id="c_perfil_attr" parent="c_perfil" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;" value="- id_usuario&#xa;- password_usuario_actual&#xa;- password_usuario_nueva&#xa;- img_usuario" vertex="1">
+          <mxGeometry height="72" width="280" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="c_perfil_line" parent="c_perfil" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;rotatable=0;strokeColor=inherit;" value="" vertex="1">
+          <mxGeometry height="8" width="280" y="98" as="geometry" />
+        </mxCell>
+        <mxCell id="c_perfil_meth" parent="c_perfil" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;" value="+ __construct()&#xa;- setUsuarioIDData()&#xa;- setUsuarioPasswordData()&#xa;- setUsuarioImgData()&#xa;- getID()&#xa;- getPasswordActual()&#xa;- getPasswordNueva()&#xa;- getImg()&#xa;+ manejarAccion()&#xa;- ObtenerUsuario()&#xa;- ObtenerUltimoAcceso()&#xa;- ModificarImagen()&#xa;- EliminarImagen()&#xa;- CambiarPassword()&#xa;- ObtenerDatosCliente()" vertex="1">
+          <mxGeometry height="270" width="280" y="106" as="geometry" />
+        </mxCell>
+        <mxCell id="c_producto" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;fillColor=none;" value="Producto" vertex="1">
+          <mxGeometry height="448" width="240" x="-170" y="-1090" as="geometry" />
+        </mxCell>
+        <mxCell id="c_producto_attr" parent="c_producto" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;" value="- id_producto&#xa;- nombre_producto&#xa;- categoria_producto&#xa;- precio_producto&#xa;- stock_producto&#xa;- fecha_registro_producto&#xa;- fecha_vencimiento_producto&#xa;- imagen_producto" vertex="1">
+          <mxGeometry height="144" width="240" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="c_producto_line" parent="c_producto" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;rotatable=0;strokeColor=inherit;" value="" vertex="1">
+          <mxGeometry height="8" width="240" y="170" as="geometry" />
+        </mxCell>
+        <mxCell id="c_producto_meth" parent="c_producto" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;" value="+ __construct()&#xa;- setProductoData()&#xa;- getProductoData()&#xa;+ manejarAccion()&#xa;- Mostrar_Producto()&#xa;- Registrar_Producto()&#xa;- Obtener_Producto()&#xa;- Modificar_Producto()&#xa;- Eliminar_Producto()&#xa;- Mostrar_ProductoPDF()&#xa;- Mostrar_ProductoCategoriaPDF()&#xa;- Mostrar_ProductoFiltroPDF()&#xa;- Mostrar_ProductoGrafico()&#xa;- Producto_Mas_Vendido()&#xa;- obtenerProductosPorFiltro()" vertex="1">
+          <mxGeometry height="270" width="240" y="178" as="geometry" />
+        </mxCell>
+        <mxCell id="c_categoria" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;fillColor=none;" value="Categoria" vertex="1">
+          <mxGeometry height="286" width="240" x="110" y="-1090" as="geometry" />
+        </mxCell>
+        <mxCell id="c_categoria_attr" parent="c_categoria" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;" value="- categoria_id&#xa;- categoria_nombre" vertex="1">
+          <mxGeometry height="36" width="240" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="c_categoria_line" parent="c_categoria" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;rotatable=0;strokeColor=inherit;" value="" vertex="1">
+          <mxGeometry height="8" width="240" y="62" as="geometry" />
+        </mxCell>
+        <mxCell id="c_categoria_meth" parent="c_categoria" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;" value="- setCategoriaData()&#xa;- getCategoriaData()&#xa;+ manejarAccion()&#xa;- Mostrar_Categoria()&#xa;- Registrar_Categoria()&#xa;- Obtener_Categoria()&#xa;- Modificar_Categoria()&#xa;- Obtener_Estadisticas()&#xa;- Eliminar_Categoria()&#xa;- Mostrar_CategoriaPDF()&#xa;- Mostrar_CategoriaOrdenPDF()&#xa;- Mostrar_CategoriaGrafica()" vertex="1">
+          <mxGeometry height="216" width="240" y="70" as="geometry" />
+        </mxCell>
+        <mxCell id="c_promocion" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;fillColor=none;" value="Promocion" vertex="1">
+          <mxGeometry height="520" width="260" x="452" y="-386" as="geometry" />
+        </mxCell>
+        <mxCell id="c_promocion_attr" parent="c_promocion" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;" value="- promocion_id&#xa;- promocion_nombre&#xa;- promocion_descripcion&#xa;- promocion_productos&#xa;- promocion_tipo&#xa;- promocion_valor&#xa;- promocion_fecha_inicio&#xa;- promocion_fecha_fin&#xa;- promocion_estado" vertex="1">
+          <mxGeometry height="162" width="260" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="c_promocion_line" parent="c_promocion" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;rotatable=0;strokeColor=inherit;" value="" vertex="1">
+          <mxGeometry height="8" width="260" y="188" as="geometry" />
+        </mxCell>
+        <mxCell id="c_promocion_meth" parent="c_promocion" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;" value="+ __construct()&#xa;- setPromocionData()&#xa;- getPromocionData()&#xa;+ manejarAccion()&#xa;- Mostrar_Promocion()&#xa;- Registrar_Promocion()&#xa;- Obtener_Promocion()&#xa;- Obtener_Promociones()&#xa;- Modificar_Promocion()&#xa;- Eliminar_Promocion()&#xa;- Mostrar_PromocionPDF()&#xa;- Mostrar_PromocionEstadoPDF()&#xa;- Mostrar_PromocionFiltroPDF()&#xa;- Mostrar_PromocionGrafica()&#xa;- Consultar_Estado()&#xa;- CambiarEstado_Promocion()&#xa;- Obtener_Productos_Promocion()&#xa;- Mostrar_Promociones_Con_Productos()" vertex="1">
+          <mxGeometry height="324" width="260" y="196" as="geometry" />
+        </mxCell>
+        <mxCell id="c_pedido" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;fillColor=none;" value="Pedido" vertex="1">
+          <mxGeometry height="592" width="260" x="110" y="-218" as="geometry" />
+        </mxCell>
+        <mxCell id="c_pedido_attr" parent="c_pedido" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;" value="- pedido_id&#xa;- pedido_cliente_id&#xa;- pedido_dias_credito&#xa;- pedido_fecha&#xa;- pedido_estado&#xa;- pedido_promocion_id&#xa;- pedido_telefono&#xa;- pedido_direccion_entrega&#xa;- pedido_observaciones&#xa;- pedido_total&#xa;- productos&#xa;- cantidades&#xa;- precios" vertex="1">
+          <mxGeometry height="234" width="260" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="c_pedido_line" parent="c_pedido" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;rotatable=0;strokeColor=inherit;" value="" vertex="1">
+          <mxGeometry height="8" width="260" y="260" as="geometry" />
+        </mxCell>
+        <mxCell id="c_pedido_meth" parent="c_pedido" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;" value="+ __construct()&#xa;- setPedidoData()&#xa;- getPedidoData()&#xa;+ manejarAccion()&#xa;- Mostrar_Pedido()&#xa;- Mostrar_Estado()&#xa;- Registrar_Pedido()&#xa;- Obtener_Pedido()&#xa;- Modificar_Pedido()&#xa;- Eliminar_Pedido()&#xa;- Mostrar_PedidoPDF()&#xa;- Mostrar_PedidoEstadoPDF()&#xa;- Mostrar_PedidoFiltroPDF()&#xa;- Mostrar_PedidoGrafica()&#xa;- Cambiar_Estado_Pedido()&#xa;- Obtener_Productos_Pedido()&#xa;+ Consultar_Via_Vista()&#xa;+ Anular_Pedido_SP()" vertex="1">
+          <mxGeometry height="324" width="260" y="268" as="geometry" />
+        </mxCell>
+        <mxCell id="c_cliente" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;fillColor=none;" value="Cliente" vertex="1">
+          <mxGeometry height="538" width="240" x="427" y="-1216" as="geometry" />
+        </mxCell>
+        <mxCell id="c_cliente_attr" parent="c_cliente" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;" value="- id_cliente&#xa;- tipo_id&#xa;- nombre_cliente&#xa;- tipo_cliente&#xa;- direccion_cliente&#xa;- tlf_cliente&#xa;- email_cliente&#xa;- estado_cliente&#xa;- img_cliente&#xa;- sector_cliente" vertex="1">
+          <mxGeometry height="180" width="240" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="c_cliente_line" parent="c_cliente" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;rotatable=0;strokeColor=inherit;" value="" vertex="1">
+          <mxGeometry height="8" width="240" y="206" as="geometry" />
+        </mxCell>
+        <mxCell id="c_cliente_meth" parent="c_cliente" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;" value="+ __construct()&#xa;- setClienteData()&#xa;- getClienteData()&#xa;+ manejarAccion()&#xa;- Mostrar_Cliente()&#xa;- Registrar_Cliente()&#xa;- Obtener_Cliente()&#xa;- Modificar_Cliente()&#xa;- Eliminar_Cliente()&#xa;- Aprobar_Cliente()&#xa;- Restaurar_Cliente()&#xa;- Mostrar_Cliente_Select()&#xa;- Obtener_Cliente_Por_Email()&#xa;- Mostrar_ClientePDF()&#xa;- Mostrar_ClienteEstadoPDF()&#xa;- Mostrar_ClienteTipoPDF()&#xa;- Mostrar_ClienteGrafica()&#xa;- Ultimos_Clientes()" vertex="1">
+          <mxGeometry height="324" width="240" y="214" as="geometry" />
+        </mxCell>
+        <mxCell id="c_tipocliente" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;fillColor=none;" value="TipoCliente" vertex="1">
+          <mxGeometry height="340" width="260" x="110" y="-694" as="geometry" />
+        </mxCell>
+        <mxCell id="c_tipocliente_attr" parent="c_tipocliente" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;" value="- tipo_cliente_id&#xa;- tipo_cliente_nombre&#xa;- dias_credito" vertex="1">
+          <mxGeometry height="54" width="260" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="c_tipocliente_line" parent="c_tipocliente" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;rotatable=0;strokeColor=inherit;" value="" vertex="1">
+          <mxGeometry height="8" width="260" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="c_tipocliente_meth" parent="c_tipocliente" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;" value="- setTipoClienteData()&#xa;- getTipoClienteData()&#xa;+ manejarAccion()&#xa;- Mostrar_TipoCliente()&#xa;- Registrar_TipoCliente()&#xa;- Obtener_TipoCliente()&#xa;- Obtener_Tipos_Clientes()&#xa;- Modificar_TipoCliente()&#xa;- Eliminar_TipoCliente()&#xa;- Mostrar_TipoClientePDF()&#xa;- Mostrar_TipoClienteDiasPDF()&#xa;- Mostrar_TipoClienteGrafica()&#xa;- Estadisticas_Clientes_Por_Categoria()&#xa;- Categorias_Por_Compras()" vertex="1">
+          <mxGeometry height="252" width="260" y="88" as="geometry" />
+        </mxCell>
+        <mxCell id="c_entrega" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;fillColor=none;" value="Entrega" vertex="1">
+          <mxGeometry height="754" width="260" x="110" y="642" as="geometry" />
+        </mxCell>
+        <mxCell id="c_entrega_attr" parent="c_entrega" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;" value="- entrega_id&#xa;- entrega_pedido_id&#xa;- entrega_cliente_id&#xa;- entrega_direccion&#xa;- entrega_telefono&#xa;- entrega_fecha_programada&#xa;- entrega_fecha_entrega&#xa;- entrega_estado&#xa;- entrega_observaciones&#xa;- entrega_repartidor&#xa;- detalle_sector&#xa;- detalle_cajas&#xa;- detalle_obs&#xa;- motivo_cancelacion" vertex="1">
+          <mxGeometry height="252" width="260" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="c_entrega_line" parent="c_entrega" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;rotatable=0;strokeColor=inherit;" value="" vertex="1">
+          <mxGeometry height="8" width="260" y="278" as="geometry" />
+        </mxCell>
+        <mxCell id="c_entrega_meth" parent="c_entrega" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;" value="+ __construct()&#xa;- asegurarTablaEntregaPedidos()&#xa;- setEntregaData()&#xa;- getEntregaData()&#xa;+ manejarAccion()&#xa;- Mostrar_Entrega()&#xa;- Registrar_Entrega()&#xa;- Obtener_Entrega()&#xa;- Modificar_Entrega()&#xa;- Eliminar_Entrega()&#xa;- Registrar_EntregaLote()&#xa;- Modificar_EntregaLote()&#xa;- Obtener_PedidosEntrega()&#xa;- ObtenerPedidosPorCliente()&#xa;- ObtenerClientesPorSector()&#xa;- Obtener_DetalleEntrega()&#xa;- Mostrar_EntregaPDF()&#xa;- Mostrar_EntregaEstadoPdf()&#xa;- Mostrar_EntregaFechaPDF()&#xa;- Mostrar_EntregaGrafica()&#xa;- Confirmar_Entrega()&#xa;- setCancelarData()&#xa;- Cancelar_Entrega()&#xa;- Restaurar_Entrega()&#xa;- MigrarDetallesLegacy()&#xa;- Mostrar_Estado()" vertex="1">
+          <mxGeometry height="468" width="260" y="286" as="geometry" />
+        </mxCell>
+        <mxCell id="c_produccion" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;fillColor=none;" value="Produccion" vertex="1">
+          <mxGeometry height="394" width="240" x="430" y="358" as="geometry" />
+        </mxCell>
+        <mxCell id="c_produccion_attr" parent="c_produccion" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;" value="- id_produccion&#xa;- motivo_produccion&#xa;- id_producto&#xa;- cantidad_producto&#xa;- id_material&#xa;- cantidad_produccion&#xa;- observaciones_produccion&#xa;- fecha_produccion" vertex="1">
+          <mxGeometry height="144" width="240" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="c_produccion_line" parent="c_produccion" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;rotatable=0;strokeColor=inherit;" value="" vertex="1">
+          <mxGeometry height="8" width="240" y="170" as="geometry" />
+        </mxCell>
+        <mxCell id="c_produccion_meth" parent="c_produccion" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;" value="+ __construct()&#xa;- setProduccionData()&#xa;- getProduccionData()&#xa;+ manejarAccion()&#xa;- Mostrar_Produccion()&#xa;- Registrar_Produccion()&#xa;- Obtener_Produccion()&#xa;- Modificar_Produccion()&#xa;- Eliminar_Produccion()&#xa;- Mostrar_ProduccionPDF()&#xa;- Mostrar_ProduccionFechaPDF()&#xa;- Mostrar_ProduccionGrafica()" vertex="1">
+          <mxGeometry height="216" width="240" y="178" as="geometry" />
+        </mxCell>
+        <mxCell id="c_materiaprima" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;fillColor=none;" value="MateriaPrima" vertex="1">
+          <mxGeometry height="376" width="240" x="110" y="1582" as="geometry" />
+        </mxCell>
+        <mxCell id="c_materiaprima_attr" parent="c_materiaprima" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;" value="- id_materia_prima&#xa;- nombre_materia_prima&#xa;- descripcion_materia_prima&#xa;- stock_materia_prima&#xa;- proveedor_materia_prima&#xa;- medida_materia_prima" vertex="1">
+          <mxGeometry height="108" width="240" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="c_materiaprima_line" parent="c_materiaprima" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;rotatable=0;strokeColor=inherit;" value="" vertex="1">
+          <mxGeometry height="8" width="240" y="134" as="geometry" />
+        </mxCell>
+        <mxCell id="c_materiaprima_meth" parent="c_materiaprima" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;" value="+ __construct()&#xa;- setMateriaPrimaData()&#xa;- getMateriaData()&#xa;+ manejarAccion()&#xa;- Mostrar_MateriaPrima()&#xa;- Registrar_MateriaPrima()&#xa;- Obtener_MateriaPrima()&#xa;- Modificar_MateriaPrima()&#xa;- Eliminar_MateriaPrima()&#xa;- Mostrar_MateriaPrimaPDF()&#xa;- Mostrar_MateriaPrimaStockPDF()&#xa;- Mostrar_MateriaPrimaGrafica()&#xa;- Obtener_Unidades_Medida()" vertex="1">
+          <mxGeometry height="234" width="240" y="142" as="geometry" />
+        </mxCell>
+        <mxCell id="c_compra" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;fillColor=none;" value="Compra" vertex="1">
+          <mxGeometry height="502" width="260" x="750" y="1071" as="geometry" />
+        </mxCell>
+        <mxCell id="c_compra_attr" parent="c_compra" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;" value="- compra_id&#xa;- compra_proveedor_id&#xa;- compra_dias_credito&#xa;- compra_fecha&#xa;- compra_estado&#xa;- compra_telefono&#xa;- compra_direccion&#xa;- compra_observaciones&#xa;- compra_total&#xa;- materiasPrimas&#xa;- cantidades&#xa;- precios" vertex="1">
+          <mxGeometry height="216" width="260" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="c_compra_line" parent="c_compra" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;rotatable=0;strokeColor=inherit;" value="" vertex="1">
+          <mxGeometry height="8" width="260" y="242" as="geometry" />
+        </mxCell>
+        <mxCell id="c_compra_meth" parent="c_compra" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;" value="+ __construct()&#xa;- setCompraData()&#xa;- setCompraProveedor()&#xa;- getCompraData()&#xa;+ manejarAccion()&#xa;- Mostrar_Compra()&#xa;- Mostrar_Estado()&#xa;- Registrar_Compra()&#xa;- Obtener_Compra()&#xa;- Obtener_Materia_Proveedor()&#xa;- Eliminar_Compra()&#xa;- Mostrar_CompraPDF()&#xa;- Mostrar_CompraEstadoPDF()&#xa;- Mostrar_CompraGrafica()" vertex="1">
+          <mxGeometry height="252" width="260" y="250" as="geometry" />
+        </mxCell>
+        <mxCell id="c_proveedor" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;fillColor=none;" value="Proveedor" vertex="1">
+          <mxGeometry height="358" width="240" x="709" y="1848" as="geometry" />
+        </mxCell>
+        <mxCell id="c_proveedor_attr" parent="c_proveedor" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;" value="- id_proveedor&#xa;- tipo_id&#xa;- nombre_proveedor&#xa;- direccion_proveedor&#xa;- tlf_proveedor&#xa;- email_proveedor" vertex="1">
+          <mxGeometry height="108" width="240" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="c_proveedor_line" parent="c_proveedor" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;rotatable=0;strokeColor=inherit;" value="" vertex="1">
+          <mxGeometry height="8" width="240" y="134" as="geometry" />
+        </mxCell>
+        <mxCell id="c_proveedor_meth" parent="c_proveedor" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;" value="+ __construct()&#xa;- setProveedorData()&#xa;- getProveedorData()&#xa;+ manejarAccion()&#xa;- Mostrar_Proveedor()&#xa;- Registrar_Proveedor()&#xa;- Obtener_Proveedor()&#xa;- Modificar_Proveedor()&#xa;- Eliminar_Proveedor()&#xa;- Mostrar_ProveedorPDF()&#xa;- Mostrar_ProveedorMateriaPDF()&#xa;- Mostrar_ProveedorGrafica()" vertex="1">
+          <mxGeometry height="216" width="240" y="142" as="geometry" />
+        </mxCell>
+        <mxCell id="c_pago" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;fillColor=none;" value="Pago" vertex="1">
+          <mxGeometry height="448" width="240" x="743" y="-1516" as="geometry" />
+        </mxCell>
+        <mxCell id="c_pago_attr" parent="c_pago" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;" value="- pago_id&#xa;- pago_pedido_id&#xa;- pago_cliente_id&#xa;- pago_monto&#xa;- pago_metodo&#xa;- pago_referencia&#xa;- pago_fecha&#xa;- pago_estado&#xa;- pago_concepto&#xa;- pago_img" vertex="1">
+          <mxGeometry height="180" width="240" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="c_pago_line" parent="c_pago" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;rotatable=0;strokeColor=inherit;" value="" vertex="1">
+          <mxGeometry height="8" width="240" y="206" as="geometry" />
+        </mxCell>
+        <mxCell id="c_pago_meth" parent="c_pago" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;" value="+ __construct()&#xa;- setPagoData()&#xa;- getPagoData()&#xa;+ manejarAccion()&#xa;- Mostrar_Pago()&#xa;- Obtener_Pago_Cliente()&#xa;- Obtener_Pago_Proveedor()&#xa;- Mostrar_Estado()&#xa;- Registrar_Pago()&#xa;- Mostrar_PagoPDF()&#xa;- Mostrar_PagoGrafica()&#xa;+ Registrar_Pago_SP()&#xa;+ Consultar_Cuentas_Via_Vista()" vertex="1">
+          <mxGeometry height="234" width="240" y="214" as="geometry" />
+        </mxCell>
+        <mxCell id="c_pagar" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;fillColor=none;" value="CuentaPagar" vertex="1">
+          <mxGeometry height="376" width="240" x="407" y="2404" as="geometry" />
+        </mxCell>
+        <mxCell id="c_pagar_attr" parent="c_pagar" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;" value="- cuenta_id&#xa;- cuenta_proveedor_id&#xa;- cuenta_monto&#xa;- cuenta_fecha_pago&#xa;- cuenta_concepto&#xa;- cuenta_referencia&#xa;- cuenta_metodo&#xa;- cuenta_img" vertex="1">
+          <mxGeometry height="144" width="240" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="c_pagar_line" parent="c_pagar" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;rotatable=0;strokeColor=inherit;" value="" vertex="1">
+          <mxGeometry height="8" width="240" y="170" as="geometry" />
+        </mxCell>
+        <mxCell id="c_pagar_meth" parent="c_pagar" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;" value="+ __construct()&#xa;- setPagarData()&#xa;- getCuentaData()&#xa;+ manejarAccion()&#xa;- Mostrar_Cuenta()&#xa;- Obtener_Cuenta()&#xa;- Registrar_Pago()&#xa;- Mostrar_CuentaPDF()&#xa;- Mostrar_CuentaEstadoPDF()&#xa;- Mostrar_CuentaGrafica()&#xa;- Mostrar_Metodo_Pago()" vertex="1">
+          <mxGeometry height="198" width="240" y="178" as="geometry" />
+        </mxCell>
+        <mxCell id="c_tasa" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;fillColor=none;" value="Tasa" vertex="1">
+          <mxGeometry height="286" width="220" x="110" y="2122" as="geometry" />
+        </mxCell>
+        <mxCell id="c_tasa_attr" parent="c_tasa" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;" value="- id_tasa&#xa;- monto_tasa&#xa;- moneda_tasa&#xa;- fecha_tasa" vertex="1">
+          <mxGeometry height="72" width="220" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="c_tasa_line" parent="c_tasa" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;rotatable=0;strokeColor=inherit;" value="" vertex="1">
+          <mxGeometry height="8" width="220" y="98" as="geometry" />
+        </mxCell>
+        <mxCell id="c_tasa_meth" parent="c_tasa" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;" value="+ __construct()&#xa;- setTasaData()&#xa;- getTasaData()&#xa;+ manejarAccion()&#xa;- Mostrar_Tasa()&#xa;- Registrar_Tasa()&#xa;- Obtener_Tasa()&#xa;- Obtener_Ultima_Tasa()&#xa;- Modificar_Tasa()&#xa;- Eliminar_Tasa()" vertex="1">
+          <mxGeometry height="180" width="220" y="106" as="geometry" />
+        </mxCell>
+        <mxCell id="c_cobrar" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;fillColor=none;" value="CuentaCobrar" vertex="1">
+          <mxGeometry height="394" width="240" x="770" y="-438" as="geometry" />
+        </mxCell>
+        <mxCell id="c_cobrar_attr" parent="c_cobrar" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;" value="- cuenta_id&#xa;- cuenta_cliente_id&#xa;- cuenta_monto&#xa;- cuenta_fecha_pago&#xa;- cuenta_concepto&#xa;- cuenta_referencia&#xa;- cuenta_metodo&#xa;- cuenta_img" vertex="1">
+          <mxGeometry height="144" width="240" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="c_cobrar_line" parent="c_cobrar" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;rotatable=0;strokeColor=inherit;" value="" vertex="1">
+          <mxGeometry height="8" width="240" y="170" as="geometry" />
+        </mxCell>
+        <mxCell id="c_cobrar_meth" parent="c_cobrar" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;" value="+ __construct()&#xa;- setCobrarData()&#xa;- getCuentaData()&#xa;+ manejarAccion()&#xa;- Mostrar_Cuenta()&#xa;- Obtener_Cuenta()&#xa;- Obtener_Cuenta_Pedido()&#xa;- Registrar_Pago()&#xa;- Mostrar_CuentaPDF()&#xa;- Mostrar_CuentaEstadoPDF()&#xa;- Mostrar_CuentaGrafica()&#xa;- Mostrar_Metodo_Pago()" vertex="1">
+          <mxGeometry height="216" width="240" y="178" as="geometry" />
+        </mxCell>
+        <mxCell id="e_inh_c_autenticator" edge="1" parent="1" source="c_autenticator" style="endArrow=block;endSize=14;endFill=0;html=1;rounded=1;edgeStyle=orthogonalEdgeStyle;strokeColor=light-dark(#bfbfbf, #ededed);" target="c_conexion" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_inh_c_usuario" edge="1" parent="1" source="c_usuario" style="endArrow=block;endSize=14;endFill=0;html=1;rounded=1;edgeStyle=orthogonalEdgeStyle;strokeColor=#BFBFBF;" target="c_conexion" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_inh_c_rol" edge="1" parent="1" source="c_rol" style="endArrow=block;endSize=14;endFill=0;html=1;rounded=1;edgeStyle=orthogonalEdgeStyle;strokeColor=#BFBFBF;" target="c_conexion" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_inh_c_permiso" edge="1" parent="1" source="c_permiso" style="endArrow=block;endSize=14;endFill=0;html=1;rounded=1;edgeStyle=orthogonalEdgeStyle;strokeColor=light-dark(#bfbfbf, #ededed);" target="c_conexion" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_inh_c_notificacion" edge="1" parent="1" source="c_notificacion" style="endArrow=block;endSize=14;endFill=0;html=1;rounded=1;edgeStyle=orthogonalEdgeStyle;strokeColor=#BFBFBF;" target="c_conexion" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_inh_c_respaldo" edge="1" parent="1" source="c_respaldo" style="endArrow=block;endSize=14;endFill=0;html=1;rounded=1;edgeStyle=orthogonalEdgeStyle;strokeColor=light-dark(#bfbfbf, #ededed);" target="c_conexion" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_inh_c_bitacora" edge="1" parent="1" source="c_bitacora" style="endArrow=block;endSize=14;endFill=0;html=1;rounded=1;edgeStyle=orthogonalEdgeStyle;strokeColor=light-dark(#bfbfbf, #ededed);" target="c_conexion" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_inh_c_perfil" edge="1" parent="1" source="c_perfil" style="endArrow=block;endSize=14;endFill=0;html=1;rounded=1;edgeStyle=orthogonalEdgeStyle;strokeColor=#BFBFBF;" target="c_conexion" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_inh_c_producto" edge="1" parent="1" source="c_producto" style="endArrow=block;endSize=14;endFill=0;html=1;rounded=1;edgeStyle=orthogonalEdgeStyle;strokeColor=light-dark(#bfbfbf, #ededed);" target="c_conexion" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_inh_c_categoria" edge="1" parent="1" source="c_categoria" style="endArrow=block;endSize=14;endFill=0;html=1;rounded=1;edgeStyle=orthogonalEdgeStyle;strokeColor=#BFBFBF;" target="c_conexion" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_inh_c_promocion" edge="1" parent="1" source="c_promocion" style="endArrow=block;endSize=14;endFill=0;html=1;rounded=1;edgeStyle=orthogonalEdgeStyle;strokeColor=light-dark(#bfbfbf, #ededed);" target="c_conexion" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_inh_c_pedido" edge="1" parent="1" source="c_pedido" style="endArrow=block;endSize=14;endFill=0;html=1;rounded=1;edgeStyle=orthogonalEdgeStyle;strokeColor=light-dark(#bfbfbf, #ededed);" target="c_conexion" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_inh_c_cliente" edge="1" parent="1" source="c_cliente" style="endArrow=block;endSize=14;endFill=0;html=1;rounded=1;edgeStyle=orthogonalEdgeStyle;strokeColor=none;" target="c_conexion" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_inh_c_tipocliente" edge="1" parent="1" source="c_tipocliente" style="endArrow=block;endSize=14;endFill=0;html=1;rounded=1;edgeStyle=orthogonalEdgeStyle;strokeColor=light-dark(#bfbfbf, #ededed);" target="c_conexion" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_inh_c_entrega" edge="1" parent="1" source="c_entrega" style="endArrow=block;endSize=14;endFill=0;html=1;rounded=1;edgeStyle=orthogonalEdgeStyle;strokeColor=light-dark(#bfbfbf, #ededed);" target="c_conexion" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_inh_c_produccion" edge="1" parent="1" source="c_produccion" style="endArrow=block;endSize=14;endFill=0;html=1;rounded=1;edgeStyle=orthogonalEdgeStyle;strokeColor=light-dark(#bfbfbf, #ededed);" target="c_conexion" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_inh_c_materiaprima" edge="1" parent="1" source="c_materiaprima" style="endArrow=block;endSize=14;endFill=0;html=1;rounded=1;edgeStyle=orthogonalEdgeStyle;strokeColor=#BFBFBF;" target="c_conexion" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_inh_c_compra" edge="1" parent="1" source="c_compra" style="endArrow=block;endSize=14;endFill=0;html=1;rounded=1;edgeStyle=orthogonalEdgeStyle;strokeColor=#BFBFBF;" target="c_conexion" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_inh_c_proveedor" edge="1" parent="1" source="c_proveedor" style="endArrow=block;endSize=14;endFill=0;html=1;rounded=1;edgeStyle=orthogonalEdgeStyle;strokeColor=light-dark(#bfbfbf, #ededed);" target="c_conexion" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_inh_c_pago" edge="1" parent="1" source="c_pago" style="endArrow=block;endSize=14;endFill=0;html=1;rounded=1;edgeStyle=orthogonalEdgeStyle;strokeColor=#BFBFBF;" target="c_conexion" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_inh_c_pagar" edge="1" parent="1" source="c_pagar" style="endArrow=block;endSize=14;endFill=0;html=1;rounded=1;edgeStyle=orthogonalEdgeStyle;strokeColor=light-dark(#bfbfbf, #ededed);" target="c_conexion" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_inh_c_tasa" edge="1" parent="1" source="c_tasa" style="endArrow=block;endSize=14;endFill=0;html=1;rounded=1;edgeStyle=orthogonalEdgeStyle;strokeColor=light-dark(#BFBFBF,#EDEDED);" target="c_conexion" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e_inh_c_cobrar" edge="1" parent="1" source="c_cobrar" style="endArrow=block;endSize=14;endFill=0;html=1;rounded=1;edgeStyle=orthogonalEdgeStyle;strokeColor=light-dark(#BFBFBF,#EDEDED);" target="c_conexion" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="SLHQJ0sE5qLPqtEldSTf-1" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;font style=&quot;font-size: 24px;&quot;&gt;DIAGRAMA DE CLASES NATYS LARENCE&lt;/font&gt;" vertex="1">
+          <mxGeometry height="30" width="515" x="896" y="-1613" as="geometry" />
+        </mxCell>
+        <mxCell id="SLHQJ0sE5qLPqtEldSTf-2" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;span style=&quot;font-size: 24px;&quot;&gt;NEGOCIO&lt;/span&gt;" vertex="1">
+          <mxGeometry height="30" width="515" x="26" y="-1561" as="geometry" />
+        </mxCell>
+        <mxCell id="SLHQJ0sE5qLPqtEldSTf-3" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;rounded=0;" value="&lt;span style=&quot;font-size: 24px;&quot;&gt;SEGURIDAD&lt;/span&gt;" vertex="1">
+          <mxGeometry height="30" width="515" x="1706" y="-1548" as="geometry" />
+        </mxCell>
+        <mxCell id="c_modulo" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;fillColor=none;" value="Modulo" vertex="1">
+          <mxGeometry height="304" width="240" x="2470" y="-1090" as="geometry" />
+        </mxCell>
+        <mxCell id="c_modulo_attr" parent="c_modulo" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;" value="- id_modulo&#xa;- nombre_modulo&#xa;- descripcion&#xa;- tipo_modulo&#xa;- ruta&#xa;- icono" vertex="1">
+          <mxGeometry height="108" width="240" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="c_modulo_line" parent="c_modulo" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;rotatable=0;strokeColor=inherit;" value="" vertex="1">
+          <mxGeometry height="8" width="240" y="134" as="geometry" />
+        </mxCell>
+        <mxCell id="c_modulo_meth" parent="c_modulo" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;" value="- setModuloData()&#xa;- getModuloData()&#xa;+ manejarAccion()&#xa;- validarRuta()&#xa;- Mostrar_Modulos()&#xa;- Obtener_Modulo()&#xa;- Registrar_Modulo()&#xa;- Modificar_Modulo()&#xa;- Eliminar_Modulo()" vertex="1">
+          <mxGeometry height="162" width="240" y="142" as="geometry" />
+        </mxCell>
+        <mxCell id="e_inh_c_modulo" edge="1" parent="1" source="c_modulo" style="endArrow=block;endSize=14;endFill=0;html=1;rounded=1;edgeStyle=orthogonalEdgeStyle;strokeColor=light-dark(#bfbfbf, #ededed);" target="c_conexion" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c_conversacionia" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;fillColor=none;" value="ConversacionIA" vertex="1">
+          <mxGeometry height="232" width="240" x="2470" y="-300" as="geometry" />
+        </mxCell>
+        <mxCell id="c_conversacionia_attr" parent="c_conversacionia" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;" value="- hasContexto" vertex="1">
+          <mxGeometry height="18" width="240" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="c_conversacionia_line" parent="c_conversacionia" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;rotatable=0;strokeColor=inherit;" value="" vertex="1">
+          <mxGeometry height="8" width="240" y="44" as="geometry" />
+        </mxCell>
+        <mxCell id="c_conversacionia_meth" parent="c_conversacionia" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;" value="+ manejarAccion()&#xa;+ limpiarTexto()&#xa;+ detectarContexto()&#xa;- contextoDisponible()&#xa;- Iniciar_Conversacion()&#xa;- Obtener_Activa()&#xa;- Guardar_Mensaje()&#xa;- Registrar_Intercambio()&#xa;- Historial()&#xa;- Consultar_Conversaciones()" vertex="1">
+          <mxGeometry height="180" width="240" y="52" as="geometry" />
+        </mxCell>
+        <mxCell id="e_inh_c_conversacionia" edge="1" parent="1" source="c_conversacionia" style="endArrow=block;endSize=14;endFill=0;html=1;rounded=1;edgeStyle=orthogonalEdgeStyle;strokeColor=light-dark(#bfbfbf, #ededed);" target="c_conexion" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="c_objetosavanzados" parent="1" style="swimlane;fontStyle=1;align=center;verticalAlign=top;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;fillColor=none;" value="ObjetosAvanzados" vertex="1">
+          <mxGeometry height="232" width="240" x="1100" y="860" as="geometry" />
+        </mxCell>
+        <mxCell id="c_objetosavanzados_attr" parent="c_objetosavanzados" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;" value="" vertex="1">
+          <mxGeometry height="18" width="240" y="26" as="geometry" />
+        </mxCell>
+        <mxCell id="c_objetosavanzados_line" parent="c_objetosavanzados" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;rotatable=0;strokeColor=inherit;" value="" vertex="1">
+          <mxGeometry height="8" width="240" y="44" as="geometry" />
+        </mxCell>
+        <mxCell id="c_objetosavanzados_meth" parent="c_objetosavanzados" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=6;overflow=hidden;rotatable=0;whiteSpace=wrap;html=1;fontFamily=Courier New;fontSize=11;" value="+ manejarAccion()&#xa;+ precioEnBolivares()&#xa;+ totalConIva()&#xa;+ aplicarDescuentoVolumen()&#xa;+ reporteVentasDia()&#xa;+ registrarPedidoSeguro()&#xa;+ verificarReposicion()&#xa;+ clientesVip()&#xa;+ seguimientoProduccion()&#xa;+ stockCritico()" vertex="1">
+          <mxGeometry height="180" width="240" y="52" as="geometry" />
+        </mxCell>
+        <mxCell id="e_inh_c_objetosavanzados" edge="1" parent="1" source="c_objetosavanzados" style="endArrow=block;endSize=14;endFill=0;html=1;rounded=1;edgeStyle=orthogonalEdgeStyle;strokeColor=light-dark(#bfbfbf, #ededed);" target="c_conexion" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
