@@ -165,8 +165,8 @@ export function TestsPage({ onOpen, filtroInicial }) {
           <button className="doc card is-main" onClick={() => onOpen({
             title: 'Plan de pruebas de aceptación',
             type: 'docx',
-            file: 'docs/pruebas/Plan_de_Pruebas_de_Aceptacion_CORREGIDO.docx',
-            download: 'docs/pruebas/Plan_de_Pruebas_de_Aceptacion_CORREGIDO.docx',
+            file: 'docs/pruebas/Plan_de_Pruebas_de_Aceptacion_FINAL.docx',
+            download: 'docs/pruebas/Plan_de_Pruebas_de_Aceptacion_FINAL.docx',
           })}>
             <div className="doc__thumb"><span className="doc__icon">DOCX</span></div>
             <div className="doc__body">
@@ -175,6 +175,21 @@ export function TestsPage({ onOpen, filtroInicial }) {
               <span className="doc__pills"><span className="pill pill--main">★ Aceptación</span><span className="pill pill--ok">Informe</span></span>
             </div>
           </button>
+          {[['IMG_8833.jpg', 'Evidencia de aceptación · 1'], ['IMG_8834.jpg', 'Evidencia de aceptación · 2']].map(([file, title]) => (
+            <button key={file} className="doc card" onClick={() => onOpen({
+              title,
+              type: 'image',
+              file: `docs/pruebas/evidencias/${file}`,
+              download: `docs/pruebas/evidencias/${file}`,
+            })}>
+              <div className="doc__thumb"><img src={asset(`docs/pruebas/evidencias/${file}`)} alt={title} loading="lazy" /></div>
+              <div className="doc__body">
+                <b>{title}</b>
+                <small>Plan de pruebas de aceptación</small>
+                <span className="doc__pills"><span className="pill pill--ok">Evidencia</span></span>
+              </div>
+            </button>
+          ))}
           {lista.map((m) => {
             const listo = Boolean(m.pdf || m.docx);
             const disponible = listo || Boolean(m.plantilla);
